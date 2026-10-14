@@ -1,5 +1,15 @@
 # 从本地到公开网址：Vercel、域名和 Google 搜索提交
 
+## 当前项目状态（2026-10-14）
+
+- 代码仓库：[Huoxinyue1995-Ma/first-code](https://github.com/Huoxinyue1995-Ma/first-code)
+- Vercel 项目：`emma-8abb/image-ready`
+- 当前生产网址：[https://image-ready-xi.vercel.app](https://image-ready-xi.vercel.app)
+- GitHub 已与 Vercel 连接；之后推送到 `main` 会触发自动发布。
+- `NEXT_PUBLIC_SITE_URL` 已临时设为当前生产网址，因此现有 `robots.txt` 和 `sitemap.xml` 可以正确访问。
+
+尚未完成的上线步骤：购买或提供自有域名、绑定域名、把上面的环境变量改成正式域名、在 Google Search Console 验证域名并提交站点地图。
+
 ## 使用前先知道三件事
 
 1. 本文把网站代码放在 GitHub，Vercel 从 GitHub 自动发布。
@@ -48,33 +58,23 @@ npm run dev
 
 ## 第 2 步：把代码放到 GitHub
 
-1. 登录 GitHub，点击右上角 `+`，选择 `New repository`。
-2. 名称可填写 `product-image-resizer`，选择 `Private` 或 `Public`。若决定把产品真实定位为“open source photo editor”，必须选择 Public 并在仓库加入开源许可证；这不影响 Google 是否能找到已经部署的网站。
-3. 不要在 GitHub 网页上额外创建 README 或 `.gitignore`，避免和本地项目产生冲突。
-4. 在项目文件夹中运行以下命令，把 `YOUR_GITHUB_NAME` 替换成你的 GitHub 用户名：
+当前项目已经使用仓库 [Huoxinyue1995-Ma/first-code](https://github.com/Huoxinyue1995-Ma/first-code)，不需要重新创建仓库或重复初始化 Git。后续修改完成后，只需在项目文件夹中运行：
 
 ```bash
-git init
-git add .
-git commit -m "First working version"
-git branch -M main
-git remote add origin https://github.com/YOUR_GITHUB_NAME/product-image-resizer.git
-git push -u origin main
+git add <需要提交的文件>
+git commit -m "Describe the change"
+git push
 ```
 
-5. 刷新 GitHub 仓库页面，确认能看到项目文件。
+不要使用 `git add .`，避免把本地测试图、分析输出或密码文件意外提交。
 
 发布后，今后每次把改动推送到 `main` 分支，Vercel 都会自动更新公开网站。
 
 ## 第 3 步：首次发布到 Vercel
 
-1. 打开 [Vercel](https://vercel.com)，用 GitHub 账号登录。
-2. 点击 `Add New...`，选择 `Project`。
-3. 找到 `product-image-resizer`，点击 `Import`。
-4. Vercel 通常能自动识别 Next.js。保持默认设置即可；不要填写任何与图片上传有关的环境变量。
-5. 点击 `Deploy`，等待发布完成。
-6. 点击 `Continue to Dashboard`，然后点击 `Visit`。你会得到一个类似 `product-image-resizer.vercel.app` 的临时网址。
-7. 在这个临时网址重新完成第 1 步中的图片操作测试。
+当前项目已发布到 [https://image-ready-xi.vercel.app](https://image-ready-xi.vercel.app)，并且已经完成一次线上上传、裁剪和下载验证。Vercel 已识别 Next.js；不需要填写任何与图片上传有关的环境变量。
+
+以后若要从 Vercel 网页重新发布，打开项目 `image-ready` 的 `Deployments` 页面，找到最新版本后点击 `Redeploy`。正常情况下，推送到 GitHub 的 `main` 分支会自动完成这件事。
 
 若页面显示构建失败，打开 Vercel 的 `Build Logs`，先修复本地 `npm run build` 中相同的问题，再把修复推送到 GitHub。
 
