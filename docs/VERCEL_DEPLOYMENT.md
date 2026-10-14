@@ -3,12 +3,14 @@
 ## 当前项目状态（2026-10-14）
 
 - 代码仓库：[Huoxinyue1995-Ma/first-code](https://github.com/Huoxinyue1995-Ma/first-code)
-- Vercel 项目：`emma-8abb/image-ready`
-- 当前生产网址：[https://image-ready-xi.vercel.app](https://image-ready-xi.vercel.app)
+- Vercel 项目：`emma-8abb/first-code`
+- 当前生产网址：[https://www.opensourcephotoeditor.com](https://www.opensourcephotoeditor.com)
 - GitHub 已与 Vercel 连接；之后推送到 `main` 会触发自动发布。
-- `NEXT_PUBLIC_SITE_URL` 已临时设为当前生产网址，因此现有 `robots.txt` 和 `sitemap.xml` 可以正确访问。
+- `opensourcephotoeditor.com` 和 `www.opensourcephotoeditor.com` 均已在 Vercel 验证；根域名会自动跳转至 `www`。
+- `NEXT_PUBLIC_SITE_URL` 已设为正式网址，因此 `robots.txt` 和 `sitemap.xml` 均使用正式域名。
+- Google Search Console 的 `opensourcephotoeditor.com` 域名属性已验证，`https://www.opensourcephotoeditor.com/sitemap.xml` 已提交。
 
-尚未完成的上线步骤：购买或提供自有域名、绑定域名、把上面的环境变量改成正式域名、在 Google Search Console 验证域名并提交站点地图。
+本阶段的上线步骤已经完成。Google 对站点地图的后续抓取、收录与排名属于上线后的观察工作，不属于本阶段完成条件。
 
 ## 使用前先知道三件事
 
