@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         headers: [
-          { key: "Content-Security-Policy", value: `default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://checkout.stripe.com; img-src 'self' blob: data:; media-src 'self' blob: data:; ${scriptSource}; style-src 'self' 'unsafe-inline'; connect-src 'self' https://*.stripe.com; frame-src https://*.stripe.com https://*.link.com; worker-src 'self' blob:` },
+          { key: "Content-Security-Policy", value: `default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://checkout.stripe.com; img-src 'self' blob: data: https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com; media-src 'self' blob: data:; ${scriptSource} https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https://*.stripe.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com; frame-src https://*.stripe.com https://*.link.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com; worker-src 'self' blob:` },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "DENY" },
