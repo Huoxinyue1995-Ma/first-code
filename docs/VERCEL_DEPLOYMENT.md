@@ -74,11 +74,54 @@ git push
 
 ## 第 3 步：首次发布到 Vercel
 
-当前项目已发布到 [https://image-ready-xi.vercel.app](https://image-ready-xi.vercel.app)，并且已经完成一次线上上传、裁剪和下载验证。Vercel 已识别 Next.js；不需要填写任何与图片上传有关的环境变量。
+当前项目已发布到 [https://www.opensourcephotoeditor.com](https://www.opensourcephotoeditor.com)，并且已经完成一次线上上传、裁剪和下载验证。Vercel 已识别 Next.js。图片不需要、也绝不能配置任何上传相关的环境变量。
 
-以后若要从 Vercel 网页重新发布，打开项目 `image-ready` 的 `Deployments` 页面，找到最新版本后点击 `Redeploy`。正常情况下，推送到 GitHub 的 `main` 分支会自动完成这件事。
+以后若要从 Vercel 网页重新发布，打开项目 `first-code` 的 `Deployments` 页面，找到最新版本后点击 `Redeploy`。正常情况下，推送到 GitHub 的 `main` 分支会自动完成这件事。
 
 若页面显示构建失败，打开 Vercel 的 `Build Logs`，先修复本地 `npm run build` 中相同的问题，再把修复推送到 GitHub。
+
+## Stripe 收款：在发布付款功能前完成
+
+网站的批量 ZIP 定价是 `US$3.99/次`，每次最多 10 张图片。付款时，用户会跳到 Stripe 的安全付款页；原图始终只在用户浏览器内处理。
+
+### 1. 注册并完成 Stripe 香港公司审核
+
+使用香港公司资料注册 Stripe。按 Stripe 页面要求填写公司、负责人和收款银行账户资料。不要把登录密码、验证码、银行卡信息或密钥发送到聊天或提交到 GitHub。
+
+### 2. 先用测试模式检查流程
+
+Stripe 后台左上角先保持在 **Test mode**。在 `Developers` -> `API keys` 中复制测试用的 `Secret key`，只放在你电脑本地的 `.env.local`：
+
+```bash
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+STRIPE_SECRET_KEY=sk_test_...
+```
+
+启动 `npm run dev` 后，选择 2 到 10 张测试图片，点击 `Unlock batch for $3.99`。付款页只会使用 Stripe 测试卡，不会扣真实的钱。付款成功后回到原来的 Image Ready 标签页，点击 `Download paid batch`，确认 ZIP 能打开。
+
+如果 Stripe 测试页需要一张测试卡，使用 Stripe 文档列出的当前测试卡号；不要使用真实银行卡测试。
+
+### 3. 在 Vercel 填写正式密钥
+
+只有上面的测试流程完全通过、并确认要正式开放收款时，才在 Vercel 项目的 `Settings` -> `Environment Variables` 添加：
+
+| 名称 | 值 | 适用环境 |
+| --- | --- | --- |
+| `STRIPE_SECRET_KEY` | Stripe **Live mode** 的 Secret key | Production |
+| `NEXT_PUBLIC_SITE_URL` | `https://www.opensourcephotoeditor.com` | Production |
+
+保存后重新部署。`STRIPE_SECRET_KEY` 只能填在 Vercel 后台或自己电脑的 `.env.local`，绝不能加上 `NEXT_PUBLIC_` 前缀、提交到 GitHub 或放在网页代码中。
+
+### 4. 正式验收
+
+用一笔真实的小额付款完成一次 2 到 10 张的批量下载，确认：
+
+1. Stripe 后台出现正确的 `US$3.99` 付款。
+2. 回到编辑页后只允许下载一个 ZIP。
+3. ZIP 含有正确数量和尺寸的图片。
+4. 浏览器网络记录中没有原图文件、预览图或图片内容上传。
+
+退款、拒付和收款对账在 Stripe 后台处理。当前第一版不建立用户账号或保存用户图片。
 
 ## 第 4 步：购买或使用已有域名
 

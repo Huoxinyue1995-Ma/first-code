@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Pricing",
-  description: "Single-image compression is free. Batch compression is available with Image Ready Pro.",
+  description: "Single-image compression is free. Download a ZIP of up to 10 processed images for $3.99.",
 };
 
 export default function PricingPage() {
@@ -26,19 +26,19 @@ export default function PricingPage() {
           <Link className="plan-button is-secondary" href="/">Use the free tool</Link>
         </section>
         <section className="plan-card is-featured">
-          <p className="plan-label">Pro</p>
-          <h2>$9<span>/month</span></h2>
-          <p>For sellers preparing a group of product images.</p>
+          <p className="plan-label">Batch download</p>
+          <h2>$3.99<span>/batch</span></h2>
+          <p>For sellers preparing a small group of product images.</p>
           <ul>
             <li>Everything in Free</li>
             <li>Batch compression and ZIP download</li>
-            <li>Up to 20 images per batch</li>
-            <li>Priority access to future workflows</li>
+            <li>Up to 10 images per batch</li>
+            <li>One payment, no subscription</li>
           </ul>
-          <a className="plan-button" href="mailto:hello@example.com?subject=Image%20Ready%20Pro%20interest">Get Pro access</a>
+          <Link className="plan-button" href="/">Prepare a batch</Link>
         </section>
       </div>
-      <p className="pricing-footnote">Pro checkout will be connected to a payment provider before public billing opens. Until then, the Pro button records interest only and does not charge a card.</p>
+      <p className="pricing-footnote">Payment opens in Stripe. Image files are processed and downloaded locally in your browser; we do not receive or store them.</p>
     </main>
   );
 }

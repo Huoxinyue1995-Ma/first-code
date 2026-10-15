@@ -16,6 +16,7 @@ import {
   Upload,
   X,
 } from "lucide-react";
+import { zipSync } from "fflate";
 import Link from "next/link";
 import {
   ChangeEvent,
@@ -47,10 +48,12 @@ type ImageItem = {
   crop: Crop;
 };
 
-const MAX_FILES = 20;
+const MAX_FILES = 10;
 const MAX_FILE_SIZE = 25 * 1024 * 1024;
 const SUPPORTED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const DEFAULT_CROP: Crop = { zoom: 1, offsetX: 0, offsetY: 0, rotation: 0 };
+const BATCH_PRICE = "$3.99";
+const CHECKOUT_SESSION_STORAGE_KEY = "image-ready-batch-checkout-session";
 
 const PRESETS: Array<{ id: PresetId; name: string; detail: string; width: number; height: number }> = [
   { id: "amazon", name: "Amazon", detail: "Product image", width: 2000, height: 2000 },
@@ -245,7 +248,11 @@ export function ImageEditor() {
   const [format, setFormat] = useState<OutputFormat>("image/jpeg");
   const [quality, setQuality] = useState(0.9);
   const [isExporting, setIsExporting] = useState(false);
+  const [isStartingCheckout, setIsStartingCheckout] = useState(false);
+  const [isCheckingPayment, setIsCheckingPayment] = useState(false);
   const [showProNotice, setShowProNotice] = useState(false);
+  const [checkoutSessionId, setCheckoutSessionId] = useState<string | null>(null);
+  const [isBatchPaid, setIsBatchPaid] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
 
   const activeItem = items.find((item) => item.id === activeId) || items[0] || null;
@@ -260,6 +267,47 @@ export function ImageEditor() {
       objectUrls.current.forEach((url) => URL.revokeObjectURL(url));
     };
   }, []);
+
+  useEffect(() => {
+    const storedSessionId = window.sessionStorage.getItem(CHECKOUT_SESSION_STORAGE_KEY);
+    if (storedSessionId) setCheckoutSessionId(storedSessionId);
+  }, []);
+
+  const checkBatchPayment = useCallback(async (showError = true) => {
+    if (!checkoutSessionId) return false;
+    setIsCheckingPayment(true);
+    try {
+      const response = await fetch(`/api/verify-checkout-session?session_id=${encodeURIComponent(checkoutSessionId)}`, {
+        cache: "no-store",
+      });
+      const result = await response.json() as { paid?: boolean; redeemed?: boolean; error?: string };
+      if (result.paid && !result.redeemed) {
+        setIsBatchPaid(true);
+        setNotice("Payment confirmed. Your batch ZIP is ready to download.");
+        return true;
+      }
+      if (result.redeemed) {
+        window.sessionStorage.removeItem(CHECKOUT_SESSION_STORAGE_KEY);
+        setCheckoutSessionId(null);
+        setIsBatchPaid(false);
+        if (showError) setNotice("This batch purchase has already been used.");
+        return false;
+      }
+      if (showError) setNotice("We could not confirm payment yet. Finish checkout, then try again.");
+      return false;
+    } catch {
+      if (showError) setNotice("We could not confirm payment. Please try again.");
+      return false;
+    } finally {
+      setIsCheckingPayment(false);
+    }
+  }, [checkoutSessionId]);
+
+  useEffect(() => {
+    const onFocus = () => { void checkBatchPayment(false); };
+    window.addEventListener("focus", onFocus);
+    return () => window.removeEventListener("focus", onFocus);
+  }, [checkBatchPayment]);
 
   const updateActiveCrop = useCallback((crop: Crop) => {
     setItems((currentItems) => currentItems.map((item) => (item.id === activeId ? { ...item, crop } : item)));
@@ -388,9 +436,83 @@ export function ImageEditor() {
     window.setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
+  async function buildBatchZip() {
+    const extension = format === "image/png" ? "png" : "jpg";
+    const entries: Record<string, Uint8Array> = {};
+    for (const [index, item] of items.entries()) {
+      const blob = await buildBlob(item);
+      const prefix = `${String(index + 1).padStart(2, "0")}-${cleanFileName(item.file.name)}`;
+      entries[`${prefix}-${targetLabel}-${targetWidth}x${targetHeight}.${extension}`] = new Uint8Array(await blob.arrayBuffer());
+    }
+    return new Blob([zipSync(entries, { level: 6 })], { type: "application/zip" });
+  }
+
+  async function startBatchCheckout() {
+    if (isStartingCheckout) return;
+    const checkoutWindow = window.open("about:blank", "_blank");
+    setIsStartingCheckout(true);
+    setNotice(null);
+    try {
+      const response = await fetch("/api/create-checkout-session", { method: "POST" });
+      const result = await response.json() as { checkoutUrl?: string; sessionId?: string; error?: string };
+      if (!response.ok || !result.checkoutUrl || !result.sessionId) {
+        checkoutWindow?.close();
+        throw new Error(result.error || "Checkout is not available yet.");
+      }
+      window.sessionStorage.setItem(CHECKOUT_SESSION_STORAGE_KEY, result.sessionId);
+      setCheckoutSessionId(result.sessionId);
+      checkoutWindow?.location.replace(result.checkoutUrl);
+      if (!checkoutWindow) window.location.assign(result.checkoutUrl);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "Checkout could not be started. Please try again.");
+    } finally {
+      setIsStartingCheckout(false);
+    }
+  }
+
+  function resetBatchCheckout() {
+    window.sessionStorage.removeItem(CHECKOUT_SESSION_STORAGE_KEY);
+    setCheckoutSessionId(null);
+    setIsBatchPaid(false);
+    setNotice(null);
+  }
+
+  async function downloadBatch() {
+    if (!checkoutSessionId || !isBatchPaid || isExporting) {
+      setShowProNotice(true);
+      return;
+    }
+    setIsExporting(true);
+    setNotice(null);
+    try {
+      // Build the ZIP before redeeming payment so an export error never consumes a purchase.
+      const zip = await buildBatchZip();
+      const response = await fetch("/api/redeem-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId: checkoutSessionId }),
+      });
+      const result = await response.json() as { redeemed?: boolean; error?: string };
+      if (!response.ok || !result.redeemed) throw new Error(result.error || "This batch purchase is no longer available.");
+      saveBlob(zip, `image-ready-${targetLabel}-${targetWidth}x${targetHeight}.zip`);
+      window.sessionStorage.removeItem(CHECKOUT_SESSION_STORAGE_KEY);
+      setCheckoutSessionId(null);
+      setIsBatchPaid(false);
+      setNotice("Your batch ZIP is ready. Your original images stayed in this browser.");
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "The batch download could not be created. Please try again.");
+    } finally {
+      setIsExporting(false);
+    }
+  }
+
   async function downloadImages() {
     if (!items.length || isExporting) return;
     if (items.length > 1) {
+      if (isBatchPaid) {
+        await downloadBatch();
+        return;
+      }
       setShowProNotice(true);
       return;
     }
@@ -446,7 +568,7 @@ export function ImageEditor() {
           <button className="primary-button" onClick={() => inputRef.current?.click()} type="button">
             <ImagePlus size={18} /> Choose images
           </button>
-          <p className="drop-details">JPG, PNG, WebP · Up to 20 images · 25 MB each</p>
+          <p className="drop-details">JPG, PNG, WebP · Up to 10 images · 25 MB each</p>
           <div className="privacy-note"><ShieldCheck size={17} /><span>Your files are handled in this browser only.</span></div>
         </section>
       ) : (
@@ -541,9 +663,9 @@ export function ImageEditor() {
             <div className="select-wrap"><select id="format" onChange={(event) => setFormat(event.target.value as OutputFormat)} value={format}><option value="image/jpeg">JPG</option><option value="image/png">PNG</option></select><ChevronDown size={16} /></div>
             {format === "image/jpeg" && <><label className="setting-label" htmlFor="quality">JPG quality <span>{Math.round(quality * 100)}%</span></label><input className="quality-range" id="quality" max="1" min="0.6" onChange={(event) => setQuality(Number(event.target.value))} step="0.05" type="range" value={quality} /></>}
             <button className="download-button" disabled={isExporting} onClick={() => void downloadImages()} type="button">
-              <Download size={18} /> {isExporting ? "Preparing download..." : items.length > 1 ? "Unlock batch compression" : "Download image"}
+              <Download size={18} /> {isExporting ? "Preparing download..." : items.length > 1 ? isBatchPaid ? "Download paid batch" : `Unlock batch for ${BATCH_PRICE}` : "Download image"}
             </button>
-            <p className="format-note"><FileImage size={14} /> {items.length > 1 ? "Pro · ZIP with all images" : `${aspectLabel} px`} · {format === "image/jpeg" ? "JPG" : "PNG"}</p>
+            <p className="format-note"><FileImage size={14} /> {items.length > 1 ? `${BATCH_PRICE} · One ZIP · Up to ${MAX_FILES} images` : `${aspectLabel} px`} · {format === "image/jpeg" ? "JPG" : "PNG"}</p>
           </aside>
         </section>
       )}
@@ -554,10 +676,23 @@ export function ImageEditor() {
           <section aria-labelledby="pro-title" aria-modal="true" className="pro-modal" onMouseDown={(event) => event.stopPropagation()} role="dialog">
             <button aria-label="Close batch compression message" className="modal-close" onClick={() => setShowProNotice(false)} type="button"><X size={18} /></button>
             <div className="pro-icon"><Maximize2 size={23} /></div>
-            <p className="eyebrow">Image Ready Pro</p>
-            <h2 id="pro-title">Batch compression is for Pro members.</h2>
-            <p>Keep preparing up to 20 images at once, then unlock ZIP download when Pro billing opens. Your original images still stay in this browser.</p>
-            <div className="pro-modal-actions"><Link className="primary-button" href="/pricing">See Pro details</Link><button className="text-button" onClick={() => setShowProNotice(false)} type="button">Keep editing</button></div>
+            <p className="eyebrow">Batch download</p>
+            <h2 id="pro-title">One batch. One ZIP. {BATCH_PRICE}.</h2>
+            <p>Export up to {MAX_FILES} processed images in one ZIP. Checkout opens securely in Stripe; your original image files never leave this browser.</p>
+            <div className="pro-modal-actions">
+              {isBatchPaid ? (
+                <button className="primary-button" onClick={() => { setShowProNotice(false); void downloadBatch(); }} type="button">Download paid batch</button>
+              ) : checkoutSessionId ? (
+                <>
+                  <button className="primary-button" disabled={isCheckingPayment} onClick={() => void checkBatchPayment()} type="button">{isCheckingPayment ? "Checking payment..." : "I've paid - unlock batch"}</button>
+                  <button className="text-button" onClick={resetBatchCheckout} type="button">Start a new checkout</button>
+                </>
+              ) : (
+                <button className="primary-button" disabled={isStartingCheckout} onClick={() => void startBatchCheckout()} type="button">{isStartingCheckout ? "Opening checkout..." : `Pay ${BATCH_PRICE}`}</button>
+              )}
+              <button className="text-button" onClick={() => setShowProNotice(false)} type="button">Keep editing</button>
+            </div>
+            <Link className="modal-details-link" href="/pricing">See pricing details</Link>
           </section>
         </div>
       )}
