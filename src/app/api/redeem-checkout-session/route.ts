@@ -1,4 +1,4 @@
-import { getStripe, isBatchSession, isCheckoutSessionId } from "@/lib/stripe";
+import { getStripe, isBatchPaymentConfirmed, isBatchSession, isCheckoutSessionId } from "@/lib/stripe";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
 
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
-    if (!isBatchSession(session)) {
+    if (!isBatchSession(session) || !isBatchPaymentConfirmed(session)) {
       return Response.json({ error: "This payment has not completed." }, { status: 402 });
     }
     if (session.metadata?.batch_redeemed_at) {

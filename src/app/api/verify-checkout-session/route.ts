@@ -1,4 +1,4 @@
-import { getStripe, isBatchSession, isCheckoutSessionId } from "@/lib/stripe";
+import { getStripe, isBatchPaymentConfirmed, isBatchSession, isCheckoutSessionId } from "@/lib/stripe";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -17,7 +17,10 @@ export async function GET(request: Request) {
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     if (!isBatchSession(session)) return Response.json({ paid: false, redeemed: false });
-    return Response.json({ paid: true, redeemed: Boolean(session.metadata?.batch_redeemed_at) });
+    return Response.json({
+      paid: isBatchPaymentConfirmed(session),
+      redeemed: Boolean(session.metadata?.batch_redeemed_at),
+    });
   } catch {
     return Response.json({ error: "Payment could not be confirmed." }, { status: 500 });
   }

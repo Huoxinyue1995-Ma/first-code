@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PaymentReturnButton } from "@/components/payment-return-button";
 
 export const metadata = {
   title: "Payment complete",
@@ -11,7 +11,7 @@ export default function PaymentSuccessPage() {
       <p className="eyebrow">Payment complete</p>
       <h1>Your batch download is ready.</h1>
       <p className="legal-lead">Return to the Image Ready tab where your images are still open. It will confirm the payment and let you download your ZIP.</p>
-      <Link className="email-link" href="/">Return to Image Ready</Link>
+      <PaymentReturnButton />
     </main>
   );
 }

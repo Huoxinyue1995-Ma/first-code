@@ -16,14 +16,21 @@ export function getSiteUrl(request: Request) {
   return new URL(request.url).origin;
 }
 
-export function isBatchSession(session: Stripe.Checkout.Session) {
+export function isBatchCheckoutSession(session: Stripe.Checkout.Session) {
   return (
     session.mode === "payment" &&
-    session.payment_status === "paid" &&
     session.currency === "usd" &&
     session.amount_total === BATCH_PRICE_CENTS &&
     session.metadata?.product === BATCH_PRODUCT
   );
+}
+
+export function isBatchSession(session: Stripe.Checkout.Session) {
+  return isBatchCheckoutSession(session) && session.payment_status === "paid";
+}
+
+export function isBatchPaymentConfirmed(session: Stripe.Checkout.Session) {
+  return Boolean(session.metadata?.batch_payment_confirmed_at);
 }
 
 export function isCheckoutSessionId(value: string | null) {

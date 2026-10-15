@@ -309,6 +309,20 @@ export function ImageEditor() {
     return () => window.removeEventListener("focus", onFocus);
   }, [checkBatchPayment]);
 
+  useEffect(() => {
+    const onCheckoutReturn = (event: MessageEvent<unknown>) => {
+      if (event.origin !== window.location.origin) return;
+      if (typeof event.data !== "object" || event.data === null) return;
+      if (!("type" in event.data) || event.data.type !== "image-ready:checkout-return") return;
+
+      setShowProNotice(true);
+      void checkBatchPayment(false);
+    };
+
+    window.addEventListener("message", onCheckoutReturn);
+    return () => window.removeEventListener("message", onCheckoutReturn);
+  }, [checkBatchPayment]);
+
   const updateActiveCrop = useCallback((crop: Crop) => {
     setItems((currentItems) => currentItems.map((item) => (item.id === activeId ? { ...item, crop } : item)));
   }, [activeId]);

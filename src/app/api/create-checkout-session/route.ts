@@ -3,6 +3,12 @@ import { BATCH_MAX_IMAGES, BATCH_PRICE_CENTS, BATCH_PRODUCT, getSiteUrl, getStri
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+function getIntegrationIdentifier() {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const suffix = Array.from(crypto.getRandomValues(new Uint8Array(8)), (value) => alphabet[value % alphabet.length]).join("");
+  return `image_ready_checkout_${suffix}`;
+}
+
 export async function POST(request: Request) {
   const stripe = getStripe();
   if (!stripe) {
@@ -13,6 +19,7 @@ export async function POST(request: Request) {
     const siteUrl = getSiteUrl(request);
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      integration_identifier: getIntegrationIdentifier(),
       managed_payments: { enabled: false },
       line_items: [
         {
