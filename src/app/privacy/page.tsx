@@ -32,7 +32,7 @@ export default function PrivacyPage() {
       <section>
         <h2>Contact</h2>
         <p>
-          Before launch, replace this paragraph with a working support email address. We will update this page if our privacy practices change.
+          For privacy questions, contact us at <a href="mailto:huoxinyue1995@gmail.com">huoxinyue1995@gmail.com</a>. We will update this page if our privacy practices change.
         </p>
       </section>
     </main>

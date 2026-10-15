@@ -26,6 +26,12 @@ export default function TermsPage() {
           We provide this tool as-is. You should review downloaded files before using them in a storefront or advertising campaign.
         </p>
       </section>
+      <section>
+        <h2>Payments and refunds</h2>
+        <p>
+          A batch download is a one-time digital service. Once Stripe confirms payment and the ZIP download is unlocked, the purchase is final and non-refundable, except where applicable law requires otherwise. If you were charged but could not unlock your batch download, contact us at <a href="mailto:huoxinyue1995@gmail.com">huoxinyue1995@gmail.com</a> within 7 days and include your Stripe receipt email. Do not send card details.
+        </p>
+      </section>
     </main>
   );
 }
