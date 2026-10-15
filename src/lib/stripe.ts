@@ -11,6 +11,18 @@ export function getStripe() {
 }
 
 export function getSiteUrl(request: Request) {
+  const requestOrigin = request.headers.get("origin");
+  if (requestOrigin) {
+    try {
+      const url = new URL(requestOrigin);
+      if (url.protocol === "https:" && url.hostname === "www.opensourcephotoeditor.com") {
+        return url.origin;
+      }
+    } catch {
+      // Fall back to the configured deployment URL for malformed Origins.
+    }
+  }
+
   const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL;
   if (configuredUrl) return configuredUrl.replace(/\/$/, "");
   return new URL(request.url).origin;
