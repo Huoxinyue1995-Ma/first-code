@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { PRIMARY_SITE_URL } from "../lib/site";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.opensourcephotoeditor.com";
 const googleAnalyticsId = "G-R7WZ6RM19T";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(PRIMARY_SITE_URL),
   title: {
     default: "Image Ready | Private product image cropper",
     template: "%s | Image Ready",
