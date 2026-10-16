@@ -30,6 +30,15 @@ export default function PrivacyPage() {
         </p>
       </section>
       <section>
+        <h2>Analytics and advertising</h2>
+        <p>
+          We use Google Analytics to understand aggregate website use, such as pages viewed, referral source, browser and device information, approximate location, and interactions with the site. Google AdSense may use cookies and similar technologies to display and measure advertising. These services do not receive the original images, previews, or exports that you process in Image Ready.
+        </p>
+        <p>
+          You can manage Google ad personalization through your Google account and browser settings.
+        </p>
+      </section>
+      <section>
         <h2>Contact</h2>
         <p>
           For privacy questions, contact us at <a href="mailto:huoxinyue1995@gmail.com">huoxinyue1995@gmail.com</a>. We will update this page if our privacy practices change.
