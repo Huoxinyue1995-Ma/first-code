@@ -8,30 +8,23 @@ const googleAnalyticsId = "G-R7WZ6RM19T";
 export const metadata: Metadata = {
   metadataBase: new URL(PRIMARY_SITE_URL),
   title: {
-    default: "Image Ready | Private product image cropper",
+    default: "Image Ready",
     template: "%s | Image Ready",
   },
   description:
-    "Crop product images for Amazon, Shopify, and TikTok Shop directly in your browser. Your original images never leave your device.",
+    "Crop, resize, and compress product images for Amazon, Shopify, and TikTok Shop directly in your browser. Your original images stay on your device.",
   keywords: [
-    "open source photo editor",
+    "ecommerce image editor",
     "product image cropper",
     "Amazon image resizer",
     "Shopify image resizer",
     "TikTok Shop image resizer",
     "private photo editor",
   ],
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "/",
     siteName: "Image Ready",
-    title: "Image Ready | Private product image cropper",
-    description:
-      "Crop product images for Amazon, Shopify, and TikTok Shop directly in your browser.",
   },
 };
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Pricing",
   description: "Single-image compression is free. Download a ZIP of up to 10 processed images for $3.99.",
+  alternates: { canonical: "/pricing" },
 };
 
 export default function PricingPage() {

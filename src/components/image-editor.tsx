@@ -565,8 +565,8 @@ export function ImageEditor() {
 
       <section className="tool-intro" aria-labelledby="tool-title">
         <p className="eyebrow">Product images, sized for where they sell</p>
-        <h1 id="tool-title">Crop once. Publish everywhere.</h1>
-        <p>Prepare Amazon, Shopify, and TikTok Shop product images without uploading your originals.</p>
+        <h1 id="tool-title">Ecommerce Image Editor</h1>
+        <p>Crop, resize, and compress product images for Amazon, Shopify, and TikTok Shop without uploading your originals.</p>
       </section>
 
       {!items.length ? (
