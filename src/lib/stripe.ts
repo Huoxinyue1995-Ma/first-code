@@ -1,8 +1,9 @@
 import Stripe from "stripe";
+import { BATCH_PRICE_CENTS } from "@/lib/batch-pricing";
 
-export const BATCH_PRICE_CENTS = 399;
-export const BATCH_MAX_IMAGES = 10;
 export const BATCH_PRODUCT = "image_ready_batch_zip";
+// Keep purchases made before the price reduction valid for confirmation and download.
+const LEGACY_BATCH_PRICE_CENTS = 399;
 
 export function getStripe() {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -32,7 +33,7 @@ export function isBatchCheckoutSession(session: Stripe.Checkout.Session) {
   return (
     session.mode === "payment" &&
     session.currency === "usd" &&
-    session.amount_total === BATCH_PRICE_CENTS &&
+    (session.amount_total === BATCH_PRICE_CENTS || session.amount_total === LEGACY_BATCH_PRICE_CENTS) &&
     session.metadata?.product === BATCH_PRODUCT
   );
 }

@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { zipSync } from "fflate";
 import Link from "next/link";
+import { BATCH_MAX_IMAGES as MAX_FILES, BATCH_PRICE_LABEL as BATCH_PRICE } from "@/lib/batch-pricing";
 import {
   ChangeEvent,
   DragEvent,
@@ -48,11 +49,9 @@ type ImageItem = {
   crop: Crop;
 };
 
-const MAX_FILES = 10;
 const MAX_FILE_SIZE = 25 * 1024 * 1024;
 const SUPPORTED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const DEFAULT_CROP: Crop = { zoom: 1, offsetX: 0, offsetY: 0, rotation: 0 };
-const BATCH_PRICE = "$3.99";
 const CHECKOUT_SESSION_STORAGE_KEY = "image-ready-batch-checkout-session";
 
 const PRESETS: Array<{ id: PresetId; name: string; detail: string; width: number; height: number }> = [

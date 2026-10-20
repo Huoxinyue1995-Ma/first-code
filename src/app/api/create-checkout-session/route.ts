@@ -1,4 +1,5 @@
-import { BATCH_MAX_IMAGES, BATCH_PRICE_CENTS, BATCH_PRODUCT, getSiteUrl, getStripe } from "@/lib/stripe";
+import { BATCH_MAX_IMAGES, BATCH_PRICE_CENTS } from "@/lib/batch-pricing";
+import { BATCH_PRODUCT, getSiteUrl, getStripe } from "@/lib/stripe";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";

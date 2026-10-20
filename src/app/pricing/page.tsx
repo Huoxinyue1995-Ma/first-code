@@ -1,8 +1,9 @@
 import Link from "next/link";
+import { BATCH_MAX_IMAGES, BATCH_PRICE_LABEL } from "@/lib/batch-pricing";
 
 export const metadata = {
   title: "Pricing",
-  description: "Single-image compression is free. Download a ZIP of up to 10 processed images for $3.99.",
+  description: `Single-image compression is free. Download a ZIP of up to ${BATCH_MAX_IMAGES} processed images for ${BATCH_PRICE_LABEL}.`,
   alternates: { canonical: "/pricing" },
 };
 
@@ -28,12 +29,12 @@ export default function PricingPage() {
         </section>
         <section className="plan-card is-featured">
           <p className="plan-label">Batch download</p>
-          <h2>$3.99<span>/batch</span></h2>
+          <h2>{BATCH_PRICE_LABEL}<span>/batch</span></h2>
           <p>For sellers preparing a small group of product images.</p>
           <ul>
             <li>Everything in Free</li>
             <li>Batch compression and ZIP download</li>
-            <li>Up to 10 images per batch</li>
+            <li>Up to {BATCH_MAX_IMAGES} images per batch</li>
             <li>One payment, no subscription</li>
           </ul>
           <Link className="plan-button" href="/">Prepare a batch</Link>
