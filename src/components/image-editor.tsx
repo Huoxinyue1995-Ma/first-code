@@ -18,7 +18,8 @@ import {
 } from "lucide-react";
 import { zipSync } from "fflate";
 import Link from "next/link";
-import { BATCH_MAX_IMAGES as MAX_FILES, BATCH_PRICE_LABEL as BATCH_PRICE } from "@/lib/batch-pricing";
+import { BATCH_MAX_IMAGES as MAX_FILES, BATCH_PRICE_CENTS, BATCH_PRICE_LABEL as BATCH_PRICE } from "@/lib/batch-pricing";
+import { trackEvent } from "@/lib/analytics";
 import {
   ChangeEvent,
   DragEvent,
@@ -53,6 +54,7 @@ const MAX_FILE_SIZE = 25 * 1024 * 1024;
 const SUPPORTED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const DEFAULT_CROP: Crop = { zoom: 1, offsetX: 0, offsetY: 0, rotation: 0 };
 const CHECKOUT_SESSION_STORAGE_KEY = "image-ready-batch-checkout-session";
+const BATCH_VALUE = BATCH_PRICE_CENTS / 100;
 
 const PRESETS: Array<{ id: PresetId; name: string; detail: string; width: number; height: number }> = [
   { id: "amazon", name: "Amazon", detail: "Product image", width: 2000, height: 2000 },
@@ -253,6 +255,7 @@ export function ImageEditor() {
   const [checkoutSessionId, setCheckoutSessionId] = useState<string | null>(null);
   const [isBatchPaid, setIsBatchPaid] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
+  const paymentEventSentFor = useRef<string | null>(null);
 
   const activeItem = items.find((item) => item.id === activeId) || items[0] || null;
   const activePreset = PRESETS.find((preset) => preset.id === presetId);
@@ -281,6 +284,14 @@ export function ImageEditor() {
       });
       const result = await response.json() as { paid?: boolean; redeemed?: boolean; error?: string };
       if (result.paid && !result.redeemed) {
+        if (paymentEventSentFor.current !== checkoutSessionId) {
+          trackEvent("payment_verified", {
+            currency: "USD",
+            value: BATCH_VALUE,
+            item_count: items.length,
+          });
+          paymentEventSentFor.current = checkoutSessionId;
+        }
         setIsBatchPaid(true);
         setNotice("Payment confirmed. Your batch ZIP is ready to download.");
         return true;
@@ -300,7 +311,7 @@ export function ImageEditor() {
     } finally {
       setIsCheckingPayment(false);
     }
-  }, [checkoutSessionId]);
+  }, [checkoutSessionId, items.length]);
 
   useEffect(() => {
     const onFocus = () => { void checkBatchPayment(false); };
@@ -462,6 +473,11 @@ export function ImageEditor() {
 
   async function startBatchCheckout() {
     if (isStartingCheckout) return;
+    trackEvent("checkout_click", {
+      currency: "USD",
+      value: BATCH_VALUE,
+      item_count: items.length,
+    });
     const checkoutWindow = window.open("about:blank", "_blank");
     setIsStartingCheckout(true);
     setNotice(null);
@@ -472,6 +488,11 @@ export function ImageEditor() {
         checkoutWindow?.close();
         throw new Error(result.error || "Checkout is not available yet.");
       }
+      trackEvent("begin_checkout", {
+        currency: "USD",
+        value: BATCH_VALUE,
+        item_count: items.length,
+      });
       window.sessionStorage.setItem(CHECKOUT_SESSION_STORAGE_KEY, result.sessionId);
       setCheckoutSessionId(result.sessionId);
       checkoutWindow?.location.replace(result.checkoutUrl);
@@ -508,6 +529,11 @@ export function ImageEditor() {
       const result = await response.json() as { redeemed?: boolean; error?: string };
       if (!response.ok || !result.redeemed) throw new Error(result.error || "This batch purchase is no longer available.");
       saveBlob(zip, `image-ready-${targetLabel}-${targetWidth}x${targetHeight}.zip`);
+      trackEvent("batch_download_success", {
+        currency: "USD",
+        value: BATCH_VALUE,
+        item_count: items.length,
+      });
       window.sessionStorage.removeItem(CHECKOUT_SESSION_STORAGE_KEY);
       setCheckoutSessionId(null);
       setIsBatchPaid(false);
