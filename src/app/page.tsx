@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { HOME_FAQ, HomeContent } from "@/components/home-content";
 import { ImageEditor } from "@/components/image-editor";
 
 export const metadata: Metadata = {
@@ -20,5 +21,23 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <ImageEditor />;
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: HOME_FAQ.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+
+  return (
+    <ImageEditor>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }}
+      />
+      <HomeContent />
+    </ImageEditor>
+  );
 }

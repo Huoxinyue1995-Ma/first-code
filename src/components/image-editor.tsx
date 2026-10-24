@@ -238,7 +238,7 @@ function CropCanvas({
   );
 }
 
-export function ImageEditor() {
+export function ImageEditor({ children }: { children?: React.ReactNode }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const objectUrls = useRef(new Set<string>());
   const [items, setItems] = useState<ImageItem[]>([]);
@@ -582,9 +582,10 @@ export function ImageEditor() {
           <span>Image Ready</span>
         </Link>
         <div className="local-pill"><LockKeyhole size={14} /> Local processing</div>
-        <nav aria-label="Footer links" className="header-nav">
-          <Link href="/privacy">Privacy</Link>
-          <Link href="/terms">Terms</Link>
+        <nav aria-label="Main links" className="header-nav">
+          <Link href="/guides">Guides</Link>
+          <Link href="/pricing">Pricing</Link>
+          <Link href="/about">About</Link>
         </nav>
       </header>
 
@@ -737,9 +738,11 @@ export function ImageEditor() {
       )}
       <input accept="image/jpeg,image/png,image/webp" className="file-input" multiple onChange={handleInput} ref={inputRef} type="file" />
 
+      {children}
+
       <footer className="site-footer">
         <span>Built for product teams that keep their images private.</span>
-        <div><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/contact">Contact</Link></div>
+        <div><Link href="/guides">Guides</Link><Link href="/about">About</Link><Link href="/pricing">Pricing</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/contact">Contact</Link></div>
       </footer>
     </main>
   );
