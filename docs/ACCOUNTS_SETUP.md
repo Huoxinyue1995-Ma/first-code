@@ -15,7 +15,7 @@
 
 ## 1. 数据库（Neon Postgres，经 Vercel 接入）
 
-1. Vercel → 项目 `first-code` → Storage → Create Database → 选 Neon（Postgres），区域选靠近 Vercel 函数的美国东部。
+1. Vercel → 项目 `image-ready`（正式域名所在的项目，不是 `first-code`）→ Storage → Create Database → 选 Neon（Postgres），区域选靠近 Vercel 函数的美国东部。
 2. 连接到项目时，勾选 Production 和 Preview。Vercel 会自动添加 `DATABASE_URL` 等变量。
 3. 在本机建表（只需一次；重复运行也安全）：
 
@@ -35,10 +35,12 @@ DATABASE_URL="从 Vercel 复制的连接串" npm run db:migrate
 
 预览地址（`*.vercel.app`）不在回调白名单里，Google 登录只在正式域名和本机可用；预览地址上用邮箱登录测试。
 
+预览地址开启了 Vercel Authentication。测试邮箱登录时，请右键复制邮件里的链接，粘贴到已登录 Vercel 的浏览器打开；直接点击会先跳转 Vercel 登录页，链接里的登录码会丢失。正式域名不受影响。
+
 ## 3. 邮箱登录（Resend）
 
 1. 注册 resend.com → Domains → Add Domain：`mail.opensourcephotoeditor.com`（用子域，不影响主域邮件）。
-2. 按 Resend 显示的记录，在 Spaceship → Advanced DNS 添加（通常是 MX、SPF 的 TXT、DKIM 的 TXT），等 Resend 显示 Verified。
+2. 域名的 DNS 由 **Vercel** 托管（域名服务器是 `ns1/ns2.vercel-dns.com`），不是 Spaceship。用 `vercel dns add opensourcephotoeditor.com <name> <type> <value>` 添加 Resend 显示的记录（已完成：`resend._domainkey.mail` TXT、`rsend.mail` 与 `send.mail` CNAME、`_dmarc` TXT），等 Resend 显示 Verified。
 3. API Keys → 创建只发送权限的 key。
 4. Vercel 环境变量：
    - `RESEND_API_KEY`
@@ -51,7 +53,8 @@ DATABASE_URL="从 Vercel 复制的连接串" npm run db:migrate
 点数购买复用现有的 `STRIPE_SECRET_KEY` 和 `STRIPE_WEBHOOK_SECRET`，不需要新的商品。
 
 - Webhook 端点（已存在）`/api/stripe-webhook` 需要订阅：`checkout.session.completed`、`checkout.session.async_payment_succeeded`、`checkout.session.async_payment_failed`。
-- 先在 Preview 环境填 **Test mode** 的密钥测试，确认后再用 Live。
+- Preview 环境已填 **Test mode** 密钥（`sk_test_`），Production 保持 Live 密钥。
+- 预览地址有访问保护，Stripe Webhook 进不来；测试时靠付款后回到 `/account` 的主动核对入账。
 - 即使 Webhook 延迟，用户付款后回到 `/account` 时也会立即核对并入账；两条路径不会重复加点。
 
 ## 5. 上线前验收

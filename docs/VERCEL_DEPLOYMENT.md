@@ -3,7 +3,7 @@
 ## 当前项目状态（2026-10-14）
 
 - 代码仓库：[Huoxinyue1995-Ma/first-code](https://github.com/Huoxinyue1995-Ma/first-code)
-- Vercel 项目：`emma-8abb/first-code`
+- Vercel 项目：`emma-8abb/image-ready`（正式域名绑定在这里）。另有一个 `emma-8abb/first-code` 项目也部署同一仓库，但没有绑定正式域名，不要在它上面配置变量。
 - 当前生产网址：[https://www.opensourcephotoeditor.com](https://www.opensourcephotoeditor.com)
 - GitHub 已与 Vercel 连接；之后推送到 `main` 会触发自动发布。
 - `opensourcephotoeditor.com` 和 `www.opensourcephotoeditor.com` 均已在 Vercel 验证；根域名会自动跳转至 `www`。
@@ -76,7 +76,7 @@ git push
 
 当前项目已发布到 [https://www.opensourcephotoeditor.com](https://www.opensourcephotoeditor.com)，并且已经完成一次线上上传、裁剪和下载验证。Vercel 已识别 Next.js。图片不需要、也绝不能配置任何上传相关的环境变量。
 
-以后若要从 Vercel 网页重新发布，打开项目 `first-code` 的 `Deployments` 页面，找到最新版本后点击 `Redeploy`。正常情况下，推送到 GitHub 的 `main` 分支会自动完成这件事。
+以后若要从 Vercel 网页重新发布，打开项目 `image-ready` 的 `Deployments` 页面，找到最新版本后点击 `Redeploy`。正常情况下，推送到 GitHub 的 `main` 分支会自动完成这件事。
 
 若页面显示构建失败，打开 Vercel 的 `Build Logs`，先修复本地 `npm run build` 中相同的问题，再把修复推送到 GitHub。
 
