@@ -71,5 +71,9 @@ export async function sendLoginEmail(to: string, url: string) {
       html: `<p>Sign in to Image Ready:</p><p><a href="${url}">Sign in</a></p><p>This link expires in ${LINK_MINUTES} minutes and can be used once. If you did not request it, you can ignore this email.</p>`,
     }),
   });
-  if (!response.ok) throw new Error(`Resend request failed (${response.status}).`);
+  if (!response.ok) {
+    // Resend error bodies are short JSON like {"name":"validation_error","message":"..."}; they never contain the API key.
+    const detail = (await response.text().catch(() => "")).slice(0, 300);
+    throw new Error(`Resend request failed (${response.status}): ${detail}`);
+  }
 }
