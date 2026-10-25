@@ -20,6 +20,7 @@ import { zipSync } from "fflate";
 import Link from "next/link";
 import { BATCH_MAX_IMAGES as MAX_FILES, BATCH_PRICE_CENTS, BATCH_PRICE_LABEL as BATCH_PRICE } from "@/lib/batch-pricing";
 import { trackEvent } from "@/lib/analytics";
+import { AccountLink } from "@/components/account-link";
 import {
   ChangeEvent,
   DragEvent,
@@ -586,6 +587,7 @@ export function ImageEditor({ children }: { children?: React.ReactNode }) {
           <Link href="/guides">Guides</Link>
           <Link href="/pricing">Pricing</Link>
           <Link href="/about">About</Link>
+          <AccountLink />
         </nav>
       </header>
 

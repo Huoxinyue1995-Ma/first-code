@@ -6,12 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "node scripts/migrate.mjs",
+    "test:ledger": "node --import ./scripts/test/register.mjs scripts/test/ledger.test.mts"
   },
   "dependencies": {
     "fflate": "^0.8.2",
     "lucide-react": "^0.468.0",
     "next": "^16.4.2",
+    "postgres": "^3.4.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "stripe": "^23.0.0"

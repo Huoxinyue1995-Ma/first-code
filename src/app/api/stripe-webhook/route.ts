@@ -1,4 +1,5 @@
 import Stripe from "stripe";
+import { fulfillCreditPurchase, isCreditPackSession } from "@/lib/credit-fulfillment";
 import { getStripe, isBatchCheckoutSession } from "@/lib/stripe";
 
 export const runtime = "nodejs";
@@ -54,7 +55,9 @@ export async function POST(request: Request) {
     switch (event.type) {
       case "checkout.session.completed":
       case "checkout.session.async_payment_succeeded":
-        if (checkoutSession.payment_status === "paid") {
+        if (isCreditPackSession(checkoutSession)) {
+          await fulfillCreditPurchase(checkoutSession);
+        } else if (checkoutSession.payment_status === "paid") {
           await updateBatchPaymentStatus(stripe, checkoutSession, "paid");
         }
         break;

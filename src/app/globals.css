@@ -180,6 +180,36 @@ input[type="range"] { accent-color: var(--mint); cursor: pointer; }
 .content-footer { margin-top: 64px; padding-top: 22px; display: flex; flex-direction: column; gap: 12px; color: var(--muted); border-top: 1px solid var(--line); font-size: 13px; }
 .content-footer nav { display: flex; flex-wrap: wrap; gap: 16px; }
 
+.auth-card { margin-top: 8px; padding: 26px; background: var(--surface); border: 1px solid var(--line); border-radius: 7px; }
+.auth-card .legal-lead { margin-top: 0; }
+.google-button { color: var(--ink); background: #fff; border: 1px solid var(--line); }
+.google-button:hover { background: #f4f8f6; }
+.auth-divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: var(--muted); font-size: 13px; }
+.auth-divider::before, .auth-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.email-form { display: flex; flex-direction: column; gap: 10px; }
+.email-form label { font-size: 14px; font-weight: 700; }
+.email-form input { padding: 11px 12px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 5px; font: inherit; }
+.email-form input:focus { outline: 2px solid var(--mint); outline-offset: 1px; }
+.plan-button:disabled { cursor: wait; opacity: 0.65; }
+button.plan-button { border: 0; cursor: pointer; font: inherit; font-weight: 750; }
+.auth-error { margin: 12px 0 0; padding: 10px 12px; color: #9b3826; background: #ffebe5; border-radius: 5px; font-size: 14px; }
+.auth-notice { margin: 0 0 20px; padding: 12px 14px; color: var(--mint-dark); background: #edf8f3; border-radius: 5px; font-size: 14px; }
+.auth-sent p { margin: 8px 0 12px; color: var(--muted); line-height: 1.55; }
+.auth-footnote { margin-top: 18px; color: var(--muted); font-size: 13px; }
+.auth-footnote a { color: var(--mint-dark); text-decoration: underline; text-underline-offset: 3px; }
+.balance-card { display: flex; flex-direction: column; gap: 6px; padding: 24px !important; background: var(--surface); border: 1px solid var(--line) !important; border-radius: 7px; }
+.balance-card span { color: var(--muted); font-size: 14px; }
+.balance-card strong { font-size: 44px; line-height: 1; }
+.balance-card small { color: var(--muted); line-height: 1.55; }
+.account-page .plan-card ul { min-height: 0; }
+.account-page .plan-card > p:not(.plan-label) { margin-bottom: 18px; }
+.ledger-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.ledger-table th, .ledger-table td { padding: 10px 8px; text-align: left; border-bottom: 1px solid var(--line); }
+.ledger-table th { color: var(--muted); font-weight: 700; }
+.ledger-table .is-positive { color: var(--mint-dark); font-weight: 700; }
+.ledger-table .is-negative { color: #9b3826; font-weight: 700; }
+.header-account { color: var(--mint-dark) !important; font-weight: 700; }
+
 @media (max-width: 980px) {
   .editor-grid { grid-template-columns: minmax(190px, 0.7fr) minmax(360px, 1.7fr); }
   .settings-panel { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }

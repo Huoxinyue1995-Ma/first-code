@@ -33,6 +33,18 @@ export default function PrivacyPage() {
         </p>
       </section>
       <section>
+        <h2>Accounts and credits</h2>
+        <p>
+          You do not need an account to crop, resize, or compress images. If you create an account to use credits, we store your email address, your name if you sign in with Google, the date you joined, and a history of credit purchases and use. Sign-in uses a secure cookie that keeps you logged in for up to 30 days.
+        </p>
+        <p>
+          If you sign in with Google, Google shares your name, email address, and account identifier with us. We do not receive your Google password. Sign-in emails are delivered by our email provider, Resend. Payments are handled by Stripe; we never see or store your card details.
+        </p>
+        <p>
+          To delete your account and its data, email us from the address on the account.
+        </p>
+      </section>
+      <section>
         <h2>Analytics and advertising</h2>
         <p>
           We use Google Analytics to understand aggregate website use, such as pages viewed, referral source, browser and device information, approximate location, and interactions with the site. Google AdSense may use cookies and similar technologies to display and measure advertising. These services do not receive the original images, previews, or exports that you process in Image Ready.
