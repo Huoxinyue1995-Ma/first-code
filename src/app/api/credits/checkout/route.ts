@@ -26,6 +26,9 @@ export async function POST(request: Request) {
     const siteUrl = getSiteUrl(request);
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      // Match the working batch checkout: this account charges directly, not through Stripe Managed Payments.
+      managed_payments: { enabled: false },
+      integration_identifier: "image_ready_credit_pack",
       customer_email: user.email,
       client_reference_id: user.id,
       line_items: [
@@ -53,7 +56,14 @@ export async function POST(request: Request) {
     if (!session.url) throw new Error("Stripe did not return a checkout URL.");
     return Response.json({ checkoutUrl: session.url });
   } catch (error) {
-    console.error("Credit checkout creation failed.", { errorType: error instanceof Error ? error.name : typeof error });
+    // Stripe error messages describe the bad parameter and never include the secret key.
+    const stripeError = error as { type?: string; code?: string; param?: string; message?: string };
+    console.error("Credit checkout creation failed.", {
+      type: stripeError.type,
+      code: stripeError.code,
+      param: stripeError.param,
+      message: stripeError.message?.slice(0, 300),
+    });
     return Response.json({ error: "Checkout could not be started. Please try again." }, { status: 500 });
   }
 }
