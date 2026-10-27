@@ -94,6 +94,14 @@ h1, h2, h3 { line-height: 1.2; }
 .guide-card:hover { border-color: var(--mint); }
 .guide-card span { color: var(--muted); font-size: 14px; line-height: 1.55; }
 
+.custom-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 24px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); transition: border-color 150ms ease; }
+.custom-cta:hover { border-color: var(--mint); }
+.custom-cta > span:first-child { display: flex; flex-direction: column; gap: 4px; }
+.custom-cta strong { font-size: clamp(20px, 2.4vw, 24px); }
+.custom-cta small { color: var(--muted); font-size: 15px; }
+.custom-cta-button { padding: 11px 18px; color: #fff; background: var(--mint); border-radius: 6px; font-weight: 750; }
+.custom-cta:hover .custom-cta-button { background: var(--mint-dark); }
+
 /* ---------- Platform page ---------- */
 .size-table { width: 100%; margin-top: 14px; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; font-size: 15px; }
 .size-table th, .size-table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--line); }

@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { BatchResizer } from "@/components/batch-resizer";
 import { JsonLd } from "@/components/json-ld";
 import { PageFrame } from "@/components/site-chrome";
 import { fmt, getDictionary } from "@/lib/dictionary";
 import { GUIDES } from "@/lib/guides";
 import { type Locale, localePath } from "@/lib/i18n";
-import { CUSTOM_PRESETS, PLATFORM_PAGES, platformPath } from "@/lib/platforms";
+import { PLATFORM_PAGES, customPath, platformPath } from "@/lib/platforms";
 
 export function HomeView({ locale }: { locale: Locale }) {
   const t = getDictionary(locale);
@@ -41,10 +40,14 @@ export function HomeView({ locale }: { locale: Locale }) {
           </ul>
         </section>
 
-        <section aria-labelledby="custom-title" className="content-section" id="custom">
-          <h2 id="custom-title">{h.customTitle}</h2>
-          <p className="section-lead">{h.customLead}</p>
-          <BatchResizer locale={locale} platformId="custom" presets={CUSTOM_PRESETS} t={t} />
+        <section aria-labelledby="custom-title" className="content-section">
+          <Link className="custom-cta" href={customPath(locale)}>
+            <span>
+              <strong id="custom-title">{h.customTitle}</strong>
+              <small>{h.customLead}</small>
+            </span>
+            <span className="custom-cta-button">{h.customButton} →</span>
+          </Link>
         </section>
 
         <section aria-labelledby="how-title" className="content-section">

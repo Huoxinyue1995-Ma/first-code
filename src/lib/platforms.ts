@@ -560,10 +560,19 @@ export function platformPath(locale: Locale, page: PlatformPage) {
   return locale === "en" ? `/${page.slug.en}` : `/es/${page.slug.es}`;
 }
 
-// Generic sizes used by the "custom size" tool on the home page.
+export const CUSTOM_SLUG = { en: "custom-size", es: "tamano-personalizado" } as const;
+
+export function customPath(locale: Locale) {
+  return locale === "en" ? `/${CUSTOM_SLUG.en}` : `/es/${CUSTOM_SLUG.es}`;
+}
+
+// Starting sizes on the custom size page; users can add any width and height.
 export const CUSTOM_PRESETS: SizePreset[] = [
-  { id: "square-2000", width: 2000, height: 2000, label: both("Square", "Cuadrado") },
-  { id: "square-1080", width: 1080, height: 1080, label: both("Square (small)", "Cuadrado (pequeño)") },
+  { id: "square-2000", width: 2000, height: 2000, label: both("Square, large", "Cuadrado grande") },
+  { id: "square-1080", width: 1080, height: 1080, label: both("Square", "Cuadrado") },
   { id: "portrait-4x5", width: 1080, height: 1350, label: both("Portrait 4:5", "Vertical 4:5") },
+  { id: "portrait-2x3", width: 1000, height: 1500, label: both("Portrait 2:3", "Vertical 2:3") },
+  { id: "landscape-4x3", width: 1600, height: 1200, label: both("Landscape 4:3", "Horizontal 4:3") },
   { id: "landscape-16x9", width: 1920, height: 1080, label: both("Landscape 16:9", "Horizontal 16:9") },
+  { id: "story-9x16", width: 1080, height: 1920, label: both("Story 9:16", "Historia 9:16") },
 ];

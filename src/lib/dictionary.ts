@@ -35,7 +35,8 @@ const en = {
     platformsLead: "Each tool has the sizes that platform recommends, ready to select.",
     sizesCount: "{n} sizes",
     customTitle: "Custom size resizer",
-    customLead: "Need a size that is not listed? Use any width and height here.",
+    customLead: "Need a size that is not listed? Resize to any width and height.",
+    customButton: "Open custom size tool",
     howTitle: "How it works",
     steps: [
       { title: "Add your photos", body: "Drop in up to 100 JPG, PNG, or WebP files. They open in your browser and are never uploaded." },
@@ -52,6 +53,15 @@ const en = {
     ],
     guidesTitle: "Guides for sellers",
     allGuides: "All guides",
+  },
+  custom: {
+    slug: "custom-size",
+    metaTitle: "Custom Size Image Resizer: Batch Resize to Any Width and Height | Image Ready",
+    metaDescription: "Batch resize photos to any width and height between 100 and 6000 px. Crop or fit, export JPG or PNG, and download a ZIP. Processed in your browser.",
+    eyebrow: "Custom size",
+    title: "Resize images to any size",
+    intro: "Enter any width and height between 100 and 6000 px, or start from a common shape. Add up to 100 photos, export them in every size you choose, and download a single ZIP.",
+    sizesTitle: "Common image sizes",
   },
   platform: {
     sizesTitle: "{platform} image sizes",
@@ -241,7 +251,8 @@ const es: Dictionary = {
     platformsLead: "Cada herramienta incluye los tamaños que recomienda esa plataforma, listos para seleccionar.",
     sizesCount: "{n} tamaños",
     customTitle: "Redimensionar a tamaño personalizado",
-    customLead: "¿Necesitas un tamaño que no aparece? Usa aquí cualquier ancho y alto.",
+    customLead: "¿Necesitas un tamaño que no aparece? Redimensiona a cualquier ancho y alto.",
+    customButton: "Abrir herramienta de tamaño personalizado",
     howTitle: "Cómo funciona",
     steps: [
       { title: "Añade tus fotos", body: "Arrastra hasta 100 archivos JPG, PNG o WebP. Se abren en tu navegador y nunca se suben." },
@@ -258,6 +269,15 @@ const es: Dictionary = {
     ],
     guidesTitle: "Guías para vendedores (en inglés)",
     allGuides: "Todas las guías",
+  },
+  custom: {
+    slug: "tamano-personalizado",
+    metaTitle: "Redimensionar imágenes a tamaño personalizado, en lote | Image Ready",
+    metaDescription: "Redimensiona fotos en lote a cualquier ancho y alto entre 100 y 6000 px. Recorta o ajusta, exporta JPG o PNG y descarga un ZIP. Procesado en tu navegador.",
+    eyebrow: "Tamaño personalizado",
+    title: "Redimensiona imágenes a cualquier tamaño",
+    intro: "Escribe cualquier ancho y alto entre 100 y 6000 px, o empieza con una forma habitual. Añade hasta 100 fotos, expórtalas en todos los tamaños que elijas y descarga un solo ZIP.",
+    sizesTitle: "Tamaños de imagen habituales",
   },
   platform: {
     sizesTitle: "Tamaños de imagen para {platform}",

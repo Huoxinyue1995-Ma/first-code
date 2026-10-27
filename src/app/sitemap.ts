@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const bilingual: Array<{ en: string; es: string; priority: number }> = [
     { en: "/", es: "/es", priority: 1 },
     ...PLATFORM_PAGES.map((page) => ({ en: `/${page.slug.en}`, es: `/es/${page.slug.es}`, priority: 0.9 })),
+    { en: "/custom-size", es: "/es/tamano-personalizado", priority: 0.8 },
     { en: "/pricing", es: "/es/pricing", priority: 0.6 },
     { en: "/privacy", es: "/es/privacy", priority: 0.3 },
     { en: "/terms", es: "/es/terms", priority: 0.3 },

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { AccountLink } from "@/components/account-link";
 import { getDictionary } from "@/lib/dictionary";
 import { type Locale, localePath } from "@/lib/i18n";
-import { PLATFORM_PAGES, platformPath } from "@/lib/platforms";
+import { PLATFORM_PAGES, customPath, platformPath } from "@/lib/platforms";
 
 // `alternate` is the same page in the other language, for the language switcher.
 export function SiteHeader({ locale, alternate }: { locale: Locale; alternate: string }) {
@@ -37,6 +37,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           {PLATFORM_PAGES.map((page) => (
             <Link href={platformPath(locale, page)} key={page.id}>{page.title[locale]}</Link>
           ))}
+          <Link href={customPath(locale)}>{t.home.customTitle}</Link>
         </nav>
       </div>
       <nav aria-label="Site" className="footer-links">
