@@ -299,7 +299,7 @@ export const GUIDES: Guide[] = [
             "Inspect the most detailed area at full size; adjust quality up or down by 5 if needed.",
             "Use the same settings for the whole catalog so photos look consistent.",
           ] },
-          { type: "p", text: "Image Ready follows this workflow in the browser: you crop and resize to a platform preset, choose JPEG or PNG and a quality level, and download the result. Your original file is not uploaded anywhere, so you can experiment with settings without creating copies on a server." },
+          { type: "p", text: "Image Ready follows this workflow in the browser: you crop and resize to one or more platform sizes, choose JPEG or PNG and a quality level, and download every result at once. Your original file is not uploaded anywhere, so you can experiment with settings without creating copies on a server." },
         ],
       },
     ],
@@ -425,7 +425,7 @@ export const GUIDES: Guide[] = [
         heading: "Step 6: Export with the same settings every time",
         blocks: [
           { type: "p", text: "Use the same format and quality for every image in a batch. If one image is a 4 MB PNG and the next is a 300 KB JPG, they will load differently and may look slightly different in color and sharpness." },
-          { type: "tip", text: "In Image Ready you can load up to 10 images, choose one platform preset for all of them, and adjust zoom, position, and rotation for each image individually. Every image then exports at the same size, format, and quality." },
+          { type: "tip", text: "In Image Ready you can add up to 100 photos, select one or more platform sizes, and adjust zoom, position, and rotation for each photo individually. Every photo then exports at the same sizes, format, and quality in one ZIP." },
         ],
       },
       {

@@ -45,3 +45,13 @@ create table if not exists credit_ledger (
 );
 create unique index if not exists credit_ledger_reason_reference_idx on credit_ledger(reason, reference) where reference is not null;
 create index if not exists credit_ledger_user_id_idx on credit_ledger(user_id, created_at desc);
+
+-- Photos a user has already paid to download, identified by a SHA-256 of the file computed in the browser.
+-- The photo itself is never sent to the server. Lets a user re-export the same photo in other sizes without paying again.
+create table if not exists paid_photos (
+  user_id uuid not null references users(id) on delete cascade,
+  fingerprint text not null check (fingerprint ~ '^[a-f0-9]{64}$'),
+  job_id text not null,
+  paid_at timestamptz not null default now(),
+  primary key (user_id, fingerprint)
+);

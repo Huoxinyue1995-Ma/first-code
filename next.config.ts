@@ -8,6 +8,18 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    // Two root layouts (English at /, Spanish at /es) need a 404 that does not depend on either.
+    globalNotFound: true,
+  },
+  async redirects() {
+    return [
+      // Old routes from the single-tool version of the site.
+      { source: "/editor", destination: "/", permanent: true },
+      { source: "/payment/success", destination: "/account", permanent: true },
+      { source: "/payment/cancelled", destination: "/pricing", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

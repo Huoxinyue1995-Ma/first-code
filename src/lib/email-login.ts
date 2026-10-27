@@ -1,6 +1,7 @@
 import "server-only";
 import { getSql } from "@/lib/db";
 import { randomToken, sha256 } from "@/lib/auth";
+import { type Locale, localePath } from "@/lib/i18n";
 import { normalizeEmail } from "@/lib/ledger";
 
 const LINK_MINUTES = 15;
@@ -17,7 +18,7 @@ export function isValidEmail(value: string) {
 
 export class EmailRateLimitError extends Error {}
 
-export async function createEmailLoginLink(rawEmail: string, origin: string, returnTo: string) {
+export async function createEmailLoginLink(rawEmail: string, origin: string, returnTo: string, locale: Locale = "en") {
   const email = normalizeEmail(rawEmail);
   const sql = getSql();
 
@@ -30,7 +31,7 @@ export async function createEmailLoginLink(rawEmail: string, origin: string, ret
   const expiresAt = new Date(Date.now() + LINK_MINUTES * 60 * 1000);
   await sql`insert into email_login_tokens (token_hash, email, expires_at) values (${await sha256(token)}, ${email}, ${expiresAt})`;
 
-  const url = new URL("/login/verify", origin);
+  const url = new URL(localePath(locale, "/login/verify"), origin);
   url.searchParams.set("token", token);
   url.searchParams.set("next", returnTo);
   return { email, url: url.toString() };
@@ -47,7 +48,22 @@ export async function consumeEmailLoginToken(token: string) {
   return rows[0]?.email ?? null;
 }
 
-export async function sendLoginEmail(to: string, url: string) {
+const EMAIL_COPY: Record<Locale, { subject: string; intro: string; button: string; footer: string }> = {
+  en: {
+    subject: "Your Image Ready sign-in link",
+    intro: "Sign in to Image Ready:",
+    button: "Sign in",
+    footer: `This link expires in ${LINK_MINUTES} minutes and can be used once. If you did not request it, you can ignore this email.`,
+  },
+  es: {
+    subject: "Tu enlace para iniciar sesión en Image Ready",
+    intro: "Inicia sesión en Image Ready:",
+    button: "Iniciar sesión",
+    footer: `Este enlace caduca en ${LINK_MINUTES} minutos y solo se puede usar una vez. Si no lo solicitaste, puedes ignorar este correo.`,
+  },
+};
+
+export async function sendLoginEmail(to: string, url: string, locale: Locale = "en") {
   if (!isEmailLoginConfigured()) {
     if (process.env.NODE_ENV !== "production") {
       // Local development without an email provider: print the link instead of sending it.
@@ -57,6 +73,7 @@ export async function sendLoginEmail(to: string, url: string) {
     throw new Error("Email sign-in is not configured.");
   }
 
+  const copy = EMAIL_COPY[locale];
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -66,9 +83,9 @@ export async function sendLoginEmail(to: string, url: string) {
     body: JSON.stringify({
       from: process.env.EMAIL_FROM,
       to: [to],
-      subject: "Your Image Ready sign-in link",
-      text: `Sign in to Image Ready:\n\n${url}\n\nThis link expires in ${LINK_MINUTES} minutes and can be used once. If you did not request it, you can ignore this email.`,
-      html: `<p>Sign in to Image Ready:</p><p><a href="${url}">Sign in</a></p><p>This link expires in ${LINK_MINUTES} minutes and can be used once. If you did not request it, you can ignore this email.</p>`,
+      subject: copy.subject,
+      text: `${copy.intro}\n\n${url}\n\n${copy.footer}`,
+      html: `<p>${copy.intro}</p><p><a href="${url}">${copy.button}</a></p><p>${copy.footer}</p>`,
     }),
   });
   if (!response.ok) {

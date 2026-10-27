@@ -14,9 +14,10 @@ export async function POST(request: Request) {
   const form = await request.formData();
   const token = String(form.get("token") || "");
   const next = safeReturnPath(String(form.get("next") || ""));
+  const loginPath = next.startsWith("/es/") || next === "/es" ? "/es/login" : "/login";
 
   const email = await consumeEmailLoginToken(token);
-  if (!email) return NextResponse.redirect(new URL("/login?error=link_invalid", origin), 303);
+  if (!email) return NextResponse.redirect(new URL(`${loginPath}?error=link_invalid`, origin), 303);
 
   const { user } = await findOrCreateUser({ email });
   await startSession(user.id);

@@ -2,6 +2,7 @@ import "server-only";
 import type Stripe from "stripe";
 import { CREDIT_PACKS, CREDIT_PACK_PRODUCT, isCreditPackId } from "@/lib/credits";
 import { grantPurchasedCredits } from "@/lib/ledger";
+import { isAcceptedPaymentMode } from "@/lib/stripe";
 
 export function isCreditPackSession(session: Stripe.Checkout.Session) {
   return session.metadata?.product === CREDIT_PACK_PRODUCT;
@@ -10,6 +11,10 @@ export function isCreditPackSession(session: Stripe.Checkout.Session) {
 // Credits a paid Checkout Session exactly once. Safe to call from both the webhook and the success page.
 export async function fulfillCreditPurchase(session: Stripe.Checkout.Session) {
   if (!isCreditPackSession(session) || session.payment_status !== "paid") return { fulfilled: false as const };
+  if (!isAcceptedPaymentMode(session)) {
+    console.warn("Ignored a test-mode credit purchase on production.", { session: session.id });
+    return { fulfilled: false as const };
+  }
 
   const packId = session.metadata?.pack;
   const userId = session.metadata?.user_id;

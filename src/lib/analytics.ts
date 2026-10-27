@@ -1,8 +1,9 @@
 export type AnalyticsEventName =
-  | "checkout_click"
+  | "download_click"
+  | "signin_prompt"
+  | "credits_prompt"
   | "begin_checkout"
-  | "payment_verified"
-  | "batch_download_success";
+  | "download_success";
 
 type Gtag = (...args: unknown[]) => void;
 

@@ -1,39 +1,12 @@
 import Stripe from "stripe";
 import { fulfillCreditPurchase, isCreditPackSession } from "@/lib/credit-fulfillment";
-import { getStripe, isBatchCheckoutSession } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 
-export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-
-function getWebhookSecret() {
-  return process.env.STRIPE_WEBHOOK_SECRET;
-}
-
-async function updateBatchPaymentStatus(
-  stripe: Stripe,
-  checkoutSession: Stripe.Checkout.Session,
-  status: "paid" | "failed",
-) {
-  if (!isBatchCheckoutSession(checkoutSession)) return;
-
-  const currentSession = await stripe.checkout.sessions.retrieve(checkoutSession.id);
-  if (!isBatchCheckoutSession(currentSession)) return;
-
-  const metadata = currentSession.metadata || {};
-  const marker = status === "paid" ? "batch_payment_confirmed_at" : "batch_payment_failed_at";
-  if (metadata[marker]) return;
-
-  await stripe.checkout.sessions.update(currentSession.id, {
-    metadata: {
-      ...metadata,
-      [marker]: new Date().toISOString(),
-    },
-  });
-}
 
 export async function POST(request: Request) {
   const stripe = getStripe();
-  const webhookSecret = getWebhookSecret();
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
   const signature = request.headers.get("stripe-signature");
 
   if (!stripe || !webhookSecret) {
@@ -51,27 +24,15 @@ export async function POST(request: Request) {
   }
 
   try {
-    const checkoutSession = event.data.object as Stripe.Checkout.Session;
-    switch (event.type) {
-      case "checkout.session.completed":
-      case "checkout.session.async_payment_succeeded":
-        if (isCreditPackSession(checkoutSession)) {
-          await fulfillCreditPurchase(checkoutSession);
-        } else if (checkoutSession.payment_status === "paid") {
-          await updateBatchPaymentStatus(stripe, checkoutSession, "paid");
-        }
-        break;
-      case "checkout.session.async_payment_failed":
-        await updateBatchPaymentStatus(stripe, checkoutSession, "failed");
-        break;
-      default:
-        break;
+    if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded") {
+      const checkoutSession = event.data.object as Stripe.Checkout.Session;
+      if (isCreditPackSession(checkoutSession)) await fulfillCreditPurchase(checkoutSession);
     }
   } catch (error) {
     console.error("Stripe webhook processing failed.", {
       eventId: event.id,
       eventType: event.type,
-      errorType: error instanceof Error ? error.name : typeof error,
+      message: error instanceof Error ? error.message : String(error),
     });
     return Response.json({ error: "Stripe event could not be processed." }, { status: 500 });
   }

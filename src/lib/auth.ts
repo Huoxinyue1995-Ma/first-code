@@ -7,6 +7,7 @@ export const SESSION_COOKIE = "ir_session";
 const SESSION_DAYS = 30;
 export const OAUTH_STATE_COOKIE = "ir_oauth_state";
 export const RETURN_TO_COOKIE = "ir_return_to";
+export const LOGIN_LOCALE_COOKIE = "ir_login_locale";
 
 function toBase64Url(bytes: Uint8Array) {
   return Buffer.from(bytes).toString("base64url");
@@ -70,8 +71,8 @@ export async function getCurrentUser(): Promise<User | null> {
 }
 
 // Only allow returning to a path on this site, never to another origin.
-export function safeReturnPath(value: string | null | undefined) {
-  if (!value || !value.startsWith("/") || value.startsWith("//") || value.startsWith("/\\")) return "/account";
+export function safeReturnPath(value: string | null | undefined, locale: "en" | "es" = "en") {
+  if (!value || !value.startsWith("/") || value.startsWith("//") || value.startsWith("/\\")) return locale === "es" ? "/es/account" : "/account";
   return value.slice(0, 512);
 }
 

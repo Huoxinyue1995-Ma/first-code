@@ -1,30 +1,33 @@
-// Credit packs and per-feature costs. Change prices here only.
-export type CreditPackId = "starter" | "pro";
+// Credit packs and pricing rules. Change prices here only.
+export type CreditPackId = "starter" | "seller" | "studio";
 
-export const CREDIT_PACKS: Record<CreditPackId, { id: CreditPackId; name: string; credits: number; priceCents: number }> = {
-  starter: { id: "starter", name: "Starter", credits: 50, priceCents: 500 },
-  pro: { id: "pro", name: "Pro", credits: 165, priceCents: 1500 },
+export type CreditPack = { id: CreditPackId; name: string; credits: number; priceCents: number; featured?: boolean };
+
+export const CREDIT_PACKS: Record<CreditPackId, CreditPack> = {
+  starter: { id: "starter", name: "Starter", credits: 100, priceCents: 500 },
+  seller: { id: "seller", name: "Seller", credits: 300, priceCents: 1200, featured: true },
+  studio: { id: "studio", name: "Studio", credits: 1000, priceCents: 2500 },
 };
 
 export const SIGNUP_BONUS_CREDITS = 3;
 
-export type CreditFeature = "white_background" | "scene";
+// One credit per source photo downloaded, regardless of how many sizes it is exported in.
+export const CREDITS_PER_PHOTO = 1;
 
-export const FEATURE_COSTS: Record<CreditFeature, number> = {
-  white_background: 1,
-  scene: 2,
-};
+export const MAX_BATCH_PHOTOS = 100;
+export const MAX_FILE_MB = 25;
 
 export const CREDIT_PACK_PRODUCT = "image_ready_credit_pack";
 
 export function isCreditPackId(value: unknown): value is CreditPackId {
-  return value === "starter" || value === "pro";
-}
-
-export function isCreditFeature(value: unknown): value is CreditFeature {
-  return value === "white_background" || value === "scene";
+  return value === "starter" || value === "seller" || value === "studio";
 }
 
 export function formatPrice(cents: number) {
   return `$${(cents / 100).toFixed(cents % 100 === 0 ? 0 : 2)}`;
+}
+
+// Price of one photo in a pack, shown to 3 decimals so packs compare cleanly ($0.050, $0.040, $0.025).
+export function pricePerPhoto(pack: CreditPack) {
+  return `$${(pack.priceCents / pack.credits / 100).toFixed(3)}`;
 }

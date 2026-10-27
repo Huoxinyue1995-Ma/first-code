@@ -2,7 +2,7 @@
 // Usage: DATABASE_URL=postgres://... npm run test:ledger
 import assert from "node:assert/strict";
 const ledger = await import("../../src/lib/ledger.ts");
-const { runPaidJob } = await import("../../src/lib/paid-job.ts");
+const { chargeForDownload, InsufficientCreditsError } = await import("../../src/lib/download-charge.ts");
 const { getSql } = await import("../../src/lib/db.ts");
 const { SIGNUP_BONUS_CREDITS } = await import("../../src/lib/credits.ts");
 
@@ -54,17 +54,32 @@ await check("concurrent duplicate webhooks still credit once", async () => {
   assert.equal((await ledger.getUserById(user.id))!.creditBalance, SIGNUP_BONUS_CREDITS + 50 + 165);
 });
 
-await check("successful paid job charges the feature cost", async () => {
+const hash = (n: number) => `${run}${n}`.padEnd(64, "0").replace(/[^a-f0-9]/g, "a").slice(0, 64);
+
+await check("download charges 1 credit per photo regardless of sizes", async () => {
   const before = (await ledger.getUserById(user.id))!.creditBalance;
-  const job = await runPaidJob(user.id, "scene", { test: true }, async () => "image-url");
-  assert.equal(job.result, "image-url");
-  assert.equal(job.balanceAfter, before - 2);
+  const result = await chargeForDownload(user.id, [hash(1), hash(2), hash(3)], { sizes: 4 });
+  assert.equal(result.charged, 3);
+  assert.equal(result.balanceAfter, before - 3);
 });
 
-await check("failed paid job is refunded automatically", async () => {
+await check("re-downloading the same photos is free; only new photos are charged", async () => {
   const before = (await ledger.getUserById(user.id))!.creditBalance;
-  await assert.rejects(runPaidJob(user.id, "white_background", {}, async () => { throw new Error("model timeout"); }), /model timeout/);
-  assert.equal((await ledger.getUserById(user.id))!.creditBalance, before);
+  const again = await chargeForDownload(user.id, [hash(1), hash(2), hash(3)], { sizes: 1 });
+  assert.equal(again.charged, 0);
+  assert.equal(again.alreadyPaid, 3);
+  const mixed = await chargeForDownload(user.id, [hash(1), hash(4), hash(4)], { sizes: 2 });
+  assert.equal(mixed.charged, 1, "duplicate hashes in one request count once");
+  assert.equal((await ledger.getUserById(user.id))!.creditBalance, before - 1);
+});
+
+await check("download is refused when credits are short, and nothing is recorded", async () => {
+  const poor = await ledger.findOrCreateUser({ email: `dl+${run}@example.com` });
+  const many = Array.from({ length: 5 }, (_, i) => hash(100 + i));
+  await assert.rejects(chargeForDownload(poor.user.id, many, { sizes: 1 }), InsufficientCreditsError);
+  assert.equal((await ledger.getUserById(poor.user.id))!.creditBalance, 3);
+  const retry = await chargeForDownload(poor.user.id, many.slice(0, 3), { sizes: 1 });
+  assert.equal(retry.charged, 3, "the failed attempt did not mark photos as paid");
 });
 
 await check("refund cannot be applied twice or to an unknown job", async () => {

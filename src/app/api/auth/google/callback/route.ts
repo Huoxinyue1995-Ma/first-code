@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { OAUTH_STATE_COOKIE, RETURN_TO_COOKIE, getSiteOrigin, safeReturnPath, startSession } from "@/lib/auth";
+import { LOGIN_LOCALE_COOKIE, OAUTH_STATE_COOKIE, RETURN_TO_COOKIE, getSiteOrigin, safeReturnPath, startSession } from "@/lib/auth";
 import { fetchGoogleProfile } from "@/lib/google-oauth";
 import { findOrCreateUser } from "@/lib/ledger";
 
@@ -9,12 +9,14 @@ export async function GET(request: NextRequest) {
   const origin = getSiteOrigin(request);
   const params = request.nextUrl.searchParams;
   const expectedState = request.cookies.get(OAUTH_STATE_COOKIE)?.value;
-  const returnTo = safeReturnPath(request.cookies.get(RETURN_TO_COOKIE)?.value);
+  const locale = request.cookies.get(LOGIN_LOCALE_COOKIE)?.value === "es" ? "es" : "en";
+  const returnTo = safeReturnPath(request.cookies.get(RETURN_TO_COOKIE)?.value, locale);
 
   const fail = (reason: string) => {
-    const response = NextResponse.redirect(new URL(`/login?error=${reason}`, origin));
+    const response = NextResponse.redirect(new URL(`${locale === "es" ? "/es" : ""}/login?error=${reason}`, origin));
     response.cookies.delete(OAUTH_STATE_COOKIE);
     response.cookies.delete(RETURN_TO_COOKIE);
+    response.cookies.delete(LOGIN_LOCALE_COOKIE);
     return response;
   };
 
@@ -35,5 +37,6 @@ export async function GET(request: NextRequest) {
   const response = NextResponse.redirect(new URL(returnTo, origin));
   response.cookies.delete(OAUTH_STATE_COOKIE);
   response.cookies.delete(RETURN_TO_COOKIE);
+  response.cookies.delete(LOGIN_LOCALE_COOKIE);
   return response;
 }
