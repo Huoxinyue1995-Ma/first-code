@@ -316,4 +316,482 @@ export const PLATFORM_GUIDES: Record<string, PlatformGuide> = {
       },
     ],
   },
+
+  "etsy-banner": {
+    en: [
+      {
+        h: "Big banner or mini banner?",
+        p: [
+          "Etsy lets you show either a big banner or a mini banner at the top of your shop. The big banner is a wide image, commonly made at 3360 × 840 px (a 4:1 ratio), that spans the full width of the shop page and works like a storefront sign. The mini banner is a slim strip, commonly 1200 × 160 px, that leaves more room for your listings above the fold.",
+          "A big banner suits shops with a strong visual brand or a seasonal campaign. A mini banner suits shops where shoppers mainly want to see products straight away. You can switch between them at any time in your shop settings, so it is worth exporting both from the same artwork and seeing which one looks better on your shop.",
+        ],
+      },
+      {
+        h: "Designing for very wide proportions",
+        p: [
+          "A 4:1 banner is four times wider than it is tall, so most photos lose a large part of their top and bottom when cropped. Choose images with a horizontal composition: a row of products, a flat lay across a table, or a landscape-style scene. Close-up portraits and tall products rarely crop well to banner proportions.",
+          "Etsy scales and trims the banner on smaller screens, so the left and right edges are the first to disappear on phones. Keep your shop name, logo, and any short message within the middle third of the image. Leave the edges for background texture that can be lost without harm.",
+        ],
+      },
+      {
+        h: "Text, contrast, and file size",
+        p: [
+          "If you add text, keep it short and large. A banner is seen at a glance, and small type becomes unreadable when the image is scaled down on a phone. Use strong contrast between text and background, and avoid placing text over a busy part of the photo.",
+          "Save photographic banners as JPG to keep the file light. Use PNG only if the banner is mostly flat colour and sharp text, where JPG compression could create fuzzy edges. After uploading, check the shop on both a computer and a phone before you consider the banner finished.",
+        ],
+      },
+      {
+        h: "Keeping your branding consistent",
+        p: [
+          "Your banner, shop icon, and listing photos are seen together, so they should feel like one shop. Reuse the same colours and fonts across the banner and any graphics, and pick a shop icon (500 × 500 px) that is still recognisable when shown as a small circle. Exporting the banner and icon in one batch makes it easy to keep them matched.",
+        ],
+      },
+    ],
+    es: [
+      {
+        h: "¿Banner grande o mini banner?",
+        p: [
+          "Etsy te permite mostrar un banner grande o un mini banner en la parte superior de tu tienda. El banner grande es una imagen ancha, que suele hacerse en 3360 × 840 px (proporción 4:1), ocupa todo el ancho de la página de la tienda y funciona como el rótulo de un escaparate. El mini banner es una franja estrecha, normalmente de 1200 × 160 px, que deja más espacio para tus anuncios en la parte visible de la página.",
+          "El banner grande encaja en tiendas con una imagen de marca fuerte o una campaña de temporada. El mini banner encaja en tiendas donde los compradores quieren ver los productos enseguida. Puedes cambiar entre ambos cuando quieras en la configuración de la tienda, así que vale la pena exportar los dos a partir del mismo diseño y ver cuál queda mejor en tu tienda.",
+        ],
+      },
+      {
+        h: "Diseñar para proporciones muy anchas",
+        p: [
+          "Un banner 4:1 es cuatro veces más ancho que alto, así que la mayoría de fotos pierden gran parte de la zona superior e inferior al recortarlas. Elige imágenes de composición horizontal: una fila de productos, un bodegón sobre una mesa o una escena tipo paisaje. Los primeros planos y los productos altos rara vez se recortan bien a proporciones de banner.",
+          "Etsy escala y recorta el banner en pantallas pequeñas, por lo que los bordes izquierdo y derecho son lo primero que desaparece en el móvil. Mantén el nombre de la tienda, el logotipo y cualquier mensaje breve dentro del tercio central de la imagen. Deja los bordes para texturas de fondo que puedan perderse sin problema.",
+        ],
+      },
+      {
+        h: "Texto, contraste y peso del archivo",
+        p: [
+          "Si añades texto, que sea breve y grande. Un banner se ve de un vistazo, y la letra pequeña se vuelve ilegible cuando la imagen se reduce en el móvil. Usa un contraste fuerte entre el texto y el fondo y evita colocar texto sobre una zona recargada de la foto.",
+          "Guarda los banners fotográficos en JPG para que pesen poco. Usa PNG solo si el banner es sobre todo color plano y texto nítido, donde la compresión JPG podría difuminar los bordes. Después de subirlo, revisa la tienda en un ordenador y en un móvil antes de dar el banner por terminado.",
+        ],
+      },
+      {
+        h: "Mantener una imagen de marca uniforme",
+        p: [
+          "El banner, el icono de la tienda y las fotos de los anuncios se ven juntos, así que deben parecer una misma tienda. Reutiliza los mismos colores y tipografías en el banner y en cualquier gráfico, y elige un icono (500 × 500 px) que se reconozca incluso como un círculo pequeño. Exportar el banner y el icono en un solo lote facilita que combinen.",
+        ],
+      },
+    ],
+  },
+
+  "shopify-banner": {
+    en: [
+      {
+        h: "There is no single Shopify banner size",
+        p: [
+          "Shopify does not set one banner size for every store. Each theme decides how hero images, slideshows, and image banners are displayed, and many themes let you choose the section height, such as small, medium, large, or adapt to image. That is why the sizes on this page are practical starting points rather than fixed rules.",
+          "For most themes, a hero or image banner between 1920 and 2000 px wide stays sharp on large desktop screens. A 16:9 image (1920 × 1080 px) suits tall hero sections, while a wider 2000 × 800 px image suits slideshows and shorter banners. Announcement or promotional strips are often around 1200 × 400 px.",
+        ],
+      },
+      {
+        h: "How themes crop banners on phones",
+        p: [
+          "A wide banner shown on a phone is either scaled down until it is very short, or cropped to a taller shape so it still fills the screen. Which one happens depends on the theme and section settings. In both cases, the left and right edges are the parts most likely to disappear, so put products, faces, and text near the centre.",
+          "Some themes, including Dawn, let you upload a separate image for mobile. If yours does, export a second, taller version from the same photo, for example a 4:5 or square crop, so the mobile banner is framed on purpose instead of cropped automatically.",
+        ],
+      },
+      {
+        h: "Text on banners",
+        p: [
+          "Most Shopify themes let you add a heading and button on top of a banner using the theme editor. Using that text instead of writing words into the image keeps them sharp on every screen, makes them readable by search engines and screen readers, and lets you change a sale message without editing the image again.",
+          "If you do overlay text in the theme, choose a photo with a calm area of colour where the text will sit, and use the theme's overlay or opacity setting to keep enough contrast.",
+        ],
+      },
+      {
+        h: "Keeping banners fast",
+        p: [
+          "The banner is usually the largest image on the home page and one of the first things to load, so its file size affects how quickly the page appears. Export photographic banners as JPG at 80–90% quality. A well-prepared 1920 px banner is usually a few hundred kilobytes, which is far lighter than an untouched camera original.",
+        ],
+      },
+    ],
+    es: [
+      {
+        h: "No existe un único tamaño de banner en Shopify",
+        p: [
+          "Shopify no fija un único tamaño de banner para todas las tiendas. Cada tema decide cómo se muestran las imágenes de portada, los carruseles y los banners de imagen, y muchos temas te permiten elegir la altura de la sección, como pequeña, mediana, grande o adaptada a la imagen. Por eso los tamaños de esta página son puntos de partida prácticos y no reglas fijas.",
+          "En la mayoría de temas, una portada o banner de imagen de entre 1920 y 2000 px de ancho se ve nítida en pantallas grandes. Una imagen 16:9 (1920 × 1080 px) encaja en secciones de portada altas, mientras que una más ancha de 2000 × 800 px encaja en carruseles y banners más bajos. Las franjas de anuncios o promociones suelen rondar los 1200 × 400 px.",
+        ],
+      },
+      {
+        h: "Cómo recortan los temas los banners en el móvil",
+        p: [
+          "Un banner ancho en un móvil se reduce hasta quedar muy bajo o se recorta a una forma más alta para que siga llenando la pantalla. Lo que ocurra depende del tema y de la configuración de la sección. En ambos casos, los bordes izquierdo y derecho son lo que más probablemente desaparece, así que coloca productos, caras y texto cerca del centro.",
+          "Algunos temas, como Dawn, te permiten subir una imagen distinta para el móvil. Si el tuyo lo permite, exporta una segunda versión más alta de la misma foto, por ejemplo un recorte 4:5 o cuadrado, para que el banner móvil esté encuadrado a propósito y no recortado automáticamente.",
+        ],
+      },
+      {
+        h: "Texto en los banners",
+        p: [
+          "La mayoría de temas de Shopify te permiten añadir un título y un botón sobre el banner desde el editor del tema. Usar ese texto en lugar de escribir las palabras dentro de la imagen las mantiene nítidas en cualquier pantalla, permite que los buscadores y los lectores de pantalla las lean y te deja cambiar un mensaje de rebajas sin volver a editar la imagen.",
+          "Si superpones texto desde el tema, elige una foto con una zona de color tranquila donde vaya el texto y usa la opción de superposición u opacidad del tema para mantener suficiente contraste.",
+        ],
+      },
+      {
+        h: "Mantener los banners ligeros",
+        p: [
+          "El banner suele ser la imagen más grande de la página de inicio y una de las primeras en cargarse, así que su peso influye en lo rápido que aparece la página. Exporta los banners fotográficos en JPG con calidad del 80–90%. Un banner de 1920 px bien preparado suele pesar unos cientos de kilobytes, mucho menos que un original de cámara sin tocar.",
+        ],
+      },
+    ],
+  },
+
+  poshmark: {
+    en: [
+      {
+        h: "Poshmark shows every photo as a square",
+        p: [
+          "Poshmark displays listing photos in a square frame in the feed, in search, and in your closet. When you upload a rectangular photo, the app asks you to crop it to a square, and anything outside the crop is lost. Cropping to a square yourself before uploading, at around 1280 × 1280 px, means you decide exactly what stays in the frame.",
+          "For clothing, a square crop usually works best when the garment is shown flat or on a hanger with a little space around it. For a full-length dress or coat, choose the fit option with a white background so the hem and neckline both stay visible.",
+        ],
+      },
+      {
+        h: "The cover shot sells the listing",
+        p: [
+          "The first photo is your cover shot. It is the only image most shoppers see while they scroll, so it should show the whole item clearly, straight on, and well lit. Save close-ups, labels, and flaws for the photos that follow.",
+          "Consistent cover shots also make your closet look professional. Use the same background, the same distance, and the same square crop for every cover photo, so shoppers browsing your closet see a tidy grid rather than a mix of styles.",
+        ],
+      },
+      {
+        h: "Photos that answer buyers' questions",
+        p: [
+          "Buyers on Poshmark often ask about size, fabric, and condition. Answer those questions in your photos: include the brand and size label, the fabric content tag, close-ups of any pilling, stains, or wear, and a shot of the garment's fit or measurements if you can. Clear photos reduce back-and-forth comments and returns.",
+          "Natural daylight from a window gives the most accurate colour for clothing. Avoid mixing indoor bulbs and daylight in the same photo, which can make colours look different from the real item.",
+        ],
+      },
+      {
+        h: "Batch-preparing a closet",
+        p: [
+          "If you list many items at once, photograph them in one session with the same setup, then add all the photos here and export them as 1280 × 1280 px squares in one ZIP. Adjust the framing on any photo where the item sits off-centre. Every photo then arrives on your phone already square, so you can skip cropping in the app.",
+        ],
+      },
+    ],
+    es: [
+      {
+        h: "Poshmark muestra todas las fotos en cuadrado",
+        p: [
+          "Poshmark muestra las fotos de los anuncios en un marco cuadrado en el feed, en la búsqueda y en tu armario. Cuando subes una foto rectangular, la aplicación te pide recortarla a cuadrado y lo que quede fuera se pierde. Recortarla tú a cuadrado antes de subirla, a unos 1280 × 1280 px, te permite decidir exactamente qué queda en el encuadre.",
+          "En ropa, el recorte cuadrado suele funcionar mejor cuando la prenda se muestra estirada o en una percha con algo de espacio alrededor. Para un vestido o abrigo largo, elige la opción de ajustar con fondo blanco para que el bajo y el cuello sigan visibles.",
+        ],
+      },
+      {
+        h: "La foto de portada vende el anuncio",
+        p: [
+          "La primera foto es tu portada. Es la única imagen que la mayoría de compradores ve al desplazarse, así que debe mostrar el artículo completo, de frente y bien iluminado. Deja los primeros planos, las etiquetas y los defectos para las fotos siguientes.",
+          "Unas portadas uniformes también hacen que tu armario se vea profesional. Usa el mismo fondo, la misma distancia y el mismo recorte cuadrado en todas las portadas, para que quien navegue por tu armario vea una cuadrícula ordenada y no una mezcla de estilos.",
+        ],
+      },
+      {
+        h: "Fotos que responden a las dudas del comprador",
+        p: [
+          "En Poshmark los compradores suelen preguntar por la talla, el tejido y el estado. Responde con tus fotos: incluye la etiqueta de marca y talla, la etiqueta de composición, primeros planos de bolitas, manchas o desgaste y, si puedes, una foto del ajuste o de las medidas de la prenda. Unas fotos claras reducen los comentarios de ida y vuelta y las devoluciones.",
+          "La luz natural de una ventana da el color más fiel en ropa. Evita mezclar bombillas interiores y luz de día en la misma foto, porque los colores pueden verse distintos al artículo real.",
+        ],
+      },
+      {
+        h: "Preparar un armario en lote",
+        p: [
+          "Si publicas muchos artículos a la vez, fotografíalos en una sola sesión con la misma configuración, añade aquí todas las fotos y expórtalas como cuadrados de 1280 × 1280 px en un ZIP. Ajusta el encuadre de cualquier foto en la que el artículo no esté centrado. Así todas las fotos llegan a tu móvil ya cuadradas y puedes saltarte el recorte en la aplicación.",
+        ],
+      },
+    ],
+  },
+
+  "facebook-marketplace": {
+    en: [
+      {
+        h: "How Marketplace displays photos",
+        p: [
+          "Facebook Marketplace shows listings in a grid of square tiles, mostly viewed on phones. The first photo is cropped to fill that square, so the edges of a wide or tall photo may not appear in the grid. A square image such as 1080 × 1080 px shows exactly what you intended and looks sharp on modern phone screens.",
+          "When a buyer opens the listing, Marketplace shows the photos larger and closer to their original shape. A portrait 4:5 photo (1080 × 1350 px) uses more of the screen at that point, which is useful for furniture, clothing, and other tall items.",
+        ],
+      },
+      {
+        h: "Make the first photo count",
+        p: [
+          "People scroll Marketplace quickly, so the first photo needs to show what the item is at a glance. Photograph the whole item, in good light, against an uncluttered background, and fill most of the frame with it. Move nearby objects out of the shot so buyers do not wonder which item is for sale.",
+          "Local buyers also want to know the condition before they message you. Add photos of any wear, the brand or model label, and the item in use or assembled. Photos that answer common questions mean fewer messages asking for more pictures.",
+        ],
+      },
+      {
+        h: "Using the same photo for ads and shares",
+        p: [
+          "If you share a listing to a group or use the photo in a Facebook ad or link post, a landscape image of 1200 × 628 px is the common size for link previews and many ad placements. Selecting both the square and the link size here exports each photo in both shapes at once, still for one credit per photo.",
+        ],
+      },
+      {
+        h: "Practical tips for phone photos",
+        p: [
+          "Wipe your phone's camera lens before shooting; a smudged lens is a common cause of hazy listing photos. Shoot near a window rather than under a ceiling light, and hold the phone level with the middle of the item to avoid distorted shapes. Photos taken this way need only a quick resize and crop before they are ready to post.",
+        ],
+      },
+    ],
+    es: [
+      {
+        h: "Cómo muestra Marketplace las fotos",
+        p: [
+          "Facebook Marketplace muestra los anuncios en una cuadrícula de casillas cuadradas, que se ve sobre todo en el móvil. La primera foto se recorta para llenar ese cuadrado, así que los bordes de una foto ancha o alta pueden no aparecer en la cuadrícula. Una imagen cuadrada como 1080 × 1080 px muestra exactamente lo que querías y se ve nítida en los móviles actuales.",
+          "Cuando el comprador abre el anuncio, Marketplace muestra las fotos más grandes y más cerca de su forma original. Una foto vertical 4:5 (1080 × 1350 px) aprovecha más la pantalla en ese momento, algo útil para muebles, ropa y otros artículos altos.",
+        ],
+      },
+      {
+        h: "Haz que la primera foto cuente",
+        p: [
+          "En Marketplace la gente se desplaza rápido, así que la primera foto debe mostrar de un vistazo qué es el artículo. Fotografía el artículo completo, con buena luz, sobre un fondo despejado, y haz que ocupe la mayor parte del encuadre. Retira los objetos cercanos para que el comprador no dude de qué artículo se vende.",
+          "Los compradores locales también quieren conocer el estado antes de escribirte. Añade fotos del desgaste, de la etiqueta de marca o modelo y del artículo en uso o montado. Unas fotos que responden a las preguntas habituales significan menos mensajes pidiendo más imágenes.",
+        ],
+      },
+      {
+        h: "Usar la misma foto en anuncios y publicaciones",
+        p: [
+          "Si compartes un anuncio en un grupo o usas la foto en un anuncio o publicación con enlace de Facebook, una imagen horizontal de 1200 × 628 px es el tamaño habitual para las vistas previas de enlaces y muchas ubicaciones de anuncios. Al seleccionar aquí el tamaño cuadrado y el de enlace, cada foto se exporta en ambas formas a la vez, por un crédito por foto.",
+        ],
+      },
+      {
+        h: "Consejos prácticos para fotos con el móvil",
+        p: [
+          "Limpia la lente de la cámara del móvil antes de fotografiar; una lente manchada es una causa habitual de fotos borrosas. Fotografía junto a una ventana en lugar de bajo una lámpara de techo y sujeta el móvil a la altura del centro del artículo para evitar formas deformadas. Las fotos hechas así solo necesitan un redimensionado y recorte rápidos para estar listas.",
+        ],
+      },
+    ],
+  },
+
+  "tiktok-shop": {
+    en: [
+      {
+        h: "Product images on a video-first platform",
+        p: [
+          "Most TikTok Shop sales start with a video, but the product listing images are what shoppers see when they tap through to buy, browse the Shop tab, or compare products. Those images appear as square cards on a phone screen, often next to similar products from other sellers, so they need to be clear at a small size.",
+          "A square image of 1080 × 1080 px is sharp on modern phones while keeping files small. TikTok Shop sets its own minimum resolution and file size limits, which can vary by region, so check the listing guidelines in Seller Center for your market.",
+        ],
+      },
+      {
+        h: "What makes a strong main image",
+        p: [
+          "Show the whole product, large and centred, on a clean background. Strong contrast between the product and the background helps the shape read instantly on a small screen. Avoid crowding the main image with text, badges, or multiple products; small text becomes unreadable and some regions restrict promotional text on the main image.",
+          "Use the remaining images to show the product from other angles, its size in a hand or next to a common object, close-ups of materials or features, and what comes in the box.",
+        ],
+      },
+      {
+        h: "Vertical images",
+        p: [
+          "TikTok itself is vertical, and a 9:16 image (1080 × 1920 px) fills the screen. Vertical images are useful for content you create around a product, such as photo posts or promotional graphics, even though the listing images themselves are square. Exporting both shapes from the same product photos keeps your listing and your content visually consistent.",
+        ],
+      },
+      {
+        h: "Reusing photos from other marketplaces",
+        p: [
+          "If you already sell on Amazon or Shopify, you can usually reuse the same product photos. Rather than uploading a 2000 px Amazon image, export a 1080 × 1080 px version for TikTok Shop so files stay within upload limits and load quickly over mobile data. Adding the same photos here once and selecting each platform's size gives you a set for every channel in one download.",
+        ],
+      },
+    ],
+    es: [
+      {
+        h: "Imágenes de producto en una plataforma de vídeo",
+        p: [
+          "La mayoría de ventas en TikTok Shop empiezan con un vídeo, pero las imágenes del anuncio son lo que ve el comprador cuando pulsa para comprar, navega por la pestaña Shop o compara productos. Esas imágenes aparecen como tarjetas cuadradas en la pantalla del móvil, a menudo junto a productos parecidos de otros vendedores, así que deben verse claras en tamaño pequeño.",
+          "Una imagen cuadrada de 1080 × 1080 px se ve nítida en los móviles actuales y mantiene los archivos ligeros. TikTok Shop fija sus propios mínimos de resolución y límites de peso, que pueden variar según la región, así que revisa las normas de anuncios en Seller Center para tu mercado.",
+        ],
+      },
+      {
+        h: "Qué hace fuerte una imagen principal",
+        p: [
+          "Muestra el producto completo, grande y centrado, sobre un fondo limpio. Un contraste fuerte entre el producto y el fondo ayuda a que la forma se entienda al instante en una pantalla pequeña. Evita llenar la imagen principal de texto, insignias o varios productos; el texto pequeño se vuelve ilegible y algunas regiones restringen el texto promocional en la imagen principal.",
+          "Usa el resto de imágenes para mostrar el producto desde otros ángulos, su tamaño en la mano o junto a un objeto común, primeros planos de materiales o funciones y el contenido de la caja.",
+        ],
+      },
+      {
+        h: "Imágenes verticales",
+        p: [
+          "TikTok es vertical, y una imagen 9:16 (1080 × 1920 px) llena la pantalla. Las imágenes verticales son útiles para el contenido que creas en torno a un producto, como publicaciones de fotos o gráficos promocionales, aunque las imágenes del anuncio sean cuadradas. Exportar ambas formas a partir de las mismas fotos mantiene uniformes tu anuncio y tu contenido.",
+        ],
+      },
+      {
+        h: "Reutilizar fotos de otros marketplaces",
+        p: [
+          "Si ya vendes en Amazon o Shopify, normalmente puedes reutilizar las mismas fotos de producto. En lugar de subir una imagen de Amazon de 2000 px, exporta una versión de 1080 × 1080 px para TikTok Shop, así los archivos respetan los límites de subida y cargan rápido con datos móviles. Añadir aquí las mismas fotos una vez y seleccionar el tamaño de cada plataforma te da un juego para cada canal en una sola descarga.",
+        ],
+      },
+    ],
+  },
+
+  mercari: {
+    en: [
+      {
+        h: "Square photos on Mercari",
+        p: [
+          "Mercari displays listing photos as squares in search results and on the listing page, and the app crops rectangular photos to fit. Cropping to a square such as 1080 × 1080 px before you upload keeps the item framed the way you want and stops the app from cutting off a corner of the item.",
+          "If an item does not fit a square well, such as a long scarf or a tall lamp, use the fit option with a white background. The whole item stays visible and the photo is still square.",
+        ],
+      },
+      {
+        h: "What buyers look for in Mercari photos",
+        p: [
+          "Mercari is used heavily for second-hand items, so buyers want to judge condition from the photos. Start with a clear photo of the whole item, then show labels, model numbers, the back and underside, and close-ups of any scratches, stains, or missing parts. For electronics, a photo of the item switched on helps show that it works.",
+          "Photos that match the description build trust. If the listing says \"minor wear\", show that wear so the buyer knows exactly what to expect.",
+        ],
+      },
+      {
+        h: "Light and background",
+        p: [
+          "Shoot near a window during the day and turn off overhead lights to avoid a yellow tint. A plain sheet of white card or a clean wall makes a simple background that works for most small items. Keep the background the same across all your listings so your profile looks consistent.",
+        ],
+      },
+      {
+        h: "Listing several items at once",
+        p: [
+          "Photograph a batch of items in one session, add every photo here, and export them as squares in a single ZIP. File names keep the original name with the size added, so photos of the same item stay together. You can then upload them straight from your phone's downloads without cropping each one in the app.",
+        ],
+      },
+    ],
+    es: [
+      {
+        h: "Fotos cuadradas en Mercari",
+        p: [
+          "Mercari muestra las fotos de los anuncios en cuadrado en los resultados de búsqueda y en la página del anuncio, y la aplicación recorta las fotos rectangulares para que encajen. Recortar a un cuadrado como 1080 × 1080 px antes de subirlas mantiene el artículo encuadrado como quieres y evita que la aplicación corte una esquina del artículo.",
+          "Si un artículo no encaja bien en un cuadrado, como una bufanda larga o una lámpara alta, usa la opción de ajustar con fondo blanco. El artículo completo sigue visible y la foto sigue siendo cuadrada.",
+        ],
+      },
+      {
+        h: "Qué buscan los compradores en las fotos de Mercari",
+        p: [
+          "Mercari se usa mucho para artículos de segunda mano, así que los compradores quieren juzgar el estado a partir de las fotos. Empieza con una foto clara del artículo completo y luego muestra etiquetas, números de modelo, la parte trasera e inferior y primeros planos de rasguños, manchas o piezas que falten. En electrónica, una foto del artículo encendido ayuda a demostrar que funciona.",
+          "Las fotos que coinciden con la descripción generan confianza. Si el anuncio dice \"desgaste leve\", muestra ese desgaste para que el comprador sepa exactamente qué esperar.",
+        ],
+      },
+      {
+        h: "Luz y fondo",
+        p: [
+          "Fotografía junto a una ventana durante el día y apaga las luces del techo para evitar un tono amarillento. Una cartulina blanca o una pared limpia son un fondo sencillo que funciona con la mayoría de artículos pequeños. Mantén el mismo fondo en todos tus anuncios para que tu perfil se vea uniforme.",
+        ],
+      },
+      {
+        h: "Publicar varios artículos a la vez",
+        p: [
+          "Fotografía un lote de artículos en una sola sesión, añade aquí todas las fotos y expórtalas como cuadrados en un solo ZIP. Los nombres de archivo conservan el nombre original con el tamaño añadido, así que las fotos de un mismo artículo quedan juntas. Después puedes subirlas directamente desde las descargas del móvil sin recortar cada una en la aplicación.",
+        ],
+      },
+    ],
+  },
+
+  depop: {
+    en: [
+      {
+        h: "Depop's square grid",
+        p: [
+          "Depop shows listings in a square grid on your shop page and in search, and buyers often decide whether to tap from that grid alone. Square photos of around 1280 × 1280 px look clean in the grid and avoid surprise crops when the app fits a rectangular photo into a square.",
+          "Because shoppers scroll quickly, your first photo needs to show the item and its style immediately. Many Depop sellers use a consistent look across their shop, such as the same backdrop, the same lighting, or the item always worn, so the grid feels like a curated collection.",
+        ],
+      },
+      {
+        h: "Flat lay, hanger, or worn",
+        p: [
+          "There are three common ways to photograph clothing on Depop. A flat lay, with the item laid out on a plain surface and photographed from above, shows shape and details clearly and is easy to keep consistent. A hanger shot against a plain wall shows how the garment hangs. A worn shot shows fit and style, which is often what sells vintage and streetwear.",
+          "Whichever you choose, crop every cover photo to the same square with a similar margin, so items look the same size in your grid.",
+        ],
+      },
+      {
+        h: "Show details and condition",
+        p: [
+          "Follow the cover photo with close-ups of the label, fabric, any graphics or embroidery, and any flaws such as fading, pilling, or small holes. For vintage items, buyers value honesty about wear, and clear photos of it reduce disputes.",
+          "Natural light gives the most accurate colours. If a colour is hard to capture, mention it in the description as well as showing it in the photos.",
+        ],
+      },
+      {
+        h: "Preparing a drop",
+        p: [
+          "If you list a batch of items together, photograph them all with the same setup, add the photos here, and export them as squares in one ZIP. Adjust the framing for any item that sits off-centre. Every photo arrives already square and evenly framed, ready to upload from your phone.",
+        ],
+      },
+    ],
+    es: [
+      {
+        h: "La cuadrícula cuadrada de Depop",
+        p: [
+          "Depop muestra los anuncios en una cuadrícula cuadrada en tu tienda y en la búsqueda, y los compradores suelen decidir si entrar solo con esa cuadrícula. Las fotos cuadradas de unos 1280 × 1280 px se ven limpias en la cuadrícula y evitan recortes inesperados cuando la aplicación encaja una foto rectangular en un cuadrado.",
+          "Como los compradores se desplazan rápido, tu primera foto debe mostrar el artículo y su estilo de inmediato. Muchos vendedores de Depop usan un estilo uniforme en su tienda, como el mismo fondo, la misma luz o el artículo siempre puesto, para que la cuadrícula parezca una colección seleccionada.",
+        ],
+      },
+      {
+        h: "Estirada, en percha o puesta",
+        p: [
+          "Hay tres formas habituales de fotografiar ropa en Depop. La prenda estirada sobre una superficie lisa y fotografiada desde arriba muestra la forma y los detalles con claridad y es fácil de mantener uniforme. La foto en percha contra una pared lisa muestra cómo cae la prenda. La foto con la prenda puesta muestra el ajuste y el estilo, que a menudo es lo que vende la ropa vintage y urbana.",
+          "Elijas la que elijas, recorta todas las portadas al mismo cuadrado con un margen parecido, para que los artículos se vean del mismo tamaño en tu cuadrícula.",
+        ],
+      },
+      {
+        h: "Muestra los detalles y el estado",
+        p: [
+          "Después de la portada, añade primeros planos de la etiqueta, el tejido, los estampados o bordados y cualquier defecto, como decoloración, bolitas o pequeños agujeros. En artículos vintage, los compradores valoran la sinceridad sobre el desgaste, y unas fotos claras reducen las disputas.",
+          "La luz natural da los colores más fieles. Si un color es difícil de captar, menciónalo en la descripción además de mostrarlo en las fotos.",
+        ],
+      },
+      {
+        h: "Preparar un lanzamiento",
+        p: [
+          "Si publicas un lote de artículos juntos, fotografíalos todos con la misma configuración, añade aquí las fotos y expórtalas como cuadrados en un ZIP. Ajusta el encuadre de cualquier artículo que no esté centrado. Todas las fotos llegan ya cuadradas y con el mismo encuadre, listas para subir desde el móvil.",
+        ],
+      },
+    ],
+  },
+
+  walmart: {
+    en: [
+      {
+        h: "Walmart Marketplace image basics",
+        p: [
+          "Walmart Marketplace asks for square product images large enough for zoom, and many sellers export them at about 2000 × 2000 px. The main image should show the product on a white background, filling most of the frame, without added text, watermarks, or promotional graphics. Walmart publishes detailed image guidelines in Seller Center, and those are the final reference for your category.",
+          "Images that are too small, cropped awkwardly, or on a coloured background are common reasons for content quality issues, which can affect how a listing is shown.",
+        ],
+      },
+      {
+        h: "Framing the main image",
+        p: [
+          "Crop so the product fills most of the square with a thin, even white margin. If the product is much wider or taller than it is deep, use the fit option so the whole product stays in frame and the empty space is filled with white. Check that nothing important, such as a cap, cable, or handle, touches the edge.",
+        ],
+      },
+      {
+        h: "Additional images",
+        p: [
+          "Use the remaining image slots to show other angles, close-ups of materials and features, the product in use, its size relative to a common object, and what is included. Keep every image for a listing the same square size so the image carousel and zoom behave consistently.",
+        ],
+      },
+      {
+        h: "Selling the same product on several marketplaces",
+        p: [
+          "Walmart, Amazon, and many other marketplaces use similar square, white-background main images, so the same photography can usually serve all of them. Add your photos here once and select each marketplace's size to export a full set in one ZIP. Check each marketplace's current rules before publishing, because details such as minimum size and file limits differ.",
+        ],
+      },
+    ],
+    es: [
+      {
+        h: "Lo básico de las imágenes en Walmart Marketplace",
+        p: [
+          "Walmart Marketplace pide imágenes de producto cuadradas y lo bastante grandes para el zoom, y muchos vendedores las exportan a unos 2000 × 2000 px. La imagen principal debe mostrar el producto sobre fondo blanco, ocupando la mayor parte del encuadre, sin texto añadido, marcas de agua ni gráficos promocionales. Walmart publica normas de imagen detalladas en Seller Center, que son la referencia final para tu categoría.",
+          "Las imágenes demasiado pequeñas, mal recortadas o con fondo de color son motivos habituales de problemas de calidad de contenido, que pueden afectar a cómo se muestra un anuncio.",
+        ],
+      },
+      {
+        h: "Encuadrar la imagen principal",
+        p: [
+          "Recorta para que el producto ocupe la mayor parte del cuadrado con un margen blanco fino y uniforme. Si el producto es mucho más ancho o alto que profundo, usa la opción de ajustar para que el producto completo quede en el encuadre y el espacio vacío se rellene de blanco. Comprueba que nada importante, como un tapón, un cable o un asa, toque el borde.",
+        ],
+      },
+      {
+        h: "Imágenes adicionales",
+        p: [
+          "Usa el resto de huecos de imagen para mostrar otros ángulos, primeros planos de materiales y funciones, el producto en uso, su tamaño junto a un objeto común y el contenido incluido. Mantén todas las imágenes de un anuncio con el mismo tamaño cuadrado para que el carrusel y el zoom funcionen de forma uniforme.",
+        ],
+      },
+      {
+        h: "Vender el mismo producto en varios marketplaces",
+        p: [
+          "Walmart, Amazon y muchos otros marketplaces usan imágenes principales cuadradas y con fondo blanco parecidas, así que normalmente las mismas fotos sirven para todos. Añade aquí tus fotos una vez y selecciona el tamaño de cada marketplace para exportar un juego completo en un ZIP. Revisa las normas actuales de cada marketplace antes de publicar, porque detalles como el tamaño mínimo y los límites de archivo cambian.",
+        ],
+      },
+    ],
+  },
 };
