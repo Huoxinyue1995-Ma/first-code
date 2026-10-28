@@ -34,7 +34,7 @@ export async function POST(request: Request) {
       mode: "payment",
       // This account charges directly, not through Stripe Managed Payments.
       managed_payments: { enabled: false },
-      integration_identifier: "image_ready_credit_pack",
+      integration_identifier: "resizet_credit_pack",
       customer_email: user.email,
       client_reference_id: user.id,
       line_items: [
@@ -44,7 +44,7 @@ export async function POST(request: Request) {
             currency: "usd",
             unit_amount: pack.priceCents,
             product_data: {
-              name: `Image Ready ${pack.name} credits`,
+              name: `Resizet ${pack.name} credits`,
               description: `${pack.credits} credits for AI image tools. Credits do not expire.`,
             },
           },

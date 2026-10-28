@@ -4,8 +4,8 @@ import { PageFrame } from "@/components/site-chrome";
 import { type Locale, localePath } from "@/lib/i18n";
 
 const COPY = {
-  en: { title: "You're signed in.", body: "Go back to your Image Ready tab. Your photos are still there and the download will continue.", link: "Open Image Ready" },
-  es: { title: "Has iniciado sesión.", body: "Vuelve a tu pestaña de Image Ready. Tus fotos siguen ahí y la descarga continuará.", link: "Abrir Image Ready" },
+  en: { title: "You're signed in.", body: "Go back to your Resizet tab. Your photos are still there and the download will continue.", link: "Open Resizet" },
+  es: { title: "Has iniciado sesión.", body: "Vuelve a tu pestaña de Resizet. Tus fotos siguen ahí y la descarga continuará.", link: "Abrir Resizet" },
 };
 
 // Landing page for sign-ins started from the editor (opened in a new tab).

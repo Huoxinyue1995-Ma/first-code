@@ -50,7 +50,7 @@ export const GUIDES: Guide[] = [
             "A square 1:1 canvas displays most consistently across search results, mobile, and the product detail page.",
             "Avoid upscaling a small photo to reach the minimum. Enlarging a 600-pixel image to 2,000 pixels adds no real detail and often looks soft when zoomed.",
           ] },
-          { type: "tip", text: "Image Ready's Amazon preset exports a 2,000 × 2,000 pixel square, which comfortably clears the zoom threshold while keeping file sizes reasonable." },
+          { type: "tip", text: "Resizet's Amazon preset exports a 2,000 × 2,000 pixel square, which comfortably clears the zoom threshold while keeping file sizes reasonable." },
         ],
       },
       {
@@ -145,7 +145,7 @@ export const GUIDES: Guide[] = [
             "Use PNG only when you need transparency or sharp flat graphics such as size charts.",
             "Keep most product photos well under 1 MB. If a file is much larger, check whether it was exported at quality 100 or with unnecessary metadata.",
           ] },
-          { type: "tip", text: "Image Ready's Shopify preset crops to 2,048 × 2,048 pixels and lets you set JPEG quality before download, so you can check the result before it goes into your admin." },
+          { type: "tip", text: "Resizet's Shopify preset crops to 2,048 × 2,048 pixels and lets you set JPEG quality before download, so you can check the result before it goes into your admin." },
         ],
       },
       {
@@ -202,7 +202,7 @@ export const GUIDES: Guide[] = [
             "Upload JPG or PNG. Keep each file small, since TikTok Shop applies a per-image file size limit of a few megabytes.",
             "Save in sRGB so colors look the same in the app as they do on your computer.",
           ] },
-          { type: "tip", text: "Image Ready's TikTok Shop preset exports a 1,080 × 1,080 square, and the quality control lets you keep each file comfortably within upload limits." },
+          { type: "tip", text: "Resizet's TikTok Shop preset exports a 1,080 × 1,080 square, and the quality control lets you keep each file comfortably within upload limits." },
         ],
       },
       {
@@ -299,7 +299,7 @@ export const GUIDES: Guide[] = [
             "Inspect the most detailed area at full size; adjust quality up or down by 5 if needed.",
             "Use the same settings for the whole catalog so photos look consistent.",
           ] },
-          { type: "p", text: "Image Ready follows this workflow in the browser: you crop and resize to one or more platform sizes, choose JPEG or PNG and a quality level, and download every result at once. Your original file is not uploaded anywhere, so you can experiment with settings without creating copies on a server." },
+          { type: "p", text: "Resizet follows this workflow in the browser: you crop and resize to one or more platform sizes, choose JPEG or PNG and a quality level, and download every result at once. Your original file is not uploaded anywhere, so you can experiment with settings without creating copies on a server." },
         ],
       },
     ],
@@ -353,7 +353,7 @@ export const GUIDES: Guide[] = [
       {
         heading: "What about WebP and AVIF?",
         blocks: [
-          { type: "p", text: "WebP and AVIF are newer formats that produce smaller files than JPG at similar quality. Many platforms, including Shopify, already convert your uploads into these formats automatically when a shopper's browser supports them. Because marketplace upload support for these formats varies, uploading a well-prepared JPG is still the most compatible choice. Image Ready accepts WebP files as input and exports JPG or PNG for that reason." },
+          { type: "p", text: "WebP and AVIF are newer formats that produce smaller files than JPG at similar quality. Many platforms, including Shopify, already convert your uploads into these formats automatically when a shopper's browser supports them. Because marketplace upload support for these formats varies, uploading a well-prepared JPG is still the most compatible choice. Resizet accepts WebP files as input and exports JPG or PNG for that reason." },
         ],
       },
       {
@@ -425,7 +425,7 @@ export const GUIDES: Guide[] = [
         heading: "Step 6: Export with the same settings every time",
         blocks: [
           { type: "p", text: "Use the same format and quality for every image in a batch. If one image is a 4 MB PNG and the next is a 300 KB JPG, they will load differently and may look slightly different in color and sharpness." },
-          { type: "tip", text: "In Image Ready you can add up to 100 photos, select one or more platform sizes, and adjust zoom, position, and rotation for each photo individually. Every photo then exports at the same sizes, format, and quality in one ZIP." },
+          { type: "tip", text: "In Resizet you can add up to 100 photos, select one or more platform sizes, and adjust zoom, position, and rotation for each photo individually. Every photo then exports at the same sizes, format, and quality in one ZIP." },
         ],
       },
       {

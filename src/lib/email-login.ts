@@ -50,14 +50,14 @@ export async function consumeEmailLoginToken(token: string) {
 
 const EMAIL_COPY: Record<Locale, { subject: string; intro: string; button: string; footer: string }> = {
   en: {
-    subject: "Your Image Ready sign-in link",
-    intro: "Sign in to Image Ready:",
+    subject: "Your Resizet sign-in link",
+    intro: "Sign in to Resizet:",
     button: "Sign in",
     footer: `This link expires in ${LINK_MINUTES} minutes and can be used once. If you did not request it, you can ignore this email.`,
   },
   es: {
-    subject: "Tu enlace para iniciar sesión en Image Ready",
-    intro: "Inicia sesión en Image Ready:",
+    subject: "Tu enlace para iniciar sesión en Resizet",
+    intro: "Inicia sesión en Resizet:",
     button: "Iniciar sesión",
     footer: `Este enlace caduca en ${LINK_MINUTES} minutos y solo se puede usar una vez. Si no lo solicitaste, puedes ignorar este correo.`,
   },

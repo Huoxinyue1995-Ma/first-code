@@ -61,7 +61,7 @@ export function guideMetadata(locale: Locale, guide: Guide): Metadata {
   const other = counterpartPath(locale, guide);
   const languages = locale === "en" ? { en: self, es: other, "x-default": self } : { en: other, es: self, "x-default": other };
   return {
-    title: { absolute: `${guide.title} | Image Ready` },
+    title: { absolute: `${guide.title} | Resizet` },
     description: guide.description,
     alternates: { canonical: self, languages },
     openGraph: { type: "article", locale: OG_LOCALE[locale], url: self, title: guide.title, description: guide.description, publishedTime: guide.published, modifiedTime: guide.updated },
@@ -114,8 +114,8 @@ export function GuideArticleView({ locale, guide }: { locale: Locale; guide: Gui
         <JsonLd data={{
           "@context": "https://schema.org", "@type": "Article", headline: guide.title, description: guide.description, inLanguage: locale,
           datePublished: guide.published, dateModified: guide.updated, mainEntityOfPage: url,
-          author: { "@type": "Organization", name: "Image Ready", url: PRIMARY_SITE_URL },
-          publisher: { "@type": "Organization", name: "Image Ready", url: PRIMARY_SITE_URL },
+          author: { "@type": "Organization", name: "Resizet", url: PRIMARY_SITE_URL },
+          publisher: { "@type": "Organization", name: "Resizet", url: PRIMARY_SITE_URL },
         }} />
         <p className="eyebrow"><Link href={indexPath(locale)}>{c.allGuides}</Link> · {c.minRead.replace("{n}", String(guide.readingMinutes))}</p>
         <h1>{guide.title}</h1>

@@ -10,9 +10,9 @@ export function SiteHeader({ locale, alternate }: { locale: Locale; alternate: s
   const t = getDictionary(locale);
   return (
     <header className="site-header">
-      <Link className="brand" href={localePath(locale, "/")} aria-label="Image Ready">
+      <Link className="brand" href={localePath(locale, "/")} aria-label="Resizet">
         <span className="brand-mark"><Maximize2 size={18} strokeWidth={2.4} /></span>
-        <span>Image Ready</span>
+        <span>Resizet</span>
       </Link>
       <nav aria-label="Main" className="header-nav">
         <Link href={`${localePath(locale, "/")}#platforms`}>{t.nav.platforms}</Link>

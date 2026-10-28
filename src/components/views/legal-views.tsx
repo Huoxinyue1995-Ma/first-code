@@ -10,7 +10,7 @@ const PRIVACY: Record<Locale, Doc> = {
   en: {
     eyebrow: "Privacy",
     title: "Your product photos stay on your device.",
-    lead: "Image Ready resizes and crops photos inside your browser. We do not receive, store, or look at your images.",
+    lead: "Resizet resizes and crops photos inside your browser. We do not receive, store, or look at your images.",
     sections: [
       { h: "How image processing works", p: ["When you add a photo, your browser reads it, creates the preview, and generates every resized file on your device. The photos, previews, and exported files are never sent to our servers or to any third-party image service."] },
       { h: "What we record when you download", p: ["To charge credits fairly, your browser sends us a fingerprint of each photo (a SHA-256 hash of the file) when you download. A hash cannot be turned back into the image. We use it only so that re-downloading the same photo in other sizes within 24 hours does not cost extra credits. We also record how many photos and sizes a download contained."] },
@@ -29,7 +29,7 @@ const PRIVACY: Record<Locale, Doc> = {
   es: {
     eyebrow: "Privacidad",
     title: "Tus fotos de producto se quedan en tu dispositivo.",
-    lead: "Image Ready redimensiona y recorta las fotos dentro de tu navegador. No recibimos, guardamos ni vemos tus imágenes.",
+    lead: "Resizet redimensiona y recorta las fotos dentro de tu navegador. No recibimos, guardamos ni vemos tus imágenes.",
     sections: [
       { h: "Cómo se procesan las imágenes", p: ["Cuando añades una foto, tu navegador la lee, crea la vista previa y genera cada archivo redimensionado en tu dispositivo. Las fotos, las vistas previas y los archivos exportados nunca se envían a nuestros servidores ni a ningún servicio de imágenes de terceros."] },
       { h: "Qué registramos al descargar", p: ["Para cobrar los créditos de forma justa, al descargar tu navegador nos envía una huella de cada foto (un hash SHA-256 del archivo). Un hash no se puede convertir de nuevo en la imagen. Solo lo usamos para que volver a descargar la misma foto en otros tamaños durante 24 horas no cueste créditos extra. También registramos cuántas fotos y tamaños tenía una descarga."] },
@@ -51,7 +51,7 @@ const TERMS: Record<Locale, Doc> = {
   en: {
     eyebrow: "Terms",
     title: "Resize your photos, then check each platform's rules.",
-    lead: "By using Image Ready you agree to these terms.",
+    lead: "By using Resizet you agree to these terms.",
     sections: [
       { h: "Using this tool", p: ["You are responsible for the images you process and for having the right to use them. Do not use the service for unlawful content or content that violates another person's rights."] },
       { h: "Platform sizes", p: ["Etsy, eBay, Amazon, Shopify, Pinterest, Poshmark, Facebook Marketplace, TikTok Shop, Mercari, Depop, and Walmart sizes are practical starting points. They are not an approval guarantee or an official relationship with those companies. Platform rules change, so check the current requirements before publishing."] },
@@ -66,7 +66,7 @@ const TERMS: Record<Locale, Doc> = {
   es: {
     eyebrow: "Términos",
     title: "Redimensiona tus fotos y revisa las reglas de cada plataforma.",
-    lead: "Al usar Image Ready aceptas estos términos.",
+    lead: "Al usar Resizet aceptas estos términos.",
     sections: [
       { h: "Uso de la herramienta", p: ["Eres responsable de las imágenes que procesas y de tener derecho a usarlas. No uses el servicio para contenido ilegal o que vulnere los derechos de otras personas."] },
       { h: "Tamaños de las plataformas", p: ["Los tamaños para Etsy, eBay, Amazon, Shopify, Pinterest, Poshmark, Facebook Marketplace, TikTok Shop, Mercari, Depop y Walmart son puntos de partida prácticos. No garantizan la aprobación ni implican una relación oficial con esas empresas. Las reglas cambian, así que revisa los requisitos actuales antes de publicar."] },

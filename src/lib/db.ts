@@ -1,7 +1,7 @@
 import postgres from "postgres";
 
 declare global {
-  var imageReadySql: postgres.Sql | undefined;
+  var resizetSql: postgres.Sql | undefined;
 }
 
 export class DatabaseNotConfiguredError extends Error {
@@ -23,9 +23,9 @@ export function isDatabaseConfigured() {
 export function getSql() {
   const url = databaseUrl();
   if (!url) throw new DatabaseNotConfiguredError();
-  if (!globalThis.imageReadySql) {
+  if (!globalThis.resizetSql) {
     const isLocal = /@(localhost|127\.0\.0\.1)[:/]/.test(url);
-    globalThis.imageReadySql = postgres(url, {
+    globalThis.resizetSql = postgres(url, {
       max: 3,
       idle_timeout: 20,
       connect_timeout: 10,
@@ -34,5 +34,5 @@ export function getSql() {
       ssl: isLocal ? false : "require",
     });
   }
-  return globalThis.imageReadySql;
+  return globalThis.resizetSql;
 }

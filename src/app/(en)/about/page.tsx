@@ -4,7 +4,7 @@ import { PageFrame } from "@/components/site-chrome";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Why Image Ready exists, who it is for, and how it resizes product photos in bulk without uploading them.",
+  description: "Why Resizet exists, who it is for, and how it resizes product photos in bulk without uploading them.",
   alternates: { canonical: "/about" },
 };
 
@@ -15,12 +15,12 @@ export default function AboutPage() {
         <p className="eyebrow">About</p>
         <h1>A batch image resizer for people who sell online.</h1>
         <p className="legal-lead">
-          Image Ready resizes and crops product photos for Etsy, eBay, Amazon, Shopify, Pinterest, Poshmark, and other marketplaces, in bulk, without uploading the originals anywhere.
+          Resizet resizes and crops product photos for Etsy, eBay, Amazon, Shopify, Pinterest, Poshmark, and other marketplaces, in bulk, without uploading the originals anywhere.
         </p>
         <section>
           <h2>Why we built it</h2>
           <p>
-            Every marketplace wants photos in slightly different sizes and shapes. Resizing them one at a time in a general photo editor is slow, and many online resizers make you upload unreleased product photos to someone else&apos;s server. Image Ready does one job well: it turns a folder of product photos into correctly sized files for the platforms you sell on.
+            Every marketplace wants photos in slightly different sizes and shapes. Resizing them one at a time in a general photo editor is slow, and many online resizers make you upload unreleased product photos to someone else&apos;s server. Resizet does one job well: it turns a folder of product photos into correctly sized files for the platforms you sell on.
           </p>
         </section>
         <section>
@@ -44,7 +44,7 @@ export default function AboutPage() {
         <section>
           <h2>Contact</h2>
           <p>
-            Image Ready is run by an independent developer. For questions, feedback, or payment support, email <a href="mailto:huoxinyue1995@gmail.com">huoxinyue1995@gmail.com</a> or visit the <Link href="/contact">contact page</Link>.
+            Resizet is run by an independent developer. For questions, feedback, or payment support, email <a href="mailto:huoxinyue1995@gmail.com">huoxinyue1995@gmail.com</a> or visit the <Link href="/contact">contact page</Link>.
           </p>
         </section>
       </main>

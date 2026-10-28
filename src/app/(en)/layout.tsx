@@ -5,10 +5,10 @@ import "../globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(PRIMARY_SITE_URL),
-  title: { default: "Image Ready", template: "%s | Image Ready" },
+  title: { default: "Resizet", template: "%s | Resizet" },
   description:
     "Batch resize product photos for Etsy, eBay, Amazon, Shopify, Pinterest, Poshmark and more, right in your browser.",
-  openGraph: { type: "website", locale: "en_US", siteName: "Image Ready" },
+  openGraph: { type: "website", locale: "en_US", siteName: "Resizet" },
 };
 
 export default function EnglishRootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

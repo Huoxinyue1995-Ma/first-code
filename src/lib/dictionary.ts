@@ -24,7 +24,7 @@ const en = {
     platformsTitle: "Resize tools",
   },
   home: {
-    metaTitle: "Batch Image Resizer for Etsy, eBay, Amazon, Shopify & More | Image Ready",
+    metaTitle: "Batch Image Resizer for Etsy, eBay, Amazon, Shopify & More | Resizet",
     metaDescription:
       "Resize hundreds of product photos to the right size for Etsy, eBay, Amazon, Shopify, Pinterest, Poshmark and more. Batch crop in your browser and download a ZIP.",
     eyebrow: "Batch image resizer for online sellers",
@@ -56,7 +56,7 @@ const en = {
   },
   custom: {
     slug: "custom-size",
-    metaTitle: "Custom Size Image Resizer: Batch Resize to Any Width and Height | Image Ready",
+    metaTitle: "Custom Size Image Resizer: Batch Resize to Any Width and Height | Resizet",
     metaDescription: "Batch resize photos to any width and height between 100 and 6000 px. Crop or fit, export JPG or PNG, and download a ZIP. Processed in your browser.",
     eyebrow: "Custom size",
     title: "Resize images to any size",
@@ -73,7 +73,7 @@ const en = {
     otherTitle: "Resize for other platforms",
   },
   pricing: {
-    metaTitle: "Pricing | Image Ready",
+    metaTitle: "Pricing | Resizet",
     metaDescription: "Get 3 free credits when you sign up. Each downloaded photo costs 1 credit in any number of sizes. Credit packs from $5, no subscription.",
     eyebrow: "Pricing",
     title: "Pay per photo. No subscription.",
@@ -119,7 +119,7 @@ const en = {
     terms: "Terms",
     privacy: "Privacy Policy",
     verifyTitle: "Confirm sign-in.",
-    verifyLead: "Click the button to finish signing in to Image Ready.",
+    verifyLead: "Click the button to finish signing in to Resizet.",
     verifyButton: "Sign in",
     verifyMissing: "This link is missing its sign-in code.",
     requestNew: "Request a new link",
@@ -214,7 +214,7 @@ const en = {
     cancel: "Cancel",
   },
   common: {
-    backHome: "Back to Image Ready",
+    backHome: "Back to Resizet",
     perPhoto: "per photo",
   },
 };
@@ -240,7 +240,7 @@ const es: Dictionary = {
     platformsTitle: "Herramientas",
   },
   home: {
-    metaTitle: "Redimensionar imágenes en lote para Etsy, eBay, Amazon, Shopify y más | Image Ready",
+    metaTitle: "Redimensionar imágenes en lote para Etsy, eBay, Amazon, Shopify y más | Resizet",
     metaDescription:
       "Redimensiona cientos de fotos de producto al tamaño correcto para Etsy, eBay, Amazon, Shopify, Pinterest, Poshmark y más. Recorta en lote en tu navegador y descarga un ZIP.",
     eyebrow: "Redimensionador de imágenes en lote para vendedores",
@@ -272,7 +272,7 @@ const es: Dictionary = {
   },
   custom: {
     slug: "tamano-personalizado",
-    metaTitle: "Redimensionar imágenes a tamaño personalizado, en lote | Image Ready",
+    metaTitle: "Redimensionar imágenes a tamaño personalizado, en lote | Resizet",
     metaDescription: "Redimensiona fotos en lote a cualquier ancho y alto entre 100 y 6000 px. Recorta o ajusta, exporta JPG o PNG y descarga un ZIP. Procesado en tu navegador.",
     eyebrow: "Tamaño personalizado",
     title: "Redimensiona imágenes a cualquier tamaño",
@@ -289,7 +289,7 @@ const es: Dictionary = {
     otherTitle: "Redimensionar para otras plataformas",
   },
   pricing: {
-    metaTitle: "Precios | Image Ready",
+    metaTitle: "Precios | Resizet",
     metaDescription: "Recibe 3 créditos gratis al registrarte. Cada foto descargada cuesta 1 crédito en cualquier número de tamaños. Paquetes desde 5 $, sin suscripción.",
     eyebrow: "Precios",
     title: "Paga por foto. Sin suscripción.",
@@ -335,7 +335,7 @@ const es: Dictionary = {
     terms: "Términos",
     privacy: "Política de privacidad",
     verifyTitle: "Confirma el inicio de sesión.",
-    verifyLead: "Pulsa el botón para terminar de iniciar sesión en Image Ready.",
+    verifyLead: "Pulsa el botón para terminar de iniciar sesión en Resizet.",
     verifyButton: "Iniciar sesión",
     verifyMissing: "A este enlace le falta el código de acceso.",
     requestNew: "Solicitar un enlace nuevo",
@@ -430,7 +430,7 @@ const es: Dictionary = {
     cancel: "Cancelar",
   },
   common: {
-    backHome: "Volver a Image Ready",
+    backHome: "Volver a Resizet",
     perPhoto: "por foto",
   },
 };

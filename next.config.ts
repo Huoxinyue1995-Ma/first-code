@@ -13,7 +13,18 @@ const nextConfig: NextConfig = {
     globalNotFound: true,
   },
   async redirects() {
+    // Domain move: opensourcephotoeditor.com -> www.resizet.com. Kept behind a flag so the new domain can be
+    // verified first; set LEGACY_DOMAIN_REDIRECT=1 in Vercel to turn on the permanent redirect.
+    const legacyDomainRedirects = process.env.LEGACY_DOMAIN_REDIRECT === "1"
+      ? ["opensourcephotoeditor.com", "www.opensourcephotoeditor.com"].map((host) => ({
+          source: "/:path*",
+          has: [{ type: "host" as const, value: host }],
+          destination: "https://www.resizet.com/:path*",
+          permanent: true,
+        }))
+      : [];
     return [
+      ...legacyDomainRedirects,
       // Old routes from the single-tool version of the site.
       { source: "/editor", destination: "/", permanent: true },
       { source: "/payment/success", destination: "/account", permanent: true },

@@ -34,7 +34,7 @@ export const GUIDES_ES: GuideEs[] = [
             "Un lienzo cuadrado 1:1 se muestra de forma más uniforme en la búsqueda, en el móvil y en la página de detalle del producto.",
             "Evita ampliar una foto pequeña para llegar al mínimo. Agrandar una imagen de 600 píxeles a 2000 no añade detalle real y suele verse borrosa al hacer zoom.",
           ] },
-          { type: "tip", text: "El tamaño de Amazon en Image Ready exporta un cuadrado de 2000 × 2000 píxeles, que supera con holgura el umbral del zoom y mantiene un peso de archivo razonable." },
+          { type: "tip", text: "El tamaño de Amazon en Resizet exporta un cuadrado de 2000 × 2000 píxeles, que supera con holgura el umbral del zoom y mantiene un peso de archivo razonable." },
         ],
       },
       {
@@ -130,7 +130,7 @@ export const GUIDES_ES: GuideEs[] = [
             "Usa PNG solo cuando necesites transparencia o gráficos planos nítidos, como tablas de tallas.",
             "Mantén la mayoría de fotos de producto muy por debajo de 1 MB. Si un archivo pesa mucho más, comprueba si se exportó con calidad 100 o con metadatos innecesarios.",
           ] },
-          { type: "tip", text: "El tamaño de Shopify en Image Ready recorta a 2048 × 2048 píxeles y te deja fijar la calidad JPEG antes de descargar, para revisar el resultado antes de subirlo a tu panel." },
+          { type: "tip", text: "El tamaño de Shopify en Resizet recorta a 2048 × 2048 píxeles y te deja fijar la calidad JPEG antes de descargar, para revisar el resultado antes de subirlo a tu panel." },
         ],
       },
       {
@@ -188,7 +188,7 @@ export const GUIDES_ES: GuideEs[] = [
             "Sube JPG o PNG. Mantén cada archivo ligero, ya que TikTok Shop aplica un límite de peso por imagen de pocos megabytes.",
             "Guarda en sRGB para que los colores se vean igual en la aplicación que en tu ordenador.",
           ] },
-          { type: "tip", text: "El tamaño de TikTok Shop en Image Ready exporta un cuadrado de 1080 × 1080 y el control de calidad te permite mantener cada archivo dentro de los límites de subida." },
+          { type: "tip", text: "El tamaño de TikTok Shop en Resizet exporta un cuadrado de 1080 × 1080 y el control de calidad te permite mantener cada archivo dentro de los límites de subida." },
         ],
       },
       {
@@ -286,7 +286,7 @@ export const GUIDES_ES: GuideEs[] = [
             "Revisa la zona con más detalle a tamaño completo; ajusta la calidad 5 puntos arriba o abajo si hace falta.",
             "Usa los mismos ajustes en todo el catálogo para que las fotos se vean uniformes.",
           ] },
-          { type: "p", text: "Image Ready sigue este flujo en el navegador: recortas y redimensionas a uno o varios tamaños de plataforma, eliges JPEG o PNG y un nivel de calidad, y descargas todos los resultados a la vez. Tu archivo original no se sube a ningún sitio, así que puedes probar ajustes sin crear copias en un servidor." },
+          { type: "p", text: "Resizet sigue este flujo en el navegador: recortas y redimensionas a uno o varios tamaños de plataforma, eliges JPEG o PNG y un nivel de calidad, y descargas todos los resultados a la vez. Tu archivo original no se sube a ningún sitio, así que puedes probar ajustes sin crear copias en un servidor." },
         ],
       },
     ],
@@ -341,7 +341,7 @@ export const GUIDES_ES: GuideEs[] = [
       {
         heading: "¿Y WebP y AVIF?",
         blocks: [
-          { type: "p", text: "WebP y AVIF son formatos más nuevos que producen archivos más ligeros que JPG con una calidad parecida. Muchas plataformas, incluida Shopify, ya convierten automáticamente tus imágenes a estos formatos cuando el navegador del comprador los admite. Como la compatibilidad de los marketplaces con estos formatos varía, subir un JPG bien preparado sigue siendo la opción más compatible. Por eso Image Ready acepta WebP como entrada y exporta JPG o PNG." },
+          { type: "p", text: "WebP y AVIF son formatos más nuevos que producen archivos más ligeros que JPG con una calidad parecida. Muchas plataformas, incluida Shopify, ya convierten automáticamente tus imágenes a estos formatos cuando el navegador del comprador los admite. Como la compatibilidad de los marketplaces con estos formatos varía, subir un JPG bien preparado sigue siendo la opción más compatible. Por eso Resizet acepta WebP como entrada y exporta JPG o PNG." },
         ],
       },
       {
@@ -415,7 +415,7 @@ export const GUIDES_ES: GuideEs[] = [
         heading: "Paso 6: exporta siempre con los mismos ajustes",
         blocks: [
           { type: "p", text: "Usa el mismo formato y calidad en todas las imágenes de un lote. Si una imagen es un PNG de 4 MB y la siguiente un JPG de 300 KB, cargarán de forma distinta y pueden verse ligeramente diferentes en color y nitidez." },
-          { type: "tip", text: "En Image Ready puedes añadir hasta 100 fotos, seleccionar uno o varios tamaños de plataforma y ajustar el zoom, la posición y el giro de cada foto por separado. Después todas las fotos se exportan con los mismos tamaños, formato y calidad en un solo ZIP." },
+          { type: "tip", text: "En Resizet puedes añadir hasta 100 fotos, seleccionar uno o varios tamaños de plataforma y ajustar el zoom, la posición y el giro de cada foto por separado. Después todas las fotos se exportan con los mismos tamaños, formato y calidad en un solo ZIP." },
         ],
       },
       {

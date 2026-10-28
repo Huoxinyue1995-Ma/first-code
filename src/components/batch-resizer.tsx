@@ -28,7 +28,7 @@ import { createZipStream, saveBlob } from "@/lib/zip-stream";
 const SUPPORTED = ["image/jpeg", "image/png", "image/webp"];
 const CUSTOM_MIN = 100;
 const CUSTOM_MAX = 6000;
-const SIGNIN_CHANNEL = "image-ready-auth";
+const SIGNIN_CHANNEL = "resizet-auth";
 
 type Photo = {
   id: string;
@@ -386,7 +386,7 @@ export function BatchResizer({ locale, t, presets, platformId, defaultSelected }
             bitmap.close();
           }
         }
-        saveBlob(await zip.finish(), `image-ready-${platformId}-${photos.length}-photos.zip`);
+        saveBlob(await zip.finish(), `resizet-${platformId}-${photos.length}-photos.zip`);
       }
       setNotice(charged ? fmt(e.done, { files: total, n: charged }) : fmt(e.doneFree, { files: total }));
       trackEvent("download_success", { photos: photos.length, sizes: chosenSizes.length, credits: charged, platform: platformId });

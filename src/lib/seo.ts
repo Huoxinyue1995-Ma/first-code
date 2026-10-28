@@ -19,7 +19,7 @@ export function bilingualMetadata(
       type: "website",
       locale: OG_LOCALE[locale],
       url: canonical,
-      siteName: "Image Ready",
+      siteName: "Resizet",
       title: meta.title,
       description: meta.description,
     },

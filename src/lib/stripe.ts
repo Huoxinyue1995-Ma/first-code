@@ -1,4 +1,5 @@
 import Stripe from "stripe";
+import { PRIMARY_HOST } from "@/lib/site";
 
 export function getStripe() {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -11,7 +12,7 @@ export function getSiteUrl(request: Request) {
   if (requestOrigin) {
     try {
       const url = new URL(requestOrigin);
-      if (url.protocol === "https:" && url.hostname === "www.opensourcephotoeditor.com") {
+      if (url.protocol === "https:" && url.hostname === PRIMARY_HOST) {
         return url.origin;
       }
     } catch {

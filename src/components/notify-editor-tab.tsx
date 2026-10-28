@@ -7,7 +7,7 @@ import { useEffect } from "react";
 export function NotifyEditorTab({ closeSelf = false }: { closeSelf?: boolean }) {
   useEffect(() => {
     if (typeof BroadcastChannel !== "undefined") {
-      const channel = new BroadcastChannel("image-ready-auth");
+      const channel = new BroadcastChannel("resizet-auth");
       channel.postMessage({ type: "account-updated" });
       channel.close();
     }
