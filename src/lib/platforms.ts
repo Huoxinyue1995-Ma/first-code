@@ -68,10 +68,14 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       en: [
         { q: "What is the best image size for Etsy listings?", a: "Etsy recommends listing images at least 2000 px on the shortest side. A 4:3 photo such as 2700 × 2025 px works well for the listing page; a square 2000 × 2000 px photo keeps search thumbnails consistent." },
         { q: "Can I resize many Etsy photos at once?", a: "Yes. Add up to 100 photos, pick one or more Etsy sizes, and download every result in a single ZIP." },
+        { q: "Why does my Etsy thumbnail cut off part of the product?", a: "Search thumbnails are cropped from the centre of the photo. Keep the product in the middle of the frame, or crop to a square so what shoppers see in search matches the full photo." },
+        { q: "How many photos can an Etsy listing have?", a: "Etsy allows up to 20 photos per listing. The first photo is used as the thumbnail in search, so make it the clearest view of the whole item." },
       ],
       es: [
         { q: "¿Cuál es el mejor tamaño de imagen para los anuncios de Etsy?", a: "Etsy recomienda imágenes de al menos 2000 px en el lado más corto. Una foto 4:3 como 2700 × 2025 px funciona bien en la página del anuncio; una foto cuadrada de 2000 × 2000 px mantiene uniformes las miniaturas de búsqueda." },
         { q: "¿Puedo redimensionar muchas fotos de Etsy a la vez?", a: "Sí. Añade hasta 100 fotos, elige uno o varios tamaños de Etsy y descarga todos los resultados en un solo ZIP." },
+        { q: "¿Por qué la miniatura de Etsy corta parte del producto?", a: "Las miniaturas de búsqueda se recortan desde el centro de la foto. Mantén el producto en el centro del encuadre o recorta a cuadrado para que lo que se ve en la búsqueda coincida con la foto completa." },
+        { q: "¿Cuántas fotos puede tener un anuncio de Etsy?", a: "Etsy permite hasta 20 fotos por anuncio. La primera foto se usa como miniatura en la búsqueda, así que haz que sea la vista más clara del artículo completo." },
       ],
     },
     sourceNote: CHECK_NOTE,
@@ -154,10 +158,14 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       en: [
         { q: "What size should eBay photos be?", a: "eBay's minimum is 500 px on the longest side, and it recommends about 1600 px. A 1600 × 1600 px square is a safe default." },
         { q: "Does eBay accept PNG?", a: "eBay accepts JPG and PNG. JPG keeps files smaller for photographs." },
+        { q: "Why do my eBay photos look small in search?", a: "eBay shows gallery images in a square frame. Wide or tall photos are shrunk to fit and leave empty space. Crop to a square such as 1600 × 1600 px so the item fills the thumbnail." },
+        { q: "Can I add text or a border to eBay photos?", a: "No. eBay does not allow borders, added text, or artwork over the item in listing photos." },
       ],
       es: [
         { q: "¿Qué tamaño deben tener las fotos de eBay?", a: "El mínimo de eBay es 500 px en el lado más largo y recomienda unos 1600 px. Un cuadrado de 1600 × 1600 px es una opción segura." },
         { q: "¿eBay acepta PNG?", a: "eBay acepta JPG y PNG. El JPG mantiene los archivos más ligeros en fotografías." },
+        { q: "¿Por qué mis fotos de eBay se ven pequeñas en la búsqueda?", a: "eBay muestra las imágenes de galería en un marco cuadrado. Las fotos anchas o altas se reducen para caber y dejan espacio vacío. Recorta a un cuadrado como 1600 × 1600 px para que el artículo llene la miniatura." },
+        { q: "¿Puedo añadir texto o un borde a las fotos de eBay?", a: "No. eBay no permite bordes, texto añadido ni gráficos sobre el artículo en las fotos de los anuncios." },
       ],
     },
     sourceNote: CHECK_NOTE,
@@ -196,11 +204,15 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     faq: {
       en: [
         { q: "What size should Amazon product images be?", a: "At least 1000 px on the longest side for zoom; 2000 × 2000 px squares are a common standard." },
-        { q: "Does this tool make the background white?", a: "No. It crops and resizes. Shoot on a white background, or use a background remover first." },
+        { q: "Does this tool make the background white?", a: "It does not remove an existing background. With the fit option it adds white space around the photo to make it square. For the main image, shoot on white or remove the background first." },
+        { q: "How much of the frame should the product fill on Amazon?", a: "About 85%. Crop so the product's longest side nearly reaches the edge, leaving a thin, even white margin." },
+        { q: "Can secondary Amazon images have a background?", a: "Yes. Only the main image must be on pure white. Secondary images can show the product in use, details, scale, and what is in the box." },
       ],
       es: [
         { q: "¿Qué tamaño deben tener las imágenes de Amazon?", a: "Al menos 1000 px en el lado más largo para el zoom; los cuadrados de 2000 × 2000 px son un estándar habitual." },
-        { q: "¿Esta herramienta pone el fondo blanco?", a: "No. Recorta y redimensiona. Fotografía sobre fondo blanco o usa antes un eliminador de fondo." },
+        { q: "¿Esta herramienta pone el fondo blanco?", a: "No elimina un fondo existente. Con la opción de ajustar añade espacio blanco alrededor de la foto para hacerla cuadrada. Para la imagen principal, fotografía sobre blanco o elimina antes el fondo." },
+        { q: "¿Cuánto del encuadre debe ocupar el producto en Amazon?", a: "Cerca del 85%. Recorta para que el lado más largo del producto casi llegue al borde, dejando un margen blanco fino y uniforme." },
+        { q: "¿Las imágenes secundarias de Amazon pueden tener fondo?", a: "Sí. Solo la imagen principal debe tener fondo blanco puro. Las secundarias pueden mostrar el producto en uso, detalles, escala y el contenido de la caja." },
       ],
     },
     sourceNote: CHECK_NOTE,
@@ -240,10 +252,14 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       en: [
         { q: "What is the best Shopify product image size?", a: "Shopify recommends 2048 × 2048 px for square product images." },
         { q: "Should all Shopify product photos be the same size?", a: "Yes. A single aspect ratio keeps collection grids even and avoids unexpected theme cropping." },
+        { q: "Does Shopify resize images automatically?", a: "Shopify serves smaller versions of your images, but it starts from the file you upload. Uploading images at the recommended size keeps uploads fast and pages light." },
+        { q: "Should I use square or portrait images on Shopify?", a: "Square suits most categories. Portrait (4:5) suits clothing and tall products. Match your theme's product card image setting." },
       ],
       es: [
         { q: "¿Cuál es el mejor tamaño de imagen para Shopify?", a: "Shopify recomienda 2048 × 2048 px para imágenes de producto cuadradas." },
         { q: "¿Deben tener todas las fotos de Shopify el mismo tamaño?", a: "Sí. Una sola proporción mantiene uniformes las colecciones y evita recortes inesperados del tema." },
+        { q: "¿Shopify redimensiona las imágenes automáticamente?", a: "Shopify sirve versiones más pequeñas de tus imágenes, pero parte del archivo que subes. Subir las imágenes al tamaño recomendado mantiene rápidas las subidas y ligeras las páginas." },
+        { q: "¿Uso imágenes cuadradas o verticales en Shopify?", a: "El cuadrado sirve para la mayoría de categorías. El vertical (4:5) es ideal para ropa y productos altos. Ajústalo a la opción de imagen de las tarjetas de producto de tu tema." },
       ],
     },
     sourceNote: CHECK_NOTE,
@@ -326,10 +342,14 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       en: [
         { q: "What is the best Pinterest pin size?", a: "Pinterest recommends a 2:3 ratio, such as 1000 × 1500 px." },
         { q: "Can I export one photo as several pin sizes?", a: "Yes. Select more than one size and each photo is exported in every selected size." },
+        { q: "What happens if my pin is taller than 2:3?", a: "Pins taller than 2:3 may be cut off in the feed. Crop to 1000 × 1500 px to control what shows." },
+        { q: "How do I make a wide product photo into a pin?", a: "Use the fit option with a white background at 1000 × 1500 px. The whole product stays visible and the extra space can hold a title." },
       ],
       es: [
         { q: "¿Cuál es el mejor tamaño de pin en Pinterest?", a: "Pinterest recomienda una proporción 2:3, como 1000 × 1500 px." },
         { q: "¿Puedo exportar una foto en varios tamaños de pin?", a: "Sí. Selecciona varios tamaños y cada foto se exporta en todos ellos." },
+        { q: "¿Qué pasa si mi pin es más alto que 2:3?", a: "Los pines más altos que 2:3 pueden cortarse en el feed. Recorta a 1000 × 1500 px para controlar lo que se ve." },
+        { q: "¿Cómo convierto una foto de producto ancha en un pin?", a: "Usa la opción de ajustar con fondo blanco a 1000 × 1500 px. El producto completo sigue visible y el espacio extra puede llevar un título." },
       ],
     },
     sourceNote: CHECK_NOTE,

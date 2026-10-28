@@ -5,6 +5,7 @@ import { PageFrame } from "@/components/site-chrome";
 import { fmt, getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
 import { ratioLabel } from "@/lib/image-render";
+import { PLATFORM_GUIDES } from "@/lib/platform-guides";
 import { PLATFORM_PAGES, type PlatformPage, platformPath } from "@/lib/platforms";
 
 export function PlatformView({ locale, page }: { locale: Locale; page: PlatformPage }) {
@@ -17,6 +18,7 @@ export function PlatformView({ locale, page }: { locale: Locale; page: PlatformP
     mainEntity: page.faq[locale].map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: item.a } })),
   };
   const recommended = page.sizes.filter((s) => s.note).map((s) => s.id);
+  const guide = PLATFORM_GUIDES[page.id]?.[locale] ?? [];
 
   return (
     <PageFrame alternate={platformPath(other, page)} locale={locale}>
@@ -45,6 +47,17 @@ export function PlatformView({ locale, page }: { locale: Locale; page: PlatformP
           </table>
           <p className="source-note">{page.sourceNote[locale]}</p>
         </section>
+
+        {guide.length > 0 && (
+          <article className="content-section platform-guide">
+            {guide.map((section) => (
+              <section key={section.h}>
+                <h2>{section.h}</h2>
+                {section.p.map((text) => <p key={text.slice(0, 40)}>{text}</p>)}
+              </section>
+            ))}
+          </article>
+        )}
 
         <section aria-labelledby="tips-title" className="content-section">
           <h2 id="tips-title">{fmt(p.tipsTitle, { platform: page.platform })}</h2>
