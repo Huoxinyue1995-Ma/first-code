@@ -17,7 +17,7 @@ export function SiteHeader({ locale, alternate }: { locale: Locale; alternate: s
       <nav aria-label="Main" className="header-nav">
         <Link href={`${localePath(locale, "/")}#platforms`}>{t.nav.platforms}</Link>
         <Link href={localePath(locale, "/pricing")}>{t.nav.pricing}</Link>
-        {locale === "en" && <Link href="/guides">{t.nav.guides}</Link>}
+        <Link href={locale === "en" ? "/guides" : "/es/guias"}>{t.nav.guides}</Link>
         <Link aria-label={t.nav.switchLanguageLabel} className="lang-switch" href={alternate} hrefLang={locale === "en" ? "es" : "en"}>
           <Globe size={14} /> {t.nav.switchLanguage}
         </Link>

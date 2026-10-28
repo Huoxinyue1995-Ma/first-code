@@ -2,7 +2,9 @@ import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { PageFrame } from "@/components/site-chrome";
 import { fmt, getDictionary } from "@/lib/dictionary";
+import { guidePath } from "@/components/views/guide-views";
 import { GUIDES } from "@/lib/guides";
+import { GUIDES_ES } from "@/lib/guides-es";
 import { type Locale, localePath } from "@/lib/i18n";
 import { PLATFORM_PAGES, customPath, platformPath } from "@/lib/platforms";
 
@@ -71,11 +73,11 @@ export function HomeView({ locale }: { locale: Locale }) {
         <section aria-labelledby="guides-title" className="content-section">
           <div className="section-heading-row">
             <h2 id="guides-title">{h.guidesTitle}</h2>
-            <Link className="text-link" href="/guides">{h.allGuides}</Link>
+            <Link className="text-link" href={locale === "en" ? "/guides" : "/es/guias"}>{h.allGuides}</Link>
           </div>
           <div className="guide-grid">
-            {GUIDES.slice(0, 3).map((guide) => (
-              <Link className="guide-card" href={`/guides/${guide.slug}`} hrefLang="en" key={guide.slug}>
+            {(locale === "en" ? GUIDES : GUIDES_ES).slice(0, 3).map((guide) => (
+              <Link className="guide-card" href={guidePath(locale, guide.slug)} key={guide.slug}>
                 <strong>{guide.title}</strong>
                 <span>{guide.summary}</span>
               </Link>

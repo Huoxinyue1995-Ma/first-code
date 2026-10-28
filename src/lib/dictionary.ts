@@ -267,7 +267,7 @@ const es: Dictionary = {
       { q: "¿Puedo exportar una foto en varios tamaños?", a: "Sí. Selecciona varios tamaños y cada foto se exporta en todos ellos, por 1 crédito por foto." },
       { q: "¿Necesito una cuenta?", a: "Puedes añadir fotos, elegir tamaños y previsualizar sin cuenta. Solo inicias sesión al descargar, para que podamos llevar la cuenta de tus créditos." },
     ],
-    guidesTitle: "Guías para vendedores (en inglés)",
+    guidesTitle: "Guías para vendedores",
     allGuides: "Todas las guías",
   },
   custom: {

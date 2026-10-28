@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { GUIDES } from "@/lib/guides";
+import { GUIDES_ES } from "@/lib/guides-es";
 import { PLATFORM_PAGES } from "@/lib/platforms";
 import { PRIMARY_SITE_URL } from "@/lib/site";
 
@@ -18,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { en: "/pricing", es: "/es/pricing", priority: 0.6 },
     { en: "/privacy", es: "/es/privacy", priority: 0.3 },
     { en: "/terms", es: "/es/terms", priority: 0.3 },
+    { en: "/guides", es: "/es/guias", priority: 0.7 },
+    ...GUIDES_ES.map((guide) => ({ en: `/guides/${guide.enSlug}`, es: `/es/guias/${guide.slug}`, priority: 0.6 })),
   ];
 
   const entries: MetadataRoute.Sitemap = bilingual.flatMap((pair) => {
@@ -28,19 +31,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ];
   });
 
-  const englishOnly: MetadataRoute.Sitemap = ["/guides", "/about", "/contact"].map((path) => ({
+  const englishOnly: MetadataRoute.Sitemap = ["/about", "/contact"].map((path) => ({
     url: url(path),
     lastModified: now,
     changeFrequency: "monthly",
-    priority: path === "/guides" ? 0.7 : 0.4,
+    priority: 0.4,
   }));
 
-  const guides: MetadataRoute.Sitemap = GUIDES.map((guide) => ({
+  // English guides without a Spanish translation (none today; kept for future guides).
+  const translated = new Set(GUIDES_ES.map((guide) => guide.enSlug));
+  const untranslated: MetadataRoute.Sitemap = GUIDES.filter((guide) => !translated.has(guide.slug)).map((guide) => ({
     url: url(`/guides/${guide.slug}`),
     lastModified: new Date(`${guide.updated}T00:00:00Z`),
     changeFrequency: "monthly",
     priority: 0.6,
   }));
 
-  return [...entries, ...englishOnly, ...guides];
+  return [...entries, ...englishOnly, ...untranslated];
 }
