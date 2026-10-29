@@ -1,14 +1,17 @@
 # 从本地到公开网址：Vercel、域名和 Google 搜索提交
 
+> **域名已迁移（2026-10-29）**：正式网址现在是 `https://www.resizet.com`，品牌名 Resizet。`opensourcephotoeditor.com` 与 `www.resizet.com` 的所有路径都 308 永久跳转到新域名的相同路径（Vercel 域名级跳转 + 环境变量 `LEGACY_DOMAIN_REDIRECT=1` 下的 next.config 跳转）。旧域名请保留续费至少一年。下文中出现的旧域名均应理解为新域名；发信域名为 `mail.resizet.com`。
+
+
 ## 当前项目状态（2026-10-14）
 
 - 代码仓库：[Huoxinyue1995-Ma/first-code](https://github.com/Huoxinyue1995-Ma/first-code)
 - Vercel 项目：`emma-8abb/image-ready`（正式域名绑定在这里）。另有一个 `emma-8abb/first-code` 项目也部署同一仓库，但没有绑定正式域名，不要在它上面配置变量。
-- 当前生产网址：[https://www.opensourcephotoeditor.com](https://www.opensourcephotoeditor.com)
+- 当前生产网址：[https://www.resizet.com](https://www.resizet.com)
 - GitHub 已与 Vercel 连接；之后推送到 `main` 会触发自动发布。
-- `opensourcephotoeditor.com` 和 `www.opensourcephotoeditor.com` 均已在 Vercel 验证；根域名会自动跳转至 `www`。
+- `opensourcephotoeditor.com` 和 `www.resizet.com` 均已在 Vercel 验证；根域名会自动跳转至 `www`。
 - `NEXT_PUBLIC_SITE_URL` 已设为正式网址，因此 `robots.txt` 和 `sitemap.xml` 均使用正式域名。
-- Google Search Console 的 `opensourcephotoeditor.com` 域名属性已验证，`https://www.opensourcephotoeditor.com/sitemap.xml` 已提交。
+- Google Search Console 的 `opensourcephotoeditor.com` 域名属性已验证，`https://www.resizet.com/sitemap.xml` 已提交。
 
 本阶段的上线步骤已经完成。Google 对站点地图的后续抓取、收录与排名属于上线后的观察工作，不属于本阶段完成条件。
 
@@ -74,7 +77,7 @@ git push
 
 ## 第 3 步：首次发布到 Vercel
 
-当前项目已发布到 [https://www.opensourcephotoeditor.com](https://www.opensourcephotoeditor.com)，并且已经完成一次线上上传、裁剪和下载验证。Vercel 已识别 Next.js。图片不需要、也绝不能配置任何上传相关的环境变量。
+当前项目已发布到 [https://www.resizet.com](https://www.resizet.com)，并且已经完成一次线上上传、裁剪和下载验证。Vercel 已识别 Next.js。图片不需要、也绝不能配置任何上传相关的环境变量。
 
 以后若要从 Vercel 网页重新发布，打开项目 `image-ready` 的 `Deployments` 页面，找到最新版本后点击 `Redeploy`。正常情况下，推送到 GitHub 的 `main` 分支会自动完成这件事。
 
@@ -108,7 +111,7 @@ STRIPE_SECRET_KEY=sk_test_...
 | 名称 | 值 | 适用环境 |
 | --- | --- | --- |
 | `STRIPE_SECRET_KEY` | Stripe **Live mode** 的 Secret key | Production |
-| `NEXT_PUBLIC_SITE_URL` | `https://www.opensourcephotoeditor.com` | Production |
+| `NEXT_PUBLIC_SITE_URL` | `https://www.resizet.com` | Production |
 
 保存后重新部署。`STRIPE_SECRET_KEY` 只能填在 Vercel 后台或自己电脑的 `.env.local`，绝不能加上 `NEXT_PUBLIC_` 前缀、提交到 GitHub 或放在网页代码中。
 

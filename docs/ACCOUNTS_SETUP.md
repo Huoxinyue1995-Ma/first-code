@@ -1,5 +1,8 @@
 # 账号与点数：上线配置清单
 
+> **域名已迁移（2026-10-29）**：正式网址现在是 `https://www.resizet.com`，品牌名 Resizet。`opensourcephotoeditor.com` 与 `www.resizet.com` 的所有路径都 308 永久跳转到新域名的相同路径（Vercel 域名级跳转 + 环境变量 `LEGACY_DOMAIN_REDIRECT=1` 下的 next.config 跳转）。旧域名请保留续费至少一年。下文中出现的旧域名均应理解为新域名；发信域名为 `mail.resizet.com`。
+
+
 代码在分支 `feat/accounts-credits`。下面每一步都需要在对应后台登录操作；密钥只填到 Vercel 环境变量或本机 `.env.local`，不要发到聊天或提交到 GitHub。
 
 ## 功能概览
@@ -26,10 +29,10 @@ DATABASE_URL="从 Vercel 复制的连接串" npm run db:migrate
 ## 2. Google 登录
 
 1. 打开 Google Cloud Console → 新建项目 `Image Ready`。
-2. APIs & Services → OAuth consent screen：类型选 External，填应用名、支持邮箱、网站首页 `https://www.opensourcephotoeditor.com`、隐私政策 `https://www.opensourcephotoeditor.com/privacy`。范围只需 `email`、`profile`、`openid`，然后 Publish。
+2. APIs & Services → OAuth consent screen：类型选 External，填应用名、支持邮箱、网站首页 `https://www.resizet.com`、隐私政策 `https://www.resizet.com/privacy`。范围只需 `email`、`profile`、`openid`，然后 Publish。
 3. Credentials → Create credentials → OAuth client ID → Web application。
    - Authorized redirect URIs：
-     - `https://www.opensourcephotoeditor.com/api/auth/google/callback`
+     - `https://www.resizet.com/api/auth/google/callback`
      - `http://localhost:3000/api/auth/google/callback`（本机测试用）
 4. 把 Client ID 和 Client secret 填到 Vercel：`GOOGLE_CLIENT_ID`、`GOOGLE_CLIENT_SECRET`。
 
@@ -39,12 +42,12 @@ DATABASE_URL="从 Vercel 复制的连接串" npm run db:migrate
 
 ## 3. 邮箱登录（Resend）
 
-1. 注册 resend.com → Domains → Add Domain：`mail.opensourcephotoeditor.com`（用子域，不影响主域邮件）。
+1. 注册 resend.com → Domains → Add Domain：`mail.resizet.com`（用子域，不影响主域邮件）。
 2. 域名的 DNS 由 **Vercel** 托管（域名服务器是 `ns1/ns2.vercel-dns.com`），不是 Spaceship。用 `vercel dns add opensourcephotoeditor.com <name> <type> <value>` 添加 Resend 显示的记录（已完成：`resend._domainkey.mail` TXT、`rsend.mail` 与 `send.mail` CNAME、`_dmarc` TXT），等 Resend 显示 Verified。
 3. API Keys → 创建只发送权限的 key。
 4. Vercel 环境变量：
    - `RESEND_API_KEY`
-   - `EMAIL_FROM` = `Image Ready <login@mail.opensourcephotoeditor.com>`
+   - `EMAIL_FROM` = `Image Ready <login@mail.resizet.com>`
 
 本机开发时可以不配 Resend：登录链接会打印在 `npm run dev` 的终端里。
 
