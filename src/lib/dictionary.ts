@@ -27,7 +27,7 @@ const en = {
     metaTitle: "Batch Image Resizer for Etsy, eBay, Amazon, Shopify & More | Resizet",
     metaDescription:
       "Resize hundreds of product photos to the right size for Etsy, eBay, Amazon, Shopify, Pinterest, Poshmark and more. Batch crop in your browser and download a ZIP.",
-    eyebrow: "Batch image resizer for online sellers",
+    eyebrow: "For Etsy, eBay, Amazon & Shopify sellers",
     title: "Batch Image Resizer — Resize Product Photos for Every Marketplace",
     lead:
       "Pick your platform, add up to 100 photos, choose the sizes you need, and download them all in one ZIP. Images are processed in your browser and never uploaded.",
@@ -243,8 +243,8 @@ const es: Dictionary = {
     metaTitle: "Redimensionar imágenes en lote para Etsy, eBay, Amazon, Shopify y más | Resizet",
     metaDescription:
       "Redimensiona cientos de fotos de producto al tamaño correcto para Etsy, eBay, Amazon, Shopify, Pinterest, Poshmark y más. Recorta en lote en tu navegador y descarga un ZIP.",
-    eyebrow: "Redimensionador de imágenes en lote para vendedores",
-    title: "Redimensiona tus fotos de producto para cada marketplace, en lote.",
+    eyebrow: "Para vendedores de Etsy, eBay, Amazon y Shopify",
+    title: "Redimensionador de imágenes en lote — Fotos de producto para cada marketplace",
     lead:
       "Elige tu plataforma, añade hasta 100 fotos, selecciona los tamaños que necesitas y descárgalas todas en un ZIP. Las imágenes se procesan en tu navegador y nunca se suben.",
     platformsTitle: "Elige tu plataforma",
