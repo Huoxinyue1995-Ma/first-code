@@ -28,7 +28,7 @@ const en = {
     metaDescription:
       "Resize hundreds of product photos to the right size for Etsy, eBay, Amazon, Shopify, Pinterest, Poshmark and more. Batch crop in your browser and download a ZIP.",
     eyebrow: "Batch image resizer for online sellers",
-    title: "Resize product photos for every marketplace, in bulk.",
+    title: "Batch Image Resizer — Resize Product Photos for Every Marketplace",
     lead:
       "Pick your platform, add up to 100 photos, choose the sizes you need, and download them all in one ZIP. Images are processed in your browser and never uploaded.",
     platformsTitle: "Choose your platform",
