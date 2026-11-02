@@ -22,10 +22,11 @@ import {
   ratioLabel,
   renderToBlob,
 } from "@/lib/image-render";
+import { takeHandedOffPhotos } from "@/lib/photo-handoff";
 import type { SizePreset } from "@/lib/platforms";
 import { createZipStream, saveBlob } from "@/lib/zip-stream";
 
-const SUPPORTED = ["image/jpeg", "image/png", "image/webp"];
+export const SUPPORTED = ["image/jpeg", "image/png", "image/webp"];
 const CUSTOM_MIN = 100;
 const CUSTOM_MAX = 6000;
 const SIGNIN_CHANNEL = "resizet-auth";
@@ -173,6 +174,29 @@ function FramingCanvas({
   );
 }
 
+// The empty-state upload area. Shared by every tool page and the home page.
+export function DropPanel({ e, onChoose, onDropFiles }: { e: Dictionary["editor"]; onChoose: () => void; onDropFiles: (files: FileList) => void }) {
+  return (
+    <section
+      className="drop-panel"
+      onDragOver={(ev) => ev.preventDefault()}
+      onDrop={(ev: DragEvent<HTMLElement>) => {
+        ev.preventDefault();
+        onDropFiles(ev.dataTransfer.files);
+      }}
+    >
+      <span className="drop-icon"><Upload size={26} /></span>
+      <h2>{e.dropTitle}</h2>
+      <p>{e.dropBody}</p>
+      <button className="primary-button" onClick={onChoose} type="button">
+        <ImagePlus size={18} /> {e.choose}
+      </button>
+      <p className="drop-details">{fmt(e.limits, { max: MAX_BATCH_PHOTOS, mb: MAX_FILE_MB })}</p>
+      <p className="privacy-note"><ShieldCheck size={15} /> {e.privacy}</p>
+    </section>
+  );
+}
+
 export function BatchResizer({ locale, t, presets, platformId, defaultSelected }: BatchResizerProps) {
   const e = t.editor;
   const inputRef = useRef<HTMLInputElement>(null);
@@ -214,6 +238,13 @@ export function BatchResizer({ locale, t, presets, platformId, defaultSelected }
   useEffect(() => {
     const all = urls.current;
     return () => all.forEach((url) => URL.revokeObjectURL(url));
+  }, []);
+
+  // Photos dropped on the home page arrive here after the user picks this tool.
+  useEffect(() => {
+    const handedOff = takeHandedOffPhotos();
+    if (handedOff.length) void addFiles(handedOff);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function addFiles(list: FileList | File[]) {
@@ -436,16 +467,7 @@ export function BatchResizer({ locale, t, presets, platformId, defaultSelected }
   return (
     <div className="batch-resizer">
       {!photos.length && !loading ? (
-        <section className="drop-panel" onDragOver={(ev) => ev.preventDefault()} onDrop={onDrop}>
-          <span className="drop-icon"><Upload size={26} /></span>
-          <h2>{e.dropTitle}</h2>
-          <p>{e.dropBody}</p>
-          <button className="primary-button" onClick={() => inputRef.current?.click()} type="button">
-            <ImagePlus size={18} /> {e.choose}
-          </button>
-          <p className="drop-details">{fmt(e.limits, { max: MAX_BATCH_PHOTOS, mb: MAX_FILE_MB })}</p>
-          <p className="privacy-note"><ShieldCheck size={15} /> {e.privacy}</p>
-        </section>
+        <DropPanel e={e} onChoose={() => inputRef.current?.click()} onDropFiles={(files) => void addFiles(files)} />
       ) : (
         <div className="batch-grid">
           <section className="batch-photos" onDragOver={(ev) => ev.preventDefault()} onDrop={onDrop}>

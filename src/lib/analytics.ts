@@ -3,7 +3,8 @@ export type AnalyticsEventName =
   | "signin_prompt"
   | "credits_prompt"
   | "begin_checkout"
-  | "download_success";
+  | "download_success"
+  | "home_handoff";
 
 type Gtag = (...args: unknown[]) => void;
 
