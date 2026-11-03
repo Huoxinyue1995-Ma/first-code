@@ -108,8 +108,8 @@ const ROWS: Row[] = [
   {
     id: "walmart",
     note: {
-      en: "Walmart's guide lists 2200 × 2200 px, at least 1500 × 1500 px for zoom, on white.",
-      es: "La guía de Walmart indica 2200 × 2200 px, mínimo 1500 × 1500 px para zoom, sobre blanco.",
+      en: "Seamless white background; at least 1500 × 1500 px for zoom and 5 MB or less per file.",
+      es: "Fondo blanco uniforme; al menos 1500 × 1500 px para zoom y 5 MB o menos por archivo.",
     },
     doc: {
       url: "https://marketplacelearn.walmart.com/guides/Item%20setup/Item%20content,%20imagery%20and%20media/Product-detail-page:-Image-guidelines-&-requirements",
@@ -119,8 +119,8 @@ const ROWS: Row[] = [
   {
     id: "etsy-banner",
     note: {
-      en: "Etsy's minimum big banner is 1200 × 300 px; keep text in the center.",
-      es: "El banner grande de Etsy pide mínimo 1200 × 300 px; deja el texto en el centro.",
+      en: "Big banner; minimum 1200 × 300 px. The mini banner is 1600 × 213 px.",
+      es: "Banner grande; mínimo 1200 × 300 px. El mini banner es de 1600 × 213 px.",
     },
     doc: ETSY_DOC,
   },

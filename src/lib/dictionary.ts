@@ -55,7 +55,7 @@ const en = {
     quality: [
       "Your original files are never changed or uploaded. Resizet reads each photo in your browser and draws a new copy at the exact pixel size you chose, so the originals on your device stay as they were.",
       "PNG copies are lossless, which suits graphics, text and transparent backgrounds. JPG copies are saved at 90% quality by default, and you can choose anything from 60% to 100%. Around 80–90% keeps product photos sharp with much smaller files, so listing pages load faster. JPG has no transparency, so empty areas become white.",
-      "A 2000 px square is plenty for marketplace zoom; larger only adds weight. The new files carry no camera metadata, so your phone's location data is left out.",
+      "Export at the size each marketplace asks for; going larger only adds weight. The new files carry no camera metadata, so your phone's location data is left out.",
     ],
     appFeatures: ["Batch resize up to 100 photos", "Batch crop or fit to any aspect ratio", "Download every size in one ZIP", "Runs in the browser; photos are never uploaded"],
     customTitle: "Custom size resizer",
@@ -300,7 +300,7 @@ const es: Dictionary = {
     quality: [
       "Tus archivos originales nunca se modifican ni se suben. Resizet lee cada foto en tu navegador y dibuja una copia nueva con el tamaño exacto en píxeles que elegiste, así que los originales de tu dispositivo quedan como estaban.",
       "Las copias PNG no pierden calidad, ideales para gráficos, texto y fondos transparentes. Las copias JPG se guardan al 90% de calidad por defecto y puedes elegir entre 60% y 100%. Entre 80% y 90% las fotos de producto siguen nítidas con archivos mucho más ligeros, y los anuncios cargan más rápido. JPG no admite transparencia, así que las zonas vacías quedan en blanco.",
-      "Ajusta cada copia a dónde se va a mostrar. Un cuadrado de 2000 px basta para el zoom de los marketplaces y más grande solo añade peso. Los archivos nuevos no llevan metadatos de la cámara, así que la ubicación de tu móvil no se incluye.",
+      "Exporta al tamaño que pide cada marketplace; más grande solo añade peso. Los archivos nuevos no llevan metadatos de la cámara, así que la ubicación de tu móvil no se incluye.",
     ],
     appFeatures: ["Redimensiona hasta 100 fotos en lote", "Recorta o ajusta en lote a cualquier proporción", "Descarga todos los tamaños en un ZIP", "Funciona en el navegador; las fotos nunca se suben"],
     customTitle: "Redimensionar a tamaño personalizado",

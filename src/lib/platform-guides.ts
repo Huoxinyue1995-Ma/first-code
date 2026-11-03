@@ -322,7 +322,7 @@ export const PLATFORM_GUIDES: Record<string, PlatformGuide> = {
       {
         h: "Big banner or mini banner?",
         p: [
-          "Etsy lets you show either a big banner or a mini banner at the top of your shop. The big banner is a wide image, commonly made at 3360 × 840 px (a 4:1 ratio), that spans the full width of the shop page and works like a storefront sign. The mini banner is a slim strip, commonly 1200 × 160 px, that leaves more room for your listings above the fold.",
+          "Etsy lets you show either a big banner or a mini banner at the top of your shop. The big banner is a wide image that spans the full width of the shop page and works like a storefront sign. Etsy recommends 1600 × 400 px (a 4:1 ratio), with a minimum of 1200 × 300 px. The mini banner is a slim strip that leaves more room for your listings above the fold; Etsy recommends 1600 × 213 px, with a minimum of 1200 × 160 px.",
           "A big banner suits shops with a strong visual brand or a seasonal campaign. A mini banner suits shops where shoppers mainly want to see products straight away. You can switch between them at any time in your shop settings, so it is worth exporting both from the same artwork and seeing which one looks better on your shop.",
         ],
       },
@@ -351,7 +351,7 @@ export const PLATFORM_GUIDES: Record<string, PlatformGuide> = {
       {
         h: "¿Banner grande o mini banner?",
         p: [
-          "Etsy te permite mostrar un banner grande o un mini banner en la parte superior de tu tienda. El banner grande es una imagen ancha, que suele hacerse en 3360 × 840 px (proporción 4:1), ocupa todo el ancho de la página de la tienda y funciona como el rótulo de un escaparate. El mini banner es una franja estrecha, normalmente de 1200 × 160 px, que deja más espacio para tus anuncios en la parte visible de la página.",
+          "Etsy te permite mostrar un banner grande o un mini banner en la parte superior de tu tienda. El banner grande es una imagen ancha que ocupa todo el ancho de la página de la tienda y funciona como el rótulo de un escaparate. Etsy recomienda 1600 × 400 px (proporción 4:1), con un mínimo de 1200 × 300 px. El mini banner es una franja estrecha que deja más espacio para tus anuncios en la parte visible de la página; Etsy recomienda 1600 × 213 px, con un mínimo de 1200 × 160 px.",
           "El banner grande encaja en tiendas con una imagen de marca fuerte o una campaña de temporada. El mini banner encaja en tiendas donde los compradores quieren ver los productos enseguida. Puedes cambiar entre ambos cuando quieras en la configuración de la tienda, así que vale la pena exportar los dos a partir del mismo diseño y ver cuál queda mejor en tu tienda.",
         ],
       },
@@ -743,7 +743,7 @@ export const PLATFORM_GUIDES: Record<string, PlatformGuide> = {
       {
         h: "Walmart Marketplace image basics",
         p: [
-          "Walmart Marketplace asks for square product images large enough for zoom, and many sellers export them at about 2000 × 2000 px. The main image should show the product on a white background, filling most of the frame, without added text, watermarks, or promotional graphics. Walmart publishes detailed image guidelines in Seller Center, and those are the final reference for your category.",
+          "Walmart Marketplace asks for square 1:1 product images at 2200 × 2200 px, at least 1500 × 1500 px for zoom, and 5 MB or less per file. The main image should show the product on a seamless white background, filling most of the frame, without added text, watermarks, or promotional graphics. Walmart publishes detailed image guidelines in Seller Center, and those are the final reference for your category.",
           "Images that are too small, cropped awkwardly, or on a coloured background are common reasons for content quality issues, which can affect how a listing is shown.",
         ],
       },
@@ -770,7 +770,7 @@ export const PLATFORM_GUIDES: Record<string, PlatformGuide> = {
       {
         h: "Lo básico de las imágenes en Walmart Marketplace",
         p: [
-          "Walmart Marketplace pide imágenes de producto cuadradas y lo bastante grandes para el zoom, y muchos vendedores las exportan a unos 2000 × 2000 px. La imagen principal debe mostrar el producto sobre fondo blanco, ocupando la mayor parte del encuadre, sin texto añadido, marcas de agua ni gráficos promocionales. Walmart publica normas de imagen detalladas en Seller Center, que son la referencia final para tu categoría.",
+          "Walmart Marketplace pide imágenes de producto cuadradas 1:1 de 2200 × 2200 px, al menos 1500 × 1500 px para el zoom y 5 MB o menos por archivo. La imagen principal debe mostrar el producto sobre fondo blanco uniforme, ocupando la mayor parte del encuadre, sin texto añadido, marcas de agua ni gráficos promocionales. Walmart publica normas de imagen detalladas en Seller Center, que son la referencia final para tu categoría.",
           "Las imágenes demasiado pequeñas, mal recortadas o con fondo de color son motivos habituales de problemas de calidad de contenido, que pueden afectar a cómo se muestra un anuncio.",
         ],
       },

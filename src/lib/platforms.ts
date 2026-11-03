@@ -43,8 +43,8 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       "Redimensiona en lote tus fotos de producto a los tamaños de Etsy. Recorta a 4:3, cuadrado o icono de tienda en tu navegador y descárgalas todas a la vez.",
     ),
     intro: both(
-      "Etsy shows listing photos in search as a cropped thumbnail and on the listing page at full size. A 4:3 landscape image at least 2000 px wide stays sharp when shoppers zoom, while a square crop keeps search thumbnails consistent across your shop.",
-      "Etsy muestra las fotos de los anuncios en la búsqueda como una miniatura recortada y en la página del anuncio a tamaño completo. Una imagen horizontal 4:3 de al menos 2000 px de ancho se ve nítida cuando el comprador hace zoom, y un recorte cuadrado mantiene las miniaturas uniformes en toda tu tienda.",
+      "Etsy shows listing photos in search as a cropped thumbnail and on the listing page at full size. A 4:3 landscape image at least 2000 px on its shortest side stays sharp when shoppers zoom, while a square crop keeps search thumbnails consistent across your shop.",
+      "Etsy muestra las fotos de los anuncios en la búsqueda como una miniatura recortada y en la página del anuncio a tamaño completo. Una imagen horizontal 4:3 de al menos 2000 px en su lado más corto se ve nítida cuando el comprador hace zoom, y un recorte cuadrado mantiene las miniaturas uniformes en toda tu tienda.",
     ),
     sizes: [
       { id: "listing-4x3", width: 2700, height: 2025, label: both("Listing photo (4:3)", "Foto de anuncio (4:3)"), note: both("Recommended", "Recomendado") },
@@ -87,16 +87,16 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     title: both("Etsy banner size", "Tamaño del banner de Etsy"),
     metaTitle: both("Etsy Banner Size: Resize Big & Mini Shop Banners", "Tamaño del banner de Etsy: redimensiona banners grandes y mini"),
     description: both(
-      "Resize images to Etsy big banner (3360 × 840) and mini banner (1200 × 160) sizes. Crop and position your banner, then download.",
-      "Redimensiona imágenes al banner grande (3360 × 840) y mini banner (1200 × 160) de Etsy. Recorta y coloca tu banner y descárgalo.",
+      "Resize images to Etsy big banner (1600 × 400) and mini banner (1600 × 213) sizes. Crop and position your banner, then download.",
+      "Redimensiona imágenes al banner grande (1600 × 400) y mini banner (1600 × 213) de Etsy. Recorta y coloca tu banner y descárgalo.",
     ),
     intro: both(
       "Etsy offers a big banner that spans the top of your shop and a slim mini banner. Both are very wide, so most photos need to be cropped. Keep text and logos near the center, because Etsy trims the sides on smaller screens.",
       "Etsy ofrece un banner grande que ocupa la parte superior de tu tienda y un mini banner estrecho. Ambos son muy anchos, así que la mayoría de las fotos necesitan recorte. Mantén textos y logotipos cerca del centro, porque Etsy recorta los lados en pantallas pequeñas.",
     ),
     sizes: [
-      { id: "big-banner", width: 3360, height: 840, label: both("Big banner", "Banner grande"), note: both("Recommended", "Recomendado") },
-      { id: "mini-banner", width: 1200, height: 160, label: both("Mini banner", "Mini banner") },
+      { id: "big-banner", width: 1600, height: 400, label: both("Big banner", "Banner grande"), note: both("Recommended", "Recomendado") },
+      { id: "mini-banner", width: 1600, height: 213, label: both("Mini banner", "Mini banner") },
       { id: "shop-icon", width: 500, height: 500, label: both("Shop icon", "Icono de tienda") },
     ],
     tips: {
@@ -113,12 +113,12 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     faq: {
       en: [
-        { q: "What size is the Etsy big banner?", a: "A big banner of 3360 × 840 px (4:1) is a common choice that stays sharp on large screens. Keep important content centered." },
-        { q: "What size is the Etsy mini banner?", a: "The mini banner is commonly made at 1200 × 160 px." },
+        { q: "What size is the Etsy big banner?", a: "Etsy recommends 1600 × 400 px (4:1) for the big banner, and the minimum is 1200 × 300 px. Keep important content centered." },
+        { q: "What size is the Etsy mini banner?", a: "Etsy recommends 1600 × 213 px for the mini banner, and the minimum is 1200 × 160 px." },
       ],
       es: [
-        { q: "¿Qué tamaño tiene el banner grande de Etsy?", a: "Un banner grande de 3360 × 840 px (4:1) es una opción habitual que se ve nítida en pantallas grandes. Mantén centrado el contenido importante." },
-        { q: "¿Qué tamaño tiene el mini banner de Etsy?", a: "El mini banner suele hacerse en 1200 × 160 px." },
+        { q: "¿Qué tamaño tiene el banner grande de Etsy?", a: "Etsy recomienda 1600 × 400 px (4:1) para el banner grande, con un mínimo de 1200 × 300 px. Mantén centrado el contenido importante." },
+        { q: "¿Qué tamaño tiene el mini banner de Etsy?", a: "Etsy recomienda 1600 × 213 px para el mini banner, con un mínimo de 1200 × 160 px." },
       ],
     },
     sourceNote: CHECK_NOTE,
@@ -542,17 +542,17 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     platform: "Walmart",
     slug: both("walmart-image-size", "tamano-imagen-walmart"),
     title: both("Walmart image size", "Tamaño de imagen para Walmart"),
-    metaTitle: both("Walmart Marketplace Image Size: Resize to 2000 × 2000", "Tamaño de imagen para Walmart Marketplace: 2000 × 2000"),
+    metaTitle: both("Walmart Marketplace Image Size: Resize to 2200 × 2200", "Tamaño de imagen para Walmart Marketplace: 2200 × 2200"),
     description: both(
-      "Resize product images for Walmart Marketplace. Square 2000 × 2000 px for zoom, batch processed in your browser.",
-      "Redimensiona imágenes de producto para Walmart Marketplace. Cuadrado de 2000 × 2000 px para zoom, procesadas en lote en tu navegador.",
+      "Resize product images for Walmart Marketplace. Square 2200 × 2200 px on white, batch processed in your browser.",
+      "Redimensiona imágenes de producto para Walmart Marketplace. Cuadrado de 2200 × 2200 px sobre blanco, procesadas en lote en tu navegador.",
     ),
     intro: both(
-      "Walmart Marketplace asks for square product images and recommends around 2000 × 2000 px so zoom works. The main image should be on a white background.",
-      "Walmart Marketplace pide imágenes de producto cuadradas y recomienda unos 2000 × 2000 px para que funcione el zoom. La imagen principal debe tener fondo blanco.",
+      "Walmart Marketplace asks for square 1:1 product images at 2200 × 2200 px, and at least 1500 × 1500 px for zoom to work. The background should be seamless white and each file 5 MB or less.",
+      "Walmart Marketplace pide imágenes de producto cuadradas 1:1 de 2200 × 2200 px, y al menos 1500 × 1500 px para que funcione el zoom. El fondo debe ser blanco uniforme y cada archivo de 5 MB o menos.",
     ),
     sizes: [
-      { id: "main", width: 2000, height: 2000, label: both("Product image", "Imagen de producto"), note: both("Recommended", "Recomendado") },
+      { id: "main", width: 2200, height: 2200, label: both("Product image", "Imagen de producto"), note: both("Recommended", "Recomendado") },
       { id: "minimum", width: 1500, height: 1500, label: both("Minimum for zoom", "Mínimo para zoom") },
     ],
     tips: {
@@ -560,8 +560,8 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       es: ["Usa fondo blanco en la imagen principal.", "Haz que el producto ocupe la mayor parte del encuadre."],
     },
     faq: {
-      en: [{ q: "What size should Walmart product images be?", a: "Square images around 2000 × 2000 px are recommended so zoom works." }],
-      es: [{ q: "¿Qué tamaño deben tener las imágenes de Walmart?", a: "Se recomiendan imágenes cuadradas de unos 2000 × 2000 px para que funcione el zoom." }],
+      en: [{ q: "What size should Walmart product images be?", a: "Walmart's image guidelines specify square images of 2200 × 2200 px on a seamless white background. Images need at least 1500 × 1500 px for zoom, and each file should be 5 MB or less." }],
+      es: [{ q: "¿Qué tamaño deben tener las imágenes de Walmart?", a: "Las normas de imagen de Walmart indican imágenes cuadradas de 2200 × 2200 px sobre fondo blanco uniforme. Se necesitan al menos 1500 × 1500 px para el zoom y cada archivo debe pesar 5 MB o menos." }],
     },
     sourceNote: CHECK_NOTE,
   },
