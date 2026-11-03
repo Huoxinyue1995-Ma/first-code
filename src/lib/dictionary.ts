@@ -48,7 +48,7 @@ const en = {
     resizeVsCropTitle: "Batch resize vs. batch crop",
     resizeVsCrop: [
       "Resizing changes the pixel dimensions of a photo and keeps its shape. Cropping changes the shape by trimming the edges to a new aspect ratio. Most sellers need both, because phone photos are usually 4:3 or 3:4 while many listing slots are square.",
-      "Square grids such as eBay, Poshmark, Mercari, TikTok Shop and Facebook Marketplace crop other shapes for you, often cutting off part of the item. Batch crop to 1:1 first and you decide what stays in the frame. Etsy listings work well at 4:3 and Pinterest pins at 2:3, so the same photo needs a different crop for each.",
+      "Square grids such as eBay, Mercari, TikTok Shop and Facebook Marketplace crop other shapes for you, often cutting off part of the item. Batch crop to 1:1 first and you decide what stays in the frame. Etsy listings work well at 4:3 and Pinterest pins at 2:3, so the same photo needs a different crop for each.",
       "When the whole product must stay visible, as on an Amazon or Walmart main image, choose Fit whole photo instead. Each photo is resized to fit and the empty space is filled with white. Use Adjust to move or zoom any single photo before the batch is exported.",
     ],
     qualityTitle: "File size and image quality after batch processing",
@@ -293,7 +293,7 @@ const es: Dictionary = {
     resizeVsCropTitle: "Redimensionar en lote vs. recortar en lote",
     resizeVsCrop: [
       "Redimensionar cambia las dimensiones en píxeles de una foto y conserva su forma. Recortar cambia la forma eliminando bordes para lograr una nueva proporción. La mayoría de vendedores necesita ambas cosas, porque las fotos del móvil suelen ser 4:3 o 3:4 y muchos espacios de anuncio son cuadrados.",
-      "Las cuadrículas cuadradas como eBay, Poshmark, Mercari, TikTok Shop y Facebook Marketplace recortan las demás formas por ti y a menudo cortan parte del artículo. Recorta primero en lote a 1:1 y decides tú qué queda en el encuadre. Los anuncios de Etsy funcionan bien en 4:3 y los pines de Pinterest en 2:3, así que la misma foto necesita un recorte distinto para cada uno.",
+      "Las cuadrículas cuadradas como eBay, Mercari, TikTok Shop y Facebook Marketplace recortan las demás formas por ti y a menudo cortan parte del artículo. Recorta primero en lote a 1:1 y decides tú qué queda en el encuadre. Los anuncios de Etsy funcionan bien en 4:3 y los pines de Pinterest en 2:3, así que la misma foto necesita un recorte distinto para cada uno.",
       "Cuando el producto debe verse completo, como en la imagen principal de Amazon o Walmart, elige Ajustar foto completa. Cada foto se redimensiona para caber y el espacio libre se rellena de blanco. Usa Ajustar para mover o acercar una foto concreta antes de exportar el lote.",
     ],
     qualityTitle: "Tamaño de archivo y calidad de imagen tras el proceso en lote",

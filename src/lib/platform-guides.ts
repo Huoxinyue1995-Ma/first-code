@@ -442,9 +442,9 @@ export const PLATFORM_GUIDES: Record<string, PlatformGuide> = {
   poshmark: {
     en: [
       {
-        h: "Poshmark shows every photo as a square",
+        h: "Poshmark's recommended photo size",
         p: [
-          "Poshmark displays listing photos in a square frame in the feed, in search, and in your closet. When you upload a rectangular photo, the app asks you to crop it to a square, and anything outside the crop is lost. Cropping to a square yourself before uploading, at the 1000 × 1000 px Poshmark recommends, means you decide exactly what stays in the frame.",
+          "Poshmark recommends sizing listing images to 1000 × 1000 px for optimal quality, and a listing can have up to 16 photos. Cropping each photo to that square yourself before uploading means you decide exactly what stays in the frame.",
           "For clothing, a square crop usually works best when the garment is shown flat or on a hanger with a little space around it. For a full-length dress or coat, choose the fit option with a white background so the hem and neckline both stay visible.",
         ],
       },
@@ -465,15 +465,15 @@ export const PLATFORM_GUIDES: Record<string, PlatformGuide> = {
       {
         h: "Batch-preparing a closet",
         p: [
-          "If you list many items at once, photograph them in one session with the same setup, then add all the photos here and export them as 1000 × 1000 px squares in one ZIP. Adjust the framing on any photo where the item sits off-centre. Every photo then arrives on your phone already square, so you can skip cropping in the app.",
+          "If you list many items at once, photograph them in one session with the same setup, then add all the photos here and export them as 1000 × 1000 px squares in one ZIP. Adjust the framing on any photo where the item sits off-centre. Every photo then arrives on your phone already at the recommended size.",
         ],
       },
     ],
     es: [
       {
-        h: "Poshmark muestra todas las fotos en cuadrado",
+        h: "El tamaño de foto que recomienda Poshmark",
         p: [
-          "Poshmark muestra las fotos de los anuncios en un marco cuadrado en el feed, en la búsqueda y en tu armario. Cuando subes una foto rectangular, la aplicación te pide recortarla a cuadrado y lo que quede fuera se pierde. Recortarla tú a cuadrado antes de subirla, a los 1000 × 1000 px que recomienda Poshmark, te permite decidir exactamente qué queda en el encuadre.",
+          "Poshmark recomienda imágenes de 1000 × 1000 px para una calidad óptima, y un anuncio admite hasta 16 fotos. Recortar tú mismo cada foto a ese cuadrado antes de subirla te permite decidir exactamente qué queda en el encuadre.",
           "En ropa, el recorte cuadrado suele funcionar mejor cuando la prenda se muestra estirada o en una percha con algo de espacio alrededor. Para un vestido o abrigo largo, elige la opción de ajustar con fondo blanco para que el bajo y el cuello sigan visibles.",
         ],
       },
@@ -494,7 +494,7 @@ export const PLATFORM_GUIDES: Record<string, PlatformGuide> = {
       {
         h: "Preparar un armario en lote",
         p: [
-          "Si publicas muchos artículos a la vez, fotografíalos en una sola sesión con la misma configuración, añade aquí todas las fotos y expórtalas como cuadrados de 1000 × 1000 px en un ZIP. Ajusta el encuadre de cualquier foto en la que el artículo no esté centrado. Así todas las fotos llegan a tu móvil ya cuadradas y puedes saltarte el recorte en la aplicación.",
+          "Si publicas muchos artículos a la vez, fotografíalos en una sola sesión con la misma configuración, añade aquí todas las fotos y expórtalas como cuadrados de 1000 × 1000 px en un ZIP. Ajusta el encuadre de cualquier foto en la que el artículo no esté centrado. Así todas las fotos llegan a tu móvil ya con el tamaño recomendado.",
         ],
       },
     ],

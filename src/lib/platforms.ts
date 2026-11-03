@@ -361,12 +361,12 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     title: both("Poshmark image size", "Tamaño de imagen para Poshmark"),
     metaTitle: both("Poshmark Image Size: Resize Listing Photos to Square", "Tamaño de imagen para Poshmark: fotos cuadradas"),
     description: both(
-      "Resize listing photos to square Poshmark sizes so nothing gets cut off. Batch crop in your browser and download a ZIP.",
-      "Redimensiona fotos de anuncios a tamaños cuadrados para Poshmark para que nada se corte. Recorta en lote en tu navegador y descarga un ZIP.",
+      "Resize listing photos to the 1000 × 1000 px square Poshmark recommends. Batch crop in your browser and download a ZIP.",
+      "Redimensiona fotos de anuncios al cuadrado de 1000 × 1000 px que recomienda Poshmark. Recorta en lote en tu navegador y descarga un ZIP.",
     ),
     intro: both(
-      "Poshmark displays listing photos as squares, so non-square photos get cropped automatically. Poshmark recommends 1000 × 1000 px images for optimal quality, and cropping to that square yourself lets you decide what shoppers see first.",
-      "Poshmark muestra las fotos de los anuncios en formato cuadrado, así que las fotos no cuadradas se recortan automáticamente. Poshmark recomienda imágenes de 1000 × 1000 px para una calidad óptima, y recortarlas tú mismo a ese cuadrado te permite decidir qué ve primero el comprador.",
+      "Poshmark recommends 1000 × 1000 px images for optimal quality, and a listing can have up to 16 photos. Cropping your photos to that square yourself lets you decide what shoppers see first.",
+      "Poshmark recomienda imágenes de 1000 × 1000 px para una calidad óptima, y un anuncio admite hasta 16 fotos. Recortar tú mismo las fotos a ese cuadrado te permite decidir qué ve primero el comprador.",
     ),
     sizes: [
       { id: "listing", width: 1000, height: 1000, label: both("Listing photo", "Foto de anuncio"), note: both("Recommended", "Recomendado") },
@@ -375,12 +375,12 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     ],
     tips: {
       en: [
-        "Square crops stop Poshmark from cutting off the item.",
+        "Crop each photo to 1000 × 1000 px yourself so you choose the framing.",
         "Make the cover photo the clearest full view of the item.",
         "Use the same background across your closet for a consistent look.",
       ],
       es: [
-        "Los recortes cuadrados evitan que Poshmark corte el artículo.",
+        "Recorta cada foto a 1000 × 1000 px tú mismo para elegir el encuadre.",
         "Haz que la foto de portada sea la vista completa más clara.",
         "Usa el mismo fondo en todo tu armario para un aspecto uniforme.",
       ],
@@ -388,11 +388,9 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     faq: {
       en: [
         { q: "What size are Poshmark photos?", a: "Poshmark recommends 1000 × 1000 px images for optimal quality. You can add up to 16 photos to a listing." },
-        { q: "Why are my Poshmark photos cut off?", a: "Non-square photos are cropped to a square. Crop them yourself first to control the framing." },
       ],
       es: [
         { q: "¿Qué tamaño tienen las fotos de Poshmark?", a: "Poshmark recomienda imágenes de 1000 × 1000 px para una calidad óptima. Puedes añadir hasta 16 fotos a un anuncio." },
-        { q: "¿Por qué se cortan mis fotos en Poshmark?", a: "Las fotos no cuadradas se recortan a cuadrado. Recórtalas tú primero para controlar el encuadre." },
       ],
     },
     sourceNote: CHECK_NOTE,
