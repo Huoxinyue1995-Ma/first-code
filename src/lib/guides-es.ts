@@ -184,7 +184,7 @@ export const GUIDES_ES: GuideEs[] = [
         blocks: [
           { type: "ul", items: [
             "Usa una imagen cuadrada 1:1. Las fotos cuadradas se muestran de forma uniforme en las tarjetas de producto, la búsqueda y el carrusel de la página del producto.",
-            "1080 × 1080 píxeles es un objetivo práctico. Se ve nítido en los móviles actuales y supera la resolución mínima que TikTok Shop suele pedir (a menudo 600 × 600 píxeles).",
+            "1080 × 1080 píxeles es un objetivo práctico. Se ve nítido en los móviles actuales y supera el mínimo de 600 × 600 píxeles de la política de anuncios de TikTok Shop en EE. UU.",
             "Sube JPG o PNG. Mantén cada archivo ligero, ya que TikTok Shop aplica un límite de peso por imagen de pocos megabytes.",
             "Guarda en sRGB para que los colores se vean igual en la aplicación que en tu ordenador.",
           ] },
@@ -197,7 +197,7 @@ export const GUIDES_ES: GuideEs[] = [
           { type: "p", text: "La primera imagen del anuncio cumple la misma función que la miniatura de un vídeo: tiene que entenderse en una fracción de segundo. Algunos hábitos ayudan:" },
           { type: "ol", items: [
             "Muestra el producto completo, grande y centrado, sobre un fondo limpio.",
-            "Evita superponer mucho texto. El texto pequeño se vuelve ilegible en el móvil y algunas regiones restringen el texto promocional en la imagen principal.",
+            "Evita superponer mucho texto. El texto pequeño se vuelve ilegible en el móvil, y la política de TikTok Shop en EE. UU. no permite añadir texto, gráficos ni marcas de agua a la primera imagen.",
             "Usa un contraste fuerte entre producto y fondo para que la forma se lea al instante.",
             "Mantén el mismo encuadre en todo el catálogo para que la página de tu tienda se vea uniforme.",
           ] },

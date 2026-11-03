@@ -565,13 +565,13 @@ export const PLATFORM_GUIDES: Record<string, PlatformGuide> = {
         h: "Product images on a video-first platform",
         p: [
           "Most TikTok Shop sales start with a video, but the product listing images are what shoppers see when they tap through to buy, browse the Shop tab, or compare products. Those images appear as square cards on a phone screen, often next to similar products from other sellers, so they need to be clear at a small size.",
-          "A square image of 1080 × 1080 px is sharp on modern phones while keeping files small. TikTok Shop sets its own minimum resolution and file size limits, which can vary by region, so check the listing guidelines in Seller Center for your market.",
+          "A square image of 1080 × 1080 px is sharp on modern phones while keeping files small. In the US, TikTok Shop's listing policy asks for square images of at least 600 × 600 px, up to 9 per product, and recommends at least 5. Other regions may differ, so check Seller Center for your market.",
         ],
       },
       {
         h: "What makes a strong main image",
         p: [
-          "Show the whole product, large and centred, on a clean background. Strong contrast between the product and the background helps the shape read instantly on a small screen. Avoid crowding the main image with text, badges, or multiple products; small text becomes unreadable and some regions restrict promotional text on the main image.",
+          "Show the whole product, large and centred, on a clean background. Strong contrast between the product and the background helps the shape read instantly on a small screen. Avoid crowding the main image with badges or multiple products. TikTok Shop's US policy does not allow added text, graphics, or watermarks on the first image.",
           "Use the remaining images to show the product from other angles, its size in a hand or next to a common object, close-ups of materials or features, and what comes in the box.",
         ],
       },
@@ -593,13 +593,13 @@ export const PLATFORM_GUIDES: Record<string, PlatformGuide> = {
         h: "Imágenes de producto en una plataforma de vídeo",
         p: [
           "La mayoría de ventas en TikTok Shop empiezan con un vídeo, pero las imágenes del anuncio son lo que ve el comprador cuando pulsa para comprar, navega por la pestaña Shop o compara productos. Esas imágenes aparecen como tarjetas cuadradas en la pantalla del móvil, a menudo junto a productos parecidos de otros vendedores, así que deben verse claras en tamaño pequeño.",
-          "Una imagen cuadrada de 1080 × 1080 px se ve nítida en los móviles actuales y mantiene los archivos ligeros. TikTok Shop fija sus propios mínimos de resolución y límites de peso, que pueden variar según la región, así que revisa las normas de anuncios en Seller Center para tu mercado.",
+          "Una imagen cuadrada de 1080 × 1080 px se ve nítida en los móviles actuales y mantiene los archivos ligeros. En EE. UU., la política de anuncios de TikTok Shop pide imágenes cuadradas de al menos 600 × 600 px, hasta 9 por producto, y recomienda al menos 5. Otras regiones pueden variar, así que revisa Seller Center para tu mercado.",
         ],
       },
       {
         h: "Qué hace fuerte una imagen principal",
         p: [
-          "Muestra el producto completo, grande y centrado, sobre un fondo limpio. Un contraste fuerte entre el producto y el fondo ayuda a que la forma se entienda al instante en una pantalla pequeña. Evita llenar la imagen principal de texto, insignias o varios productos; el texto pequeño se vuelve ilegible y algunas regiones restringen el texto promocional en la imagen principal.",
+          "Muestra el producto completo, grande y centrado, sobre un fondo limpio. Un contraste fuerte entre el producto y el fondo ayuda a que la forma se entienda al instante en una pantalla pequeña. Evita llenar la imagen principal de insignias o varios productos. La política de TikTok Shop en EE. UU. no permite añadir texto, gráficos ni marcas de agua a la primera imagen.",
           "Usa el resto de imágenes para mostrar el producto desde otros ángulos, su tamaño en la mano o junto a un objeto común, primeros planos de materiales o funciones y el contenido de la caja.",
         ],
       },
@@ -680,9 +680,9 @@ export const PLATFORM_GUIDES: Record<string, PlatformGuide> = {
   depop: {
     en: [
       {
-        h: "Depop's square grid",
+        h: "How Depop crops your photos",
         p: [
-          "Depop shows listings in a square grid on your shop page and in search, and buyers often decide whether to tap from that grid alone. Square photos of around 1280 × 1280 px look clean in the grid and avoid surprise crops when the app fits a rectangular photo into a square.",
+          "On depop.com, product pages show photos as squares, but search results use a taller 3:4 card that trims the left and right edges. Buyers often decide whether to tap from those results alone, so square photos of around 1280 × 1280 px with the item centered look clean in both places. Depop does not publish a required size.",
           "Because shoppers scroll quickly, your first photo needs to show the item and its style immediately. Many Depop sellers use a consistent look across their shop, such as the same backdrop, the same lighting, or the item always worn, so the grid feels like a curated collection.",
         ],
       },
@@ -709,9 +709,9 @@ export const PLATFORM_GUIDES: Record<string, PlatformGuide> = {
     ],
     es: [
       {
-        h: "La cuadrícula cuadrada de Depop",
+        h: "Cómo recorta Depop tus fotos",
         p: [
-          "Depop muestra los anuncios en una cuadrícula cuadrada en tu tienda y en la búsqueda, y los compradores suelen decidir si entrar solo con esa cuadrícula. Las fotos cuadradas de unos 1280 × 1280 px se ven limpias en la cuadrícula y evitan recortes inesperados cuando la aplicación encaja una foto rectangular en un cuadrado.",
+          "En depop.com, la página del producto muestra las fotos cuadradas, pero los resultados de búsqueda usan una tarjeta vertical 3:4 que recorta los bordes izquierdo y derecho. Los compradores suelen decidir si entrar solo con esos resultados, así que las fotos cuadradas de unos 1280 × 1280 px con el artículo centrado se ven bien en ambos sitios. Depop no publica un tamaño obligatorio.",
           "Como los compradores se desplazan rápido, tu primera foto debe mostrar el artículo y su estilo de inmediato. Muchos vendedores de Depop usan un estilo uniforme en su tienda, como el mismo fondo, la misma luz o el artículo siempre puesto, para que la cuadrícula parezca una colección seleccionada.",
         ],
       },

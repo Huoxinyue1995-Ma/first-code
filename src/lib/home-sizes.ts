@@ -91,22 +91,34 @@ const ROWS: Row[] = [
   {
     id: "tiktok-shop",
     note: {
-      en: "Up to 9 square images; the main image shows the product from the front.",
-      es: "Hasta 9 imágenes cuadradas; la principal muestra el producto de frente.",
+      en: "Square images, at least 600 × 600 px; up to 9 per product.",
+      es: "Imágenes cuadradas de al menos 600 × 600 px; hasta 9 por producto.",
+    },
+    doc: {
+      url: "https://seller-us.tiktok.com/university/course?learning_id=7350062255294222&role=1&course_type=1&content_id=7073362639816491",
+      label: { en: "TikTok Shop listing policy", es: "Política de anuncios de TikTok Shop" },
     },
   },
   {
     id: "mercari",
     note: {
-      en: "Photos display as squares; show the full item in the first photo.",
-      es: "Las fotos se muestran cuadradas; enseña el artículo completo en la primera foto.",
+      en: "No official pixel size; up to 12 photos, shown as squares in search.",
+      es: "Sin tamaño oficial en píxeles; hasta 12 fotos, cuadradas en la búsqueda.",
+    },
+    doc: {
+      url: "https://www.mercari.com/us/help_center/topics/listing/guides/creating-a-listing/",
+      label: { en: "Mercari: creating a listing", es: "Mercari: crear un anuncio" },
     },
   },
   {
     id: "depop",
     note: {
-      en: "Square shop grid; center the item so nothing is cut off.",
-      es: "Cuadrícula cuadrada; centra el artículo para que no se corte nada.",
+      en: "No official pixel size; search results crop to 3:4, so center the item.",
+      es: "Sin tamaño oficial en píxeles; la búsqueda recorta a 3:4, así que centra el artículo.",
+    },
+    doc: {
+      url: "https://depophelp.zendesk.com/hc/en-gb/articles/360032716413-How-to-list-an-item",
+      label: { en: "Depop: how to list", es: "Depop: cómo publicar" },
     },
   },
   {

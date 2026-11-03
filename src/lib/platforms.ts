@@ -451,32 +451,33 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       "Redimensiona en lote imágenes para anuncios de TikTok Shop. Cuadrado de 1080 × 1080 px y vertical 9:16, procesadas en tu navegador.",
     ),
     intro: both(
-      "TikTok Shop product cards are square and viewed almost entirely on phones. A 1080 × 1080 px square stays sharp, and keeping files small helps listings load quickly.",
-      "Las tarjetas de producto de TikTok Shop son cuadradas y se ven casi siempre en el móvil. Un cuadrado de 1080 × 1080 px se ve nítido y los archivos ligeros cargan más rápido.",
+      "TikTok Shop product images are square: up to 9 per product, each at least 600 × 600 px. Shoppers see them almost entirely on phones, and a 1080 × 1080 px square stays sharp while keeping files small.",
+      "Las imágenes de producto de TikTok Shop son cuadradas: hasta 9 por producto, cada una de al menos 600 × 600 px. Se ven casi siempre en el móvil, y un cuadrado de 1080 × 1080 px se ve nítido sin que los archivos pesen mucho.",
     ),
     sizes: [
       { id: "product", width: 1080, height: 1080, label: both("Product image", "Imagen de producto"), note: both("Recommended", "Recomendado") },
       { id: "large", width: 1600, height: 1600, label: both("Large product image", "Imagen de producto grande") },
       { id: "vertical", width: 1080, height: 1920, label: both("Vertical (9:16)", "Vertical (9:16)") },
+      { id: "minimum", width: 600, height: 600, label: both("Minimum size", "Tamaño mínimo") },
     ],
     tips: {
       en: [
         "Keep the product large and centered for small phone screens.",
-        "Avoid small text on the main image; it becomes unreadable.",
+        "Do not add text, graphics, or watermarks to the first image; TikTok Shop's listing policy does not allow them.",
         "Use the same framing across your catalog.",
       ],
       es: [
         "Mantén el producto grande y centrado para pantallas pequeñas.",
-        "Evita texto pequeño en la imagen principal; se vuelve ilegible.",
+        "No añadas texto, gráficos ni marcas de agua a la primera imagen; la política de anuncios de TikTok Shop no lo permite.",
         "Usa el mismo encuadre en todo tu catálogo.",
       ],
     },
     faq: {
       en: [
-        { q: "What size are TikTok Shop product images?", a: "Square images work best; 1080 × 1080 px is a practical target." },
+        { q: "What size are TikTok Shop product images?", a: "TikTok Shop's US listing policy asks for square images of at least 600 × 600 px, up to 9 per product. A 1080 × 1080 px square clears that minimum comfortably and stays sharp on phones." },
       ],
       es: [
-        { q: "¿Qué tamaño tienen las imágenes de TikTok Shop?", a: "Las imágenes cuadradas funcionan mejor; 1080 × 1080 px es un objetivo práctico." },
+        { q: "¿Qué tamaño tienen las imágenes de TikTok Shop?", a: "La política de anuncios de TikTok Shop en EE. UU. pide imágenes cuadradas de al menos 600 × 600 px, hasta 9 por producto. Un cuadrado de 1080 × 1080 px supera ese mínimo con margen y se ve nítido en el móvil." },
       ],
     },
     sourceNote: CHECK_NOTE,
@@ -504,8 +505,8 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       es: ["Muestra el artículo completo en la primera foto.", "Usa luz natural y un fondo liso."],
     },
     faq: {
-      en: [{ q: "What size should Mercari photos be?", a: "Mercari uses square photos; 1080 × 1080 px is a good default." }],
-      es: [{ q: "¿Qué tamaño deben tener las fotos de Mercari?", a: "Mercari usa fotos cuadradas; 1080 × 1080 px es una buena opción." }],
+      en: [{ q: "What size should Mercari photos be?", a: "Mercari does not publish a required pixel size. Photos show as squares in search, so a 1080 × 1080 px square is a good default. You can add up to 12 photos to a listing." }],
+      es: [{ q: "¿Qué tamaño deben tener las fotos de Mercari?", a: "Mercari no publica un tamaño en píxeles obligatorio. Las fotos se ven cuadradas en la búsqueda, así que un cuadrado de 1080 × 1080 px es una buena opción. Puedes añadir hasta 12 fotos a un anuncio." }],
     },
     sourceNote: CHECK_NOTE,
   },
@@ -520,20 +521,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       "Redimensiona en lote fotos de anuncios a tamaños cuadrados para Depop. Encuadra cada artículo en tu navegador y descarga todas las fotos a la vez.",
     ),
     intro: both(
-      "Depop shows listings in a square grid, so square photos around 1280 × 1280 px look clean and avoid surprise crops.",
-      "Depop muestra los anuncios en una cuadrícula cuadrada, así que las fotos cuadradas de unos 1280 × 1280 px se ven limpias y evitan recortes inesperados.",
+      "Depop does not publish a required photo size. On depop.com, product pages show photos as squares while search results crop them to a taller 3:4 card, so a square photo around 1280 × 1280 px with the item centered works in both.",
+      "Depop no publica un tamaño de foto obligatorio. En depop.com, la página del producto muestra las fotos cuadradas y los resultados de búsqueda las recortan a una tarjeta vertical 3:4, así que una foto cuadrada de unos 1280 × 1280 px con el artículo centrado funciona en ambos casos.",
     ),
     sizes: [
       { id: "listing", width: 1280, height: 1280, label: both("Listing photo", "Foto de anuncio"), note: both("Recommended", "Recomendado") },
       { id: "large", width: 2000, height: 2000, label: both("Large square", "Cuadrado grande") },
     ],
     tips: {
-      en: ["Keep a consistent style across your shop grid.", "Center the item so nothing is cut off in the grid."],
-      es: ["Mantén un estilo uniforme en la cuadrícula de tu tienda.", "Centra el artículo para que nada se corte en la cuadrícula."],
+      en: ["Keep a consistent style across your shop.", "Center the item: search results trim the left and right edges of square photos."],
+      es: ["Mantén un estilo uniforme en tu tienda.", "Centra el artículo: los resultados de búsqueda recortan los bordes izquierdo y derecho de las fotos cuadradas."],
     },
     faq: {
-      en: [{ q: "What size should Depop photos be?", a: "Depop uses square photos; 1280 × 1280 px is a good default." }],
-      es: [{ q: "¿Qué tamaño deben tener las fotos de Depop?", a: "Depop usa fotos cuadradas; 1280 × 1280 px es una buena opción." }],
+      en: [{ q: "What size should Depop photos be?", a: "Depop does not publish a required pixel size. Product pages show square photos, so 1280 × 1280 px with the item centered is a good default. You can add up to 8 photos when listing on the web." }],
+      es: [{ q: "¿Qué tamaño deben tener las fotos de Depop?", a: "Depop no publica un tamaño en píxeles obligatorio. La página del producto muestra fotos cuadradas, así que 1280 × 1280 px con el artículo centrado es una buena opción. Puedes añadir hasta 8 fotos al publicar desde la web." }],
     },
     sourceNote: CHECK_NOTE,
   },

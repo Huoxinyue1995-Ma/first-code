@@ -198,7 +198,7 @@ export const GUIDES: Guide[] = [
         blocks: [
           { type: "ul", items: [
             "Use a square 1:1 image. Square photos display consistently in product cards, search results, and the product page carousel.",
-            "1,080 × 1,080 pixels is a practical target. It is sharp on modern phones and clears the minimum resolution TikTok Shop has generally asked for (often 600 × 600 pixels).",
+            "1,080 × 1,080 pixels is a practical target. It is sharp on modern phones and clears the 600 × 600 pixel minimum in TikTok Shop's US listing policy.",
             "Upload JPG or PNG. Keep each file small, since TikTok Shop applies a per-image file size limit of a few megabytes.",
             "Save in sRGB so colors look the same in the app as they do on your computer.",
           ] },
@@ -211,7 +211,7 @@ export const GUIDES: Guide[] = [
           { type: "p", text: "The first image in your listing does the same job as a thumbnail on a video: it has to be understood in a fraction of a second. A few habits help:" },
           { type: "ol", items: [
             "Show the whole product, large and centered, on a clean background.",
-            "Avoid busy text overlays. Small text becomes unreadable on a phone and some regions restrict promotional text on the main image.",
+            "Avoid busy text overlays. Small text becomes unreadable on a phone, and TikTok Shop's US policy does not allow added text, graphics, or watermarks on the first image.",
             "Use strong contrast between product and background so the shape reads instantly.",
             "Keep the same framing across your catalog so your shop page looks consistent.",
           ] },
