@@ -69,8 +69,12 @@ const ROWS: Row[] = [
   {
     id: "poshmark",
     note: {
-      en: "Listings display as squares, so non-square photos are cropped automatically.",
-      es: "Los anuncios se muestran cuadrados, así que las fotos no cuadradas se recortan solas.",
+      en: "Poshmark recommends 1000 × 1000 px; a listing can have up to 16 photos.",
+      es: "Poshmark recomienda 1000 × 1000 px; un anuncio admite hasta 16 fotos.",
+    },
+    doc: {
+      url: "https://support.poshmark.com/s/article/894455911?language=en_US",
+      label: { en: "Poshmark: How to list", es: "Poshmark: cómo publicar" },
     },
   },
   {
@@ -87,8 +91,8 @@ const ROWS: Row[] = [
   {
     id: "tiktok-shop",
     note: {
-      en: "Product cards are square and seen on phones; keep the item large and centered.",
-      es: "Las fichas son cuadradas y se ven en el móvil; mantén el producto grande y centrado.",
+      en: "Up to 9 square images; the main image shows the product from the front.",
+      es: "Hasta 9 imágenes cuadradas; la principal muestra el producto de frente.",
     },
   },
   {

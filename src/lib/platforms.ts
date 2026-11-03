@@ -365,11 +365,11 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       "Redimensiona fotos de anuncios a tamaños cuadrados para Poshmark para que nada se corte. Recorta en lote en tu navegador y descarga un ZIP.",
     ),
     intro: both(
-      "Poshmark displays listing photos as squares, so non-square photos get cropped automatically. Cropping to a square yourself, around 1280 × 1280 px, lets you decide what shoppers see first.",
-      "Poshmark muestra las fotos de los anuncios en formato cuadrado, así que las fotos no cuadradas se recortan automáticamente. Recortarlas tú mismo a un cuadrado, de unos 1280 × 1280 px, te permite decidir qué ve primero el comprador.",
+      "Poshmark displays listing photos as squares, so non-square photos get cropped automatically. Poshmark recommends 1000 × 1000 px images for optimal quality, and cropping to that square yourself lets you decide what shoppers see first.",
+      "Poshmark muestra las fotos de los anuncios en formato cuadrado, así que las fotos no cuadradas se recortan automáticamente. Poshmark recomienda imágenes de 1000 × 1000 px para una calidad óptima, y recortarlas tú mismo a ese cuadrado te permite decidir qué ve primero el comprador.",
     ),
     sizes: [
-      { id: "listing", width: 1280, height: 1280, label: both("Listing photo", "Foto de anuncio"), note: both("Recommended", "Recomendado") },
+      { id: "listing", width: 1000, height: 1000, label: both("Listing photo", "Foto de anuncio"), note: both("Recommended", "Recomendado") },
       { id: "large", width: 2000, height: 2000, label: both("Large square", "Cuadrado grande") },
       { id: "closet", width: 640, height: 640, label: both("Closet cover / small", "Portada de armario / pequeño") },
     ],
@@ -387,11 +387,11 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     faq: {
       en: [
-        { q: "What size are Poshmark photos?", a: "Poshmark shows photos as squares. A 1280 × 1280 px square is a good default." },
+        { q: "What size are Poshmark photos?", a: "Poshmark recommends 1000 × 1000 px images for optimal quality. You can add up to 16 photos to a listing." },
         { q: "Why are my Poshmark photos cut off?", a: "Non-square photos are cropped to a square. Crop them yourself first to control the framing." },
       ],
       es: [
-        { q: "¿Qué tamaño tienen las fotos de Poshmark?", a: "Poshmark muestra las fotos cuadradas. Un cuadrado de 1280 × 1280 px es una buena opción." },
+        { q: "¿Qué tamaño tienen las fotos de Poshmark?", a: "Poshmark recomienda imágenes de 1000 × 1000 px para una calidad óptima. Puedes añadir hasta 16 fotos a un anuncio." },
         { q: "¿Por qué se cortan mis fotos en Poshmark?", a: "Las fotos no cuadradas se recortan a cuadrado. Recórtalas tú primero para controlar el encuadre." },
       ],
     },
