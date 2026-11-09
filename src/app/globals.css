@@ -258,6 +258,13 @@ h1, h2, h3 { line-height: 1.2; }
 .auth-error { margin: 12px 0 0; padding: 10px 12px; color: var(--danger); background: var(--danger-bg); border-radius: 5px; font-size: 14px; }
 .auth-notice { margin: 0 0 18px; padding: 12px 14px; color: var(--mint-dark); background: var(--tint); border-radius: 5px; font-size: 14px; }
 .auth-sent p { margin: 8px 0 12px; color: var(--muted); line-height: 1.55; }
+.google-slot { min-height: 44px; }
+.google-render { display: flex; justify-content: center; min-height: 44px; }
+.code-sent { margin: 0 0 4px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.email-form .code-input { font-size: 24px; font-weight: 700; letter-spacing: 0.4em; text-align: center; font-variant-numeric: tabular-nums; }
+.code-actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+.code-actions .text-button:disabled { color: var(--muted); cursor: default; }
+.pro-modal .sign-in-panel { margin-top: 18px; text-align: left; }
 .auth-footnote { margin-top: 16px; color: var(--muted); font-size: 13px; }
 .auth-footnote a { color: var(--mint-dark); text-decoration: underline; text-underline-offset: 3px; }
 

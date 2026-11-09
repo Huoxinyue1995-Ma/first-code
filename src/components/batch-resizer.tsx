@@ -25,6 +25,7 @@ import {
 import { takeHandedOffPhotos } from "@/lib/photo-handoff";
 import type { SizePreset } from "@/lib/platforms";
 import { createZipStream, saveBlob } from "@/lib/zip-stream";
+import { SignInPanel } from "@/components/sign-in-panel";
 
 export const SUPPORTED = ["image/jpeg", "image/png", "image/webp"];
 const CUSTOM_MIN = 100;
@@ -617,12 +618,13 @@ export function BatchResizer({ locale, t, presets, platformId, defaultSelected }
             <button className="modal-close" onClick={() => setModal(null)} type="button" aria-label={e.cancel}><X size={18} /></button>
             <h2>{e.signInTitle}</h2>
             <p>{fmt(e.signInBody, { n: SIGNUP_BONUS_CREDITS })}</p>
-            <div className="pro-modal-actions">
-              <a className="primary-button" href={`${localePath(locale, "/login")}?next=${encodeURIComponent(localePath(locale, "/login/done"))}`} rel="opener" target="_blank">
-                {t.nav.signIn}
-              </a>
-              <button className="text-button" onClick={() => setModal(null)} type="button">{e.cancel}</button>
-            </div>
+            <SignInPanel
+              googleFallbackHref={`/api/auth/google/start?next=${encodeURIComponent(localePath(locale, "/login/done"))}&locale=${locale}`}
+              googleFallbackNewTab
+              l={t.login}
+              locale={locale}
+              onSignedIn={() => void refresh()}
+            />
             <p className="modal-footnote">{e.signInWaiting}</p>
           </section>
         </div>

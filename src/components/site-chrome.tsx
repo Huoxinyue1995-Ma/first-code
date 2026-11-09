@@ -1,6 +1,7 @@
 import { Globe, Maximize2 } from "lucide-react";
 import Link from "next/link";
 import { AccountLink } from "@/components/account-link";
+import { GoogleOneTap } from "@/components/google-one-tap";
 import { getDictionary } from "@/lib/dictionary";
 import { type Locale, localePath } from "@/lib/i18n";
 import { PLATFORM_PAGES, customPath, platformPath } from "@/lib/platforms";
@@ -57,6 +58,7 @@ export function PageFrame({ locale, alternate, children }: { locale: Locale; alt
       <SiteHeader alternate={alternate} locale={locale} />
       {children}
       <SiteFooter locale={locale} />
+      <GoogleOneTap locale={locale} />
     </div>
   );
 }

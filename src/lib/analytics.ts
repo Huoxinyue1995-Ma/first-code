@@ -4,7 +4,11 @@ export type AnalyticsEventName =
   | "credits_prompt"
   | "begin_checkout"
   | "download_success"
-  | "home_handoff";
+  | "home_handoff"
+  | "login" // GA4 recommended event; `method` is google_button, google_one_tap, google_redirect or email_code
+  | "login_start"
+  | "login_code_sent"
+  | "one_tap_requested";
 
 type Gtag = (...args: unknown[]) => void;
 

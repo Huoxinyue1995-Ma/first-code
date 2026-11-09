@@ -1,11 +1,13 @@
 import "server-only";
+import { createHash, timingSafeEqual } from "node:crypto";
 import { getSql } from "@/lib/db";
-import { randomToken, sha256 } from "@/lib/auth";
-import { type Locale, localePath } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n";
 import { normalizeEmail } from "@/lib/ledger";
 
-const LINK_MINUTES = 15;
-const MAX_LINKS_PER_HOUR = 5;
+// Email sign-in with a 6-digit code typed on the same page, so the user never leaves the tab with their photos.
+export const CODE_MINUTES = 10;
+const MAX_CODES_PER_HOUR = 5;
+export const MAX_CODE_ATTEMPTS = 5;
 
 export function isEmailLoginConfigured() {
   return Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM);
@@ -16,58 +18,120 @@ export function isValidEmail(value: string) {
   return value.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+export function isCodeFormat(value: string) {
+  return /^\d{6}$/.test(value);
+}
+
 export class EmailRateLimitError extends Error {}
 
-export async function createEmailLoginLink(rawEmail: string, origin: string, returnTo: string, locale: Locale = "en") {
+// Creates the codes table on first use, so a deploy never depends on a manual migration step.
+// Same statements as db/schema.sql; idempotent, and runs at most once per server instance.
+let tableReady: Promise<unknown> | null = null;
+function ensureCodesTable() {
+  tableReady ??= getSql().begin(async (tx) => {
+    await tx`create table if not exists email_login_codes (
+      id bigserial primary key,
+      email text not null,
+      code_hash text not null,
+      attempts integer not null default 0,
+      created_at timestamptz not null default now(),
+      expires_at timestamptz not null,
+      used_at timestamptz
+    )`;
+    await tx`create index if not exists email_login_codes_email_idx on email_login_codes(email, created_at desc)`;
+  }).catch((error) => {
+    tableReady = null;
+    throw error;
+  });
+  return tableReady;
+}
+
+// The hash includes the email so a stored hash cannot be reused for another address.
+function hashCode(email: string, code: string) {
+  return createHash("sha256").update(`${email}:${code}`).digest("base64url");
+}
+
+function randomCode() {
+  // Uniform 000000-999999: reject the top of the 32-bit range so every code is equally likely.
+  const buffer = new Uint32Array(1);
+  const limit = Math.floor(0x1_0000_0000 / 1_000_000) * 1_000_000;
+  do crypto.getRandomValues(buffer);
+  while (buffer[0] >= limit);
+  return String(buffer[0] % 1_000_000).padStart(6, "0");
+}
+
+export async function createEmailLoginCode(rawEmail: string) {
   const email = normalizeEmail(rawEmail);
+  await ensureCodesTable();
   const sql = getSql();
 
   const recent = await sql<{ count: number }[]>`
-    select count(*)::int as count from email_login_tokens
+    select count(*)::int as count from email_login_codes
     where email = ${email} and created_at > now() - interval '1 hour'`;
-  if ((recent[0]?.count ?? 0) >= MAX_LINKS_PER_HOUR) throw new EmailRateLimitError();
+  if ((recent[0]?.count ?? 0) >= MAX_CODES_PER_HOUR) throw new EmailRateLimitError();
 
-  const token = randomToken();
-  const expiresAt = new Date(Date.now() + LINK_MINUTES * 60 * 1000);
-  await sql`insert into email_login_tokens (token_hash, email, expires_at) values (${await sha256(token)}, ${email}, ${expiresAt})`;
-
-  const url = new URL(localePath(locale, "/login/verify"), origin);
-  url.searchParams.set("token", token);
-  url.searchParams.set("next", returnTo);
-  return { email, url: url.toString() };
+  const code = randomCode();
+  const expiresAt = new Date(Date.now() + CODE_MINUTES * 60 * 1000);
+  // A new code replaces any earlier one for this email.
+  await sql.begin(async (tx) => {
+    await tx`update email_login_codes set used_at = now() where email = ${email} and used_at is null`;
+    await tx`insert into email_login_codes (email, code_hash, expires_at) values (${email}, ${hashCode(email, code)}, ${expiresAt})`;
+  });
+  return { email, code };
 }
 
-// Marks the link as used and returns its email. Returns null when the link is unknown, expired, or already used.
-export async function consumeEmailLoginToken(token: string) {
-  if (!token || token.length > 128) return null;
+export type CodeCheck =
+  | { ok: true; email: string }
+  | { ok: false; reason: "expired" | "locked" | "wrong"; attemptsLeft?: number };
+
+// Checks the latest active code for the email. Each wrong guess counts; the code locks after MAX_CODE_ATTEMPTS.
+export async function verifyEmailLoginCode(rawEmail: string, code: string): Promise<CodeCheck> {
+  const email = normalizeEmail(rawEmail);
+  if (!isCodeFormat(code)) return { ok: false, reason: "wrong" };
+  await ensureCodesTable();
   const sql = getSql();
-  const rows = await sql<{ email: string }[]>`
-    update email_login_tokens set used_at = now()
-    where token_hash = ${await sha256(token)} and used_at is null and expires_at > now()
-    returning email`;
-  return rows[0]?.email ?? null;
+
+  return sql.begin(async (tx) => {
+    const rows = await tx<{ id: string; code_hash: string; attempts: number }[]>`
+      select id, code_hash, attempts from email_login_codes
+      where email = ${email} and used_at is null and expires_at > now()
+      order by created_at desc limit 1 for update`;
+    const row = rows[0];
+    if (!row) return { ok: false, reason: "expired" } as const;
+    if (row.attempts >= MAX_CODE_ATTEMPTS) return { ok: false, reason: "locked" } as const;
+
+    const expected = Buffer.from(row.code_hash);
+    const actual = Buffer.from(hashCode(email, code));
+    if (expected.length === actual.length && timingSafeEqual(expected, actual)) {
+      await tx`update email_login_codes set used_at = now() where id = ${row.id}`;
+      return { ok: true, email } as const;
+    }
+
+    const attempts = row.attempts + 1;
+    await tx`update email_login_codes set attempts = ${attempts} where id = ${row.id}`;
+    const attemptsLeft = MAX_CODE_ATTEMPTS - attempts;
+    return attemptsLeft > 0 ? { ok: false, reason: "wrong", attemptsLeft } as const : { ok: false, reason: "locked" } as const;
+  });
 }
 
-const EMAIL_COPY: Record<Locale, { subject: string; intro: string; button: string; footer: string }> = {
+const EMAIL_COPY: Record<Locale, { subject: (code: string) => string; intro: string; footer: string }> = {
   en: {
-    subject: "Your Resizet sign-in link",
-    intro: "Sign in to Resizet:",
-    button: "Sign in",
-    footer: `This link expires in ${LINK_MINUTES} minutes and can be used once. If you did not request it, you can ignore this email.`,
+    subject: (code) => `${code} is your Resizet code`,
+    intro: "Enter this code on Resizet to sign in:",
+    footer: `The code expires in ${CODE_MINUTES} minutes. If you did not request it, you can ignore this email.`,
   },
   es: {
-    subject: "Tu enlace para iniciar sesión en Resizet",
-    intro: "Inicia sesión en Resizet:",
-    button: "Iniciar sesión",
-    footer: `Este enlace caduca en ${LINK_MINUTES} minutos y solo se puede usar una vez. Si no lo solicitaste, puedes ignorar este correo.`,
+    subject: (code) => `${code} es tu código de Resizet`,
+    intro: "Escribe este código en Resizet para iniciar sesión:",
+    footer: `El código caduca en ${CODE_MINUTES} minutos. Si no lo solicitaste, puedes ignorar este correo.`,
   },
 };
 
-export async function sendLoginEmail(to: string, url: string, locale: Locale = "en") {
+export async function sendLoginCodeEmail(to: string, code: string, locale: Locale = "en") {
   if (!isEmailLoginConfigured()) {
     if (process.env.NODE_ENV !== "production") {
-      // Local development without an email provider: print the link instead of sending it.
-      console.info(`[dev] Sign-in link for ${to}: ${url}`);
+      // Local development without an email provider: print the code instead of sending it.
+      console.info(`[dev] Sign-in code for ${to}: ${code}`);
       return;
     }
     throw new Error("Email sign-in is not configured.");
@@ -83,9 +147,9 @@ export async function sendLoginEmail(to: string, url: string, locale: Locale = "
     body: JSON.stringify({
       from: process.env.EMAIL_FROM,
       to: [to],
-      subject: copy.subject,
-      text: `${copy.intro}\n\n${url}\n\n${copy.footer}`,
-      html: `<p>${copy.intro}</p><p><a href="${url}">${copy.button}</a></p><p>${copy.footer}</p>`,
+      subject: copy.subject(code),
+      text: `${copy.intro}\n\n${code}\n\n${copy.footer}`,
+      html: `<p>${copy.intro}</p><p style="font-size:28px;font-weight:700;letter-spacing:6px;margin:16px 0">${code}</p><p>${copy.footer}</p>`,
     }),
   });
   if (!response.ok) {

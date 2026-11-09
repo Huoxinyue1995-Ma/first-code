@@ -1,25 +1,32 @@
-import { NextResponse } from "next/server";
-import { getSiteOrigin, isSameOriginRequest, safeReturnPath, startSession } from "@/lib/auth";
-import { consumeEmailLoginToken } from "@/lib/email-login";
+import { isSameOriginRequest, startSession } from "@/lib/auth";
+import { isDatabaseConfigured } from "@/lib/db";
+import { isValidEmail, verifyEmailLoginCode } from "@/lib/email-login";
 import { findOrCreateUser } from "@/lib/ledger";
 
 export const dynamic = "force-dynamic";
 
-// The emailed link opens /login/verify, which posts here. Using POST means email link scanners
-// that pre-open URLs cannot use up the one-time token.
+// Checks the emailed 6-digit code and signs the user in on this tab.
 export async function POST(request: Request) {
-  const origin = getSiteOrigin(request);
-  if (!isSameOriginRequest(request)) return NextResponse.redirect(new URL("/login?error=link_invalid", origin), 303);
+  if (!isSameOriginRequest(request)) return Response.json({ reason: "invalid_request" }, { status: 403 });
+  if (!isDatabaseConfigured()) return Response.json({ reason: "unavailable" }, { status: 503 });
 
-  const form = await request.formData();
-  const token = String(form.get("token") || "");
-  const next = safeReturnPath(String(form.get("next") || ""));
-  const loginPath = next.startsWith("/es/") || next === "/es" ? "/es/login" : "/login";
+  let email = "";
+  let code = "";
+  try {
+    const body = await request.json() as { email?: unknown; code?: unknown };
+    email = typeof body.email === "string" ? body.email.trim() : "";
+    code = typeof body.code === "string" ? body.code.replace(/\s+/g, "") : "";
+  } catch {
+    return Response.json({ reason: "invalid_request" }, { status: 400 });
+  }
+  if (!isValidEmail(email)) return Response.json({ reason: "invalid_email" }, { status: 400 });
 
-  const email = await consumeEmailLoginToken(token);
-  if (!email) return NextResponse.redirect(new URL(`${loginPath}?error=link_invalid`, origin), 303);
+  const check = await verifyEmailLoginCode(email, code);
+  if (!check.ok) {
+    return Response.json({ reason: check.reason, attemptsLeft: check.attemptsLeft }, { status: check.reason === "wrong" ? 400 : 410 });
+  }
 
-  const { user } = await findOrCreateUser({ email });
+  const { user, created } = await findOrCreateUser({ email: check.email });
   await startSession(user.id);
-  return NextResponse.redirect(new URL(next, origin), 303);
+  return Response.json({ ok: true, created });
 }

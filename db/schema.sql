@@ -31,6 +31,18 @@ create table if not exists email_login_tokens (
 );
 create index if not exists email_login_tokens_email_idx on email_login_tokens(email, created_at);
 
+-- One-time 6-digit email sign-in codes. Only a hash of the code is stored, and a code locks after 5 wrong tries.
+create table if not exists email_login_codes (
+  id bigserial primary key,
+  email text not null,
+  code_hash text not null,
+  attempts integer not null default 0,
+  created_at timestamptz not null default now(),
+  expires_at timestamptz not null,
+  used_at timestamptz
+);
+create index if not exists email_login_codes_email_idx on email_login_codes(email, created_at desc);
+
 -- Append-only record of every credit change. users.credit_balance always equals the sum of delta for that user.
 create table if not exists credit_ledger (
   id bigserial primary key,

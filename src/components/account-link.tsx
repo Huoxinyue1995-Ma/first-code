@@ -26,9 +26,13 @@ export function AccountLink({
         .catch(() => { if (!cancelled) setState({ signedIn: false }); });
     void load();
     window.addEventListener("focus", load);
+    // Sign-in inside a dialog or One Tap happens without a page load; other components announce it here.
+    const channel = typeof BroadcastChannel !== "undefined" ? new BroadcastChannel("resizet-auth") : null;
+    if (channel) channel.onmessage = () => void load();
     return () => {
       cancelled = true;
       window.removeEventListener("focus", load);
+      channel?.close();
     };
   }, []);
 

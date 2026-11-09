@@ -8,6 +8,8 @@ const SESSION_DAYS = 30;
 export const OAUTH_STATE_COOKIE = "ir_oauth_state";
 export const RETURN_TO_COOKIE = "ir_return_to";
 export const LOGIN_LOCALE_COOKIE = "ir_login_locale";
+// Nonce for Sign in with Google ID tokens (button popup and One Tap). Short-lived and single-use.
+export const GOOGLE_NONCE_COOKIE = "ir_gsi_nonce";
 
 function toBase64Url(bytes: Uint8Array) {
   return Buffer.from(bytes).toString("base64url");
