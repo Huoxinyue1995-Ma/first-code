@@ -274,9 +274,9 @@ const es: Dictionary = {
     platformsTitle: "Herramientas",
   },
   home: {
-    metaTitle: "Redimensionar imágenes en lote para Etsy, eBay, Amazon, Shopify y más | Resizet",
+    metaTitle: "Redimensionar imágenes en lote — Fotos de producto | Resizet",
     metaDescription:
-      "Redimensiona cientos de fotos de producto al tamaño correcto para Etsy, eBay, Amazon, Shopify, Pinterest, Poshmark y más. Recorta en lote en tu navegador y descarga un ZIP.",
+      "Redimensiona y recorta fotos de producto en lote para Etsy, eBay, Amazon y Shopify, en tu navegador y sin subirlas. Empieza con 3 créditos gratis.",
     eyebrow: "Para vendedores de Etsy, eBay, Amazon y Shopify",
     title: "Redimensionador de imágenes en lote — Fotos de producto para cada marketplace",
     lead:
